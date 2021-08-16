@@ -9,7 +9,7 @@ Dueling(I) - knockaway enemies in a circle around the target enemy
   - Mutually Exclusive with Sweeping Edge
 
   
-Lethality(I, II, III) - Deal bonus damage to enemies with more armor
+Lethality(I, II, III) - Deal bonus damage to enemies with more armor than you
   - Bonus damage = (Enemy armor - your armor) * (0.5 + level * 0.5)
   - Uncommon
   
