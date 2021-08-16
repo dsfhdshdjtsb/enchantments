@@ -2,7 +2,7 @@
 
 ## Enchantments
 \* - incomplete
-### Weapons
+### Sword
 Dueling(I) - knockaway enemies in a circle around the target enemy
   - Knocks back enemies within 6 blocks of the target to outside 6 blocks
   - Rare
