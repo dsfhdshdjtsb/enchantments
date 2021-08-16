@@ -4,7 +4,7 @@
 \* - incomplete
 ### Weapons
 Dueling(I) - knockaway enemies in a circle around the target enemy
-  - Knockback enemies within 6 blocks of the target to outside 6 blocks
+  - Knocks back enemies within 6 blocks of the target to outside 6 blocks
   - Rare
   - Mutually Exclusive with Sweeping Edge
 
