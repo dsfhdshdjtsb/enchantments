@@ -4,14 +4,12 @@ import com.dsfhdshdjtsb.EnchantsPlus.EnchantsPlus;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentTarget;
-import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.util.math.BlockPos;
 
 public class TriumphEnchantment extends Enchantment {
     public TriumphEnchantment() {
@@ -34,17 +32,13 @@ public class TriumphEnchantment extends Enchantment {
             return;
         if(target instanceof PlayerEntity && ((LivingEntity)target).isDead())
         {
-            user.heal(2.0f + level * 2.0f);
-            user.addStatusEffect(new StatusEffectInstance(StatusEffects.SATURATION, 1, 255));
-            super.onTargetDamaged(user, target, level);
-            return;
+            user.heal(level);
+            user.addStatusEffect(new StatusEffectInstance(StatusEffects.SATURATION, 1, (level * 3) - 1 ));
         }
-        if(target instanceof LivingEntity && ((LivingEntity)target).isDead())
+        else if(target instanceof LivingEntity && ((LivingEntity)target).isDead())
         {
             user.heal(level / 2.0f);
-            user.addStatusEffect(new StatusEffectInstance(StatusEffects.SATURATION, 1, level - 1));
-            super.onTargetDamaged(user, target, level);
-            return;
+            user.addStatusEffect(new StatusEffectInstance(StatusEffects.SATURATION, 1, 0));
         }
         super.onTargetDamaged(user, target, level);
     }

@@ -1,7 +1,6 @@
 package com.dsfhdshdjtsb.EnchantsPlus.enchantments;
 
 import com.dsfhdshdjtsb.EnchantsPlus.EnchantsPlus;
-import net.minecraft.client.world.ClientWorld;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentTarget;
@@ -11,9 +10,6 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.server.world.ServerWorld;
-
-import java.util.Objects;
 
 public class RampageEnchantment extends Enchantment {
 
@@ -53,8 +49,8 @@ public class RampageEnchantment extends Enchantment {
         if(target instanceof LivingEntity)
         {
             if(((LivingEntity)target).isDead()) {
-                user.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, level * 20, 0));
-                user.addStatusEffect(new StatusEffectInstance(EnchantsPlus.RAMPAGE_EFFECT, level * 20, 1));
+                user.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 20 + level * 20, 0));
+                user.addStatusEffect(new StatusEffectInstance(EnchantsPlus.RAMPAGE_EFFECT, 20 + level * 20, 1));
                 super.onTargetDamaged(user, target, level);
                 return;
             }
