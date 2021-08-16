@@ -1,8 +1,8 @@
 # Enchantments Plus Mod
 
-### Enchantments
+## Enchantments
 
-## Weapons
+### Weapons
 Dueling - knockaway nearby enemies(except for the target enemy) in a radius 6 circle around the target enemy
   - Mutually Exclusive with Sweeping Edge
   
