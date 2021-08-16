@@ -33,13 +33,12 @@ public class DuelingEnchantment  extends Enchantment {
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
         if(EnchantmentHelper.getLevel(EnchantsPlus.DUELING, user.getMainHandStack()) == 0)
             return;
-
         List<LivingEntity> list = target.world.getNonSpectatingEntities(LivingEntity.class, target.getBoundingBox().expand(5.0D, 0.25D, 5.0D));
         boolean bl = false;
         for (LivingEntity e : list) {
             if (!e.equals(user) && !e.equals(target)) {
                 bl = true;
-                e.takeKnockback(1.5, -(e.getX() - target.getX()), -(e.getZ() - target.getZ()));
+                e.takeKnockback(1.5, target.getX() - e.getX(), target.getZ() - e.getZ());
             }
         }
 

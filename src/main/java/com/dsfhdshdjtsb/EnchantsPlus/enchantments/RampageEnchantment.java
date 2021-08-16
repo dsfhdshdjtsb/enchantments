@@ -23,7 +23,7 @@ public class RampageEnchantment extends Enchantment {
 
     @Override
     public int getMinPower(int level) {
-        return level * 25;
+        return 5 + (level - 1) * 8;
     }
 
     @Override
@@ -33,33 +33,35 @@ public class RampageEnchantment extends Enchantment {
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
+        System.out.println(level);
         if(EnchantmentHelper.getLevel(EnchantsPlus.RAMPAGE, user.getMainHandStack()) == 0)
             return;
         if(target instanceof PlayerEntity)
         {
             if(((LivingEntity)target).isDead()) {
-                user.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 200, 1));
-                user.addStatusEffect(new StatusEffectInstance(EnchantsPlus.RAMPAGE_EFFECT, 200, 1));
+                user.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 80 + level * 40, 1));
+                user.addStatusEffect(new StatusEffectInstance(EnchantsPlus.RAMPAGE_EFFECT, 80 + level * 40, 1));
                 super.onTargetDamaged(user, target, level);
                 return;
             }
             if(user.getStatusEffect(EnchantsPlus.RAMPAGE_EFFECT) != null)
             {
-                ((LivingEntity)target).addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 60, 0));
+                ((LivingEntity)target).addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, level * 20, 0));
             }
         }
 
         if(target instanceof LivingEntity)
         {
             if(((LivingEntity)target).isDead()) {
-                user.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 60, 0));
-                user.addStatusEffect(new StatusEffectInstance(EnchantsPlus.RAMPAGE_EFFECT, 60, 1));
+                user.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, level * 20, 0));
+                user.addStatusEffect(new StatusEffectInstance(EnchantsPlus.RAMPAGE_EFFECT, level * 20, 1));
                 super.onTargetDamaged(user, target, level);
                 return;
             }
+
             if(user.getStatusEffect(EnchantsPlus.RAMPAGE_EFFECT) != null)
             {
-                ((LivingEntity)target).addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 60, 0));
+                ((LivingEntity)target).addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, level * 20, 0));
             }
         }
         super.onTargetDamaged(user, target, level);
@@ -70,5 +72,10 @@ public class RampageEnchantment extends Enchantment {
         if(other.equals(EnchantsPlus.TRIUMPH))
             return false;
         return super.canAccept(other);
+    }
+
+    @Override
+    public int getMaxLevel() {
+        return 3;
     }
 }

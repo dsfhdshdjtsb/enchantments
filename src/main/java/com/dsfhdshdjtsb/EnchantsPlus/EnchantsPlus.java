@@ -1,10 +1,7 @@
 package com.dsfhdshdjtsb.EnchantsPlus;
 
 import com.dsfhdshdjtsb.EnchantsPlus.effects.RampageEffect;
-import com.dsfhdshdjtsb.EnchantsPlus.enchantments.LethalityEnchantment;
-import com.dsfhdshdjtsb.EnchantsPlus.enchantments.DuelingEnchantment;
-import com.dsfhdshdjtsb.EnchantsPlus.enchantments.RampageEnchantment;
-import com.dsfhdshdjtsb.EnchantsPlus.enchantments.TriumphEnchantment;
+import com.dsfhdshdjtsb.EnchantsPlus.enchantments.*;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.effect.StatusEffect;
@@ -35,6 +32,18 @@ public class EnchantsPlus implements ModInitializer {
 			Registry.ENCHANTMENT,
 			new Identifier("enchantsp", "rampage"),
 			new RampageEnchantment()
+	);
+
+	public static final Enchantment INFERNO = Registry.register(
+			Registry.ENCHANTMENT,
+			new Identifier("enchantsp", "inferno"),
+			new InfernoEnchantment()
+	);
+
+	public static final Enchantment SORCERY = Registry.register(
+			Registry.ENCHANTMENT,
+			new Identifier("enchantsp", "sorcery"),
+			new SorceryEnchantment()
 	);
 
 	public static final StatusEffect RAMPAGE_EFFECT = new RampageEffect();

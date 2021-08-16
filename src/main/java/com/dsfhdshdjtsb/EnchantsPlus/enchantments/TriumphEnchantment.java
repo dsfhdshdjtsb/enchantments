@@ -20,7 +20,7 @@ public class TriumphEnchantment extends Enchantment {
 
     @Override
     public int getMinPower(int level) {
-        return level * 25;
+        return 5 + (level - 1) * 8;
     }
 
     @Override
@@ -34,14 +34,15 @@ public class TriumphEnchantment extends Enchantment {
             return;
         if(target instanceof PlayerEntity && ((LivingEntity)target).isDead())
         {
-            user.heal(5.0f);
-            user.addStatusEffect(new StatusEffectInstance(StatusEffects.SATURATION, 20, 255));
+            user.heal(2.0f + level * 2.0f);
+            user.addStatusEffect(new StatusEffectInstance(StatusEffects.SATURATION, 1, 255));
             super.onTargetDamaged(user, target, level);
             return;
         }
         if(target instanceof LivingEntity && ((LivingEntity)target).isDead())
         {
-            user.heal(1.0f);
+            user.heal(level / 2.0f);
+            user.addStatusEffect(new StatusEffectInstance(StatusEffects.SATURATION, 1, level - 1));
             super.onTargetDamaged(user, target, level);
             return;
         }
@@ -53,5 +54,10 @@ public class TriumphEnchantment extends Enchantment {
         if(other.equals(EnchantsPlus.RAMPAGE))
             return false;
         return super.canAccept(other);
+    }
+
+    @Override
+    public int getMaxLevel() {
+        return 3;
     }
 }

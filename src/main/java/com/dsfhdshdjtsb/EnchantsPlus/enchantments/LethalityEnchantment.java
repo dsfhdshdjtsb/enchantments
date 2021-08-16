@@ -17,7 +17,7 @@ import net.minecraft.util.Hand;
 
 public class LethalityEnchantment extends Enchantment {
     public LethalityEnchantment() {
-        super(Rarity.RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        super(Rarity.UNCOMMON, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
     @Override
@@ -35,12 +35,15 @@ public class LethalityEnchantment extends Enchantment {
         if(EnchantmentHelper.getLevel(EnchantsPlus.LETHALITY, user.getMainHandStack()) == 0)
             return;
         if (user instanceof PlayerEntity && target instanceof LivingEntity) {
-            System.out.println(((LivingEntity) target).getArmor());
-            System.out.println(user.getArmor());
-            float bDamage = (((LivingEntity) target).getArmor() - user.getArmor()) / 2.0f;
-            System.out.println(bDamage);
-            target.damage(DamageSource.player((PlayerEntity) user),bDamage );
+            float bDamage = (((LivingEntity) target).getArmor() - user.getArmor()) * (0.5f + level * 0.5f);
+            if(bDamage > 0)
+                target.damage(DamageSource.player((PlayerEntity) user), bDamage );
         }
         super.onTargetDamaged(user, target, level);
+    }
+
+    @Override
+    public int getMaxLevel() {
+        return 3;
     }
 }
