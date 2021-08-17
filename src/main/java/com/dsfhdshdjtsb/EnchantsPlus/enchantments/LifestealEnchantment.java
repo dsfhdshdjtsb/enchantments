@@ -36,7 +36,7 @@ public class LifestealEnchantment extends Enchantment {
             return;
         if (user.getStatusEffect(EnchantsPlus.LIFESTEAL_COOLDOWN_EFFECT) == null) {
             List<LivingEntity> list = target.world.getNonSpectatingEntities(LivingEntity.class, target.getBoundingBox()
-                    .expand(2 + level, 0.25D, 2 + level));
+                    .expand(1 + level, 0.25D, 1 + level));
             int counter = 0;
 
             for (LivingEntity e : list) {
