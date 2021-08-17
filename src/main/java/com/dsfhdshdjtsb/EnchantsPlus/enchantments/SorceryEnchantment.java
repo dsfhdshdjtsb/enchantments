@@ -36,12 +36,11 @@ public class SorceryEnchantment extends Enchantment {
                 StatusEffects.JUMP_BOOST,
                 StatusEffects.SPEED,
                 StatusEffects.REGENERATION,
-                StatusEffects.HASTE,
         };
 
         Random rand = new Random();
         if(rand.nextInt(4) == 0) {
-            StatusEffect randEffect = effects[rand.nextInt(8)];
+            StatusEffect randEffect = effects[rand.nextInt(7)];
             int duration = level * 3;
             if (user.getStatusEffect(randEffect) == null)
                 user.addStatusEffect(new StatusEffectInstance(randEffect, duration * 20, 0));
