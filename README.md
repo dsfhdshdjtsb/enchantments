@@ -42,7 +42,7 @@ Lifesteal(I, II, III, IV, V) - Damage enemies in a circle around the target, and
 
 ### Armor(all)
 Sorcery(I, II, III, IIII) - randomly gain status effects upon taking damage
-  - Can gain resistance, regeneration, fire resistance, absorption, health boost, jump_boost, speed, or haste
+  - Can gain resistance, regeneration, fire resistance, absorption, health boost, jump_boost, or speed
   - 1/4 chance(for each piece individually) to gain one of the above status effects randomly
   - status effect last for (level * 2) seconds
   - status effect upgrades if randomly selected again, caps at a strength of 2
