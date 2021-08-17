@@ -4,9 +4,9 @@
 \* - incomplete
 ### Sword
 Dueling(I) - knockaway enemies in a circle around the target enemy
-  - Knocks back enemies within 6 blocks of the target to outside 6 blocks
-  - Rare
-  - Mutually Exclusive with Sweeping Edge
+  - Knock away enemies within 4 blocks of the target 
+  - Very rare
+  - Mutually Exclusive with Sweeping Edge, Inferno
 
   
 Lethality(I, II, III) - Deal bonus damage to enemies with more armor than you
@@ -29,16 +29,21 @@ Rampage(I, II, III) - gain strength and speed, and apply slowness on hit for kil
 Inferno(I, II) - light enemies in a circle around the target on fire
   - Light enemies within ( (level + 1) * 2) blocks of the target for (level + 1) seconds
   - Uncommon
-  - Mutually exclusive with Fire Aspect.
+  - Mutually exclusive with Fire Aspect, Dueling
 
 Lifesteal(I, II, III, IV, V) - Damage enemies in a circle around the target, and heal based on the number of enemies hit
   - Circle has radius (2 + level)
-  - Damage all enemies in circle for 1 hp, heal for (number of enemies hit + level - 1) hp
+  - Damage all enemies in circle for 1 hp, heal for (number of enemies hit + level) hp
   - (15 - level) second cooldown(cooldown only decreases while holding the sword with lifesteal)
   - Uncommon
   - Mutually exclusive with sharpness, bane of arthopods, smite
-### Bow
 
+Combo(I) - Damage
+### Bow
+Hunter - mark enemies you shoot, shoot marked enemies for bonus damage
+
+Zap - send out bolts of lightning from the target that bounce to nearby enemies until out of range
+  - 
 
 ### Armor(all)
 Sorcery(I, II, III, IIII) - randomly gain status effects upon taking damage
