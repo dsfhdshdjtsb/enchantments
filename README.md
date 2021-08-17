@@ -15,7 +15,7 @@ Lethality(I, II, III) - Deal bonus damage to enemies with more armor than you
   
 Triumph(I, II, III) - regain hp and hunger for kills
   - regain (level) hp and restore (level * 3) hunger for killing a player
-  - regain (level / 2) hp and 0.5 hunger for killing a mob
+  - regain (level / 2) hp and 1 hunger for killing a mob
   - Very Rare
   - Mutually exclusive with Rampage
   
@@ -30,6 +30,13 @@ Inferno(I, II) - light enemies in a circle around the target on fire
   - Light enemies within ( (level + 1) * 2) blocks of the target for (level + 1) seconds
   - Uncommon
   - Mutually exclusive with Fire Aspect.
+
+Lifesteal(I, II, III, IV, V) - Damage enemies in a circle around the target, and heal based on the number of enemies hit
+  - Circle has radius (2 + level)
+  - Damage all enemies in circle for 1 hp, heal for (number of enemies hit + level - 1) hp
+  - (15 - level) second cooldown(cooldown only decreases while holding the sword with lifesteal)
+  - Uncommon
+  - Mutually exclusive with sharpness, bane of arthopods, smite
 ### Bow
 
 
