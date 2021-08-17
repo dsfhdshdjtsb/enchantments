@@ -36,6 +36,7 @@ public class RampageEnchantment extends Enchantment {
         {
             if(((LivingEntity)target).isDead()) {
                 user.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 80 + level * 40, 1));
+                user.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 80 + level * 40, 1));
                 user.addStatusEffect(new StatusEffectInstance(EnchantsPlus.RAMPAGE_EFFECT, 80 + level * 40, 1));
                 super.onTargetDamaged(user, target, level);
                 return;
@@ -50,6 +51,7 @@ public class RampageEnchantment extends Enchantment {
         {
             if(((LivingEntity)target).isDead()) {
                 user.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 20 + level * 20, 0));
+                user.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 20 + level * 20, 0));
                 user.addStatusEffect(new StatusEffectInstance(EnchantsPlus.RAMPAGE_EFFECT, 20 + level * 20, 1));
                 super.onTargetDamaged(user, target, level);
                 return;

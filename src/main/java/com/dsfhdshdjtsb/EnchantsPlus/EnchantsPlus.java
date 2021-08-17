@@ -1,5 +1,6 @@
 package com.dsfhdshdjtsb.EnchantsPlus;
 
+import com.dsfhdshdjtsb.EnchantsPlus.effects.LifestealCooldwon;
 import com.dsfhdshdjtsb.EnchantsPlus.effects.RampageEffect;
 import com.dsfhdshdjtsb.EnchantsPlus.enchantments.*;
 import net.fabricmc.api.ModInitializer;
@@ -46,7 +47,14 @@ public class EnchantsPlus implements ModInitializer {
 			new SorceryEnchantment()
 	);
 
+	public static final Enchantment LIFESTEAL = Registry.register(
+			Registry.ENCHANTMENT,
+			new Identifier("enchantsp", "lifesteal"),
+			new LifestealEnchantment()
+	);
+
 	public static final StatusEffect RAMPAGE_EFFECT = new RampageEffect();
+	public static final StatusEffect LIFESTEAL_COOLDOWN_EFFECT = new LifestealCooldwon();
 
 	@Override
 	public void onInitialize() {
@@ -54,7 +62,7 @@ public class EnchantsPlus implements ModInitializer {
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("enchantsp", "rampage"), RAMPAGE_EFFECT);
-
+		Registry.register(Registry.STATUS_EFFECT, new Identifier("enchantsp", "lifesteal_cooldown"), LIFESTEAL_COOLDOWN_EFFECT);
 
 	}
 }
