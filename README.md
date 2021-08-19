@@ -38,7 +38,7 @@ Lifesteal(I, II, III, IV, V) - Damage enemies in a circle around the target, and
   - Mutually exclusive with sharpness, bane of arthopods, smite
 
 ### Bow
-Hunter(I) - mark enemies you shoot, shoot marked enemies for speed and bonus damage
+Hunter(I) - mark enemies you shoot, shoot marked enemies for speed and jump boost
   - mark lasts for 3 seconds, also applies glow effect
   - Gain speed 2 + jump 2 for 10 seconds on hitting a marked enemy
   - Rare
@@ -59,7 +59,7 @@ Volley(I) - arrows fall from the sky around the target
 
 ### Armor(all)
 Sorcery(I, II, III, IIII) - randomly gain status effects upon taking damage
-  - Can gain resistance, regeneration, fire resistance, absorption, health boost, jump_boost, or speed
+  - Can gain resistance, regeneration, fire resistance, absorption, health boost, jump boost, or speed
   - 1/4 chance(for each piece individually) to gain one of the above status effects randomly
   - status effect last for (level * 2) seconds
   - status effect upgrades if randomly selected again, caps at a strength of 2
