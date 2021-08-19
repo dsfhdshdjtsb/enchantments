@@ -9,7 +9,7 @@ Dueling(I) - knockaway enemies in a circle around the target enemy
   - Mutually Exclusive with Sweeping Edge, Inferno
 
 Lethality(I, II, III) - Deal bonus damage to enemies with more armor than you
-  - Bonus damage = (Enemy armor - your armor) * (0.5 + level * 0.5)
+  - Bonus damage = ((Enemy armor - your armor) / 2) * (level * 0.5)
   - Uncommon
   
 Triumph(I, II, III) - regain hp and hunger for kills
@@ -58,7 +58,7 @@ Volley(I) - arrows fall from the sky around the target
   - mutually exclusive with Zap, Hunter
 
 ### Armor(all)
-Sorcery(I, II, III, IIII) - randomly gain status effects upon taking damage
+Sorcery(I, II, III, IV) - randomly gain status effects upon taking damage
   - Can gain resistance, regeneration, fire resistance, absorption, health boost, jump boost, or speed
   - 1/4 chance(for each piece individually) to gain one of the above status effects randomly
   - status effect last for (level * 2) seconds
