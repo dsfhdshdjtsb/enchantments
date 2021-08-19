@@ -57,6 +57,26 @@ Volley(I) - arrows fall from the sky around the target
   - Rare
   - mutually exclusive with Zap, Hunter
 
+### Crossbow
+\*Blind(I, II) - apply blindness to the target
+  - NOT FINISHED YET
+  - lasts for (level) seconds
+  - Rare
+  - Mutually exclusive with Stun
+
+\*Stun (I, II) - momentarily stun the target
+  - NOT FINISHED YET
+  - apply slowness 255(prevents all movement) to the target for (level / 2) seconds
+  - Very rare
+  - Mutually exclusive with blind
+
+Tranquilizer(I, II) - after a delay, the target goes to sleep
+  - Target will gain the sleepy status effect for 10 seconds
+  - Target will sleep during the last (level) seconds of sleepy
+  - Sleeping targets cannot be damaged directly(swords, arrows)
+  - Very rare
+  - mutually exclusive with blind, stun
+
 ### Armor(all)
 Sorcery(I, II, III, IV) - randomly gain status effects upon taking damage
   - Can gain resistance, regeneration, fire resistance, absorption, health boost, jump boost, or speed
