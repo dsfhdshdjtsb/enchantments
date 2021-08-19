@@ -1,8 +1,9 @@
 package com.dsfhdshdjtsb.CombatEnchants;
 
-import com.dsfhdshdjtsb.CombatEnchants.effects.LifestealCooldwon;
+import com.dsfhdshdjtsb.CombatEnchants.effects.LifestealCooldwonEffect;
 import com.dsfhdshdjtsb.CombatEnchants.effects.MarkEffect;
 import com.dsfhdshdjtsb.CombatEnchants.effects.RampageEffect;
+import com.dsfhdshdjtsb.CombatEnchants.effects.SleepyEffect;
 import com.dsfhdshdjtsb.CombatEnchants.enchantments.*;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.enchantment.Enchantment;
@@ -71,10 +72,16 @@ public class CombatEnchants implements ModInitializer {
 			new Identifier("cenchants", "hunter"),
 			new HunterEnchantment()
 	);
+	public static final Enchantment TRANQUILIZE = Registry.register(
+			Registry.ENCHANTMENT,
+			new Identifier("cenchants", "tranquilize"),
+			new TranquilizeEnchantment()
+	);
 
 	public static final StatusEffect RAMPAGE_EFFECT = new RampageEffect();
-	public static final StatusEffect LIFESTEAL_COOLDOWN_EFFECT = new LifestealCooldwon();
+	public static final StatusEffect LIFESTEAL_COOLDOWN_EFFECT = new LifestealCooldwonEffect();
 	public static final StatusEffect MARK_EFFECT = new MarkEffect();
+	public static final StatusEffect SLEEPY_EFFECT = new SleepyEffect();
 
 	@Override
 	public void onInitialize() {
@@ -84,5 +91,6 @@ public class CombatEnchants implements ModInitializer {
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "rampage"), RAMPAGE_EFFECT);
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "lifesteal_cooldown"), LIFESTEAL_COOLDOWN_EFFECT);
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "mark"), MARK_EFFECT);
+		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "sleepy"), SLEEPY_EFFECT);
 	}
 }

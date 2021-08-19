@@ -9,8 +9,8 @@ import net.minecraft.entity.effect.StatusEffectType;
 
 import java.util.Objects;
 
-public class LifestealCooldwon extends StatusEffect {
-    public LifestealCooldwon() {
+public class LifestealCooldwonEffect extends StatusEffect {
+    public LifestealCooldwonEffect() {
         super(StatusEffectType.HARMFUL, 0x00000000);
     }
 
