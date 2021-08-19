@@ -1,4 +1,4 @@
-# Enchantments Plus Mod
+# Combat Enchantments
 
 ## Enchantments
 \* - incomplete
