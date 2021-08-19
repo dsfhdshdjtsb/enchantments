@@ -39,7 +39,7 @@ Lifesteal(I, II, III, IV, V) - Damage enemies in a circle around the target, and
 
 ### Bow
 Hunter(I) - mark enemies you shoot, shoot marked enemies for speed and bonus damage
-  - mark lasts for 5 seconds, also applies glow effect
+  - mark lasts for 3 seconds, also applies glow effect
   - Gain speed 2 + jump 2 for 10 seconds on hitting a marked enemy
   - Rare
   - Mutually exclusive with Zap, Volley
