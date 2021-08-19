@@ -4,7 +4,7 @@
 \* - incomplete
 ### Sword
 Dueling(I) - knockaway enemies in a circle around the target enemy
-  - Knock away enemies within 4 blocks of the target 
+  - Knock away enemies within 6 blocks of the target 
   - Very rare
   - Mutually Exclusive with Sweeping Edge, Inferno
 
@@ -39,10 +39,18 @@ Lifesteal(I, II, III, IV, V) - Damage enemies in a circle around the target, and
   - Mutually exclusive with sharpness, bane of arthopods, smite
 
 Combo(I) - Damage
+
 ### Bow
 Hunter - mark enemies you shoot, shoot marked enemies for bonus damage
 
-Zap - send out bolts of lightning from the target that bounce to nearby enemies until out of range
+Zap(I) - send out bolts of lightning from the target that bounce to nearby enemies
+  - targets enemies within 4 block circle
+  - continuily bounces until no new targets are found(enemies can only be hit once)
+  - Deals 2hp magic damage
+  - Very rare
+  - mutually exclusive with flame
+
+Volley(I) - arrows fall from the sky around the target
   - 
 
 ### Armor(all)
