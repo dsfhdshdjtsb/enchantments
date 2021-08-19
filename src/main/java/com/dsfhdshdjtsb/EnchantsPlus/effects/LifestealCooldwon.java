@@ -11,7 +11,7 @@ import java.util.Objects;
 
 public class LifestealCooldwon extends StatusEffect {
     public LifestealCooldwon() {
-        super(StatusEffectType.HARMFUL, 0x00FFFFFF);
+        super(StatusEffectType.HARMFUL, 0x00000000);
     }
 
     @Override

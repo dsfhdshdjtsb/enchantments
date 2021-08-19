@@ -1,6 +1,7 @@
 package com.dsfhdshdjtsb.EnchantsPlus;
 
 import com.dsfhdshdjtsb.EnchantsPlus.effects.LifestealCooldwon;
+import com.dsfhdshdjtsb.EnchantsPlus.effects.MarkEffect;
 import com.dsfhdshdjtsb.EnchantsPlus.effects.RampageEffect;
 import com.dsfhdshdjtsb.EnchantsPlus.enchantments.*;
 import net.fabricmc.api.ModInitializer;
@@ -53,8 +54,27 @@ public class EnchantsPlus implements ModInitializer {
 			new LifestealEnchantment()
 	);
 
+	public static final Enchantment ZAP = Registry.register(
+			Registry.ENCHANTMENT,
+			new Identifier("enchantsp", "zap"),
+			new ZapEnchantment()
+	);
+
+	public static final Enchantment VOLLEY = Registry.register(
+			Registry.ENCHANTMENT,
+			new Identifier("enchantsp", "volley"),
+			new VolleyEnchantment()
+	);
+
+	public static final Enchantment HUNTER = Registry.register(
+			Registry.ENCHANTMENT,
+			new Identifier("enchantsp", "hunter"),
+			new HunterEnchantment()
+	);
+
 	public static final StatusEffect RAMPAGE_EFFECT = new RampageEffect();
 	public static final StatusEffect LIFESTEAL_COOLDOWN_EFFECT = new LifestealCooldwon();
+	public static final StatusEffect MARK_EFFECT = new MarkEffect();
 
 	@Override
 	public void onInitialize() {
@@ -63,6 +83,7 @@ public class EnchantsPlus implements ModInitializer {
 		// Proceed with mild caution.
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("enchantsp", "rampage"), RAMPAGE_EFFECT);
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("enchantsp", "lifesteal_cooldown"), LIFESTEAL_COOLDOWN_EFFECT);
+		Registry.register(Registry.STATUS_EFFECT, new Identifier("enchantsp", "mark"), MARK_EFFECT);
 
 	}
 }

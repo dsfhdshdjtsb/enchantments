@@ -6,6 +6,9 @@
   "enchantment.enchantsp.inferno": "Inferno",
   "enchantment.enchantsp.sorcery": "Sorcery",
   "enchantment.enchantsp.lifesteal": "Lifesteal",
+  "enchantment.enchantsp.zap": "Zap",
+  "enchantment.enchantsp.volley": "Volley",
   "effect.enchantsp.lifesteal_cooldown": "Lifesteal Cooldown",
-  "effect.enchantsp.rampage": "Rampage"
+  "effect.enchantsp.rampage": "Rampage",
+  "effect.enchantsp.mark": "Marked"
 }

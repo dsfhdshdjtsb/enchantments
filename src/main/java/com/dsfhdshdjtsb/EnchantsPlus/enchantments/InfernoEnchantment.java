@@ -30,7 +30,7 @@ public class InfernoEnchantment extends Enchantment {
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
-        if(EnchantmentHelper.getLevel(EnchantsPlus.INFERNO, user.getMainHandStack()) == 0)
+        if(EnchantmentHelper.getLevel(EnchantsPlus.INFERNO, user.getMainHandStack()) == 0||target.distanceTo(user) >= 6)
             return;
         List<LivingEntity> list = target.world.getNonSpectatingEntities(LivingEntity.class, target.getBoundingBox()
                 .expand(1.0D + level * 2, 0.25D, 1.0D + level * 2));
@@ -53,7 +53,7 @@ public class InfernoEnchantment extends Enchantment {
 
     @Override
     protected boolean canAccept(Enchantment other) {
-        if(other.equals(Enchantments.FIRE_ASPECT))
+        if(other.equals(Enchantments.FIRE_ASPECT)|| other.equals(EnchantsPlus.DUELING))
             return false;
         return super.canAccept(other);
     }

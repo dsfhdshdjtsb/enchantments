@@ -32,7 +32,7 @@ public class LifestealEnchantment extends Enchantment {
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
-        if (EnchantmentHelper.getLevel(EnchantsPlus.LIFESTEAL, user.getMainHandStack()) == 0)
+        if (EnchantmentHelper.getLevel(EnchantsPlus.LIFESTEAL, user.getMainHandStack()) == 0||target.distanceTo(user) >= 6)
             return;
         if (user.getStatusEffect(EnchantsPlus.LIFESTEAL_COOLDOWN_EFFECT) == null) {
             List<LivingEntity> list = target.world.getNonSpectatingEntities(LivingEntity.class, target.getBoundingBox()
@@ -49,7 +49,7 @@ public class LifestealEnchantment extends Enchantment {
                         double ydif = e.getBodyY(0.5D) - user.getBodyY(0.5D);
                         double zdif = e.getZ() - user.getZ();
 
-                        int particleNumConstant = 20;
+                        int particleNumConstant = 20; //number of particles
                         double x = 0;
                         double y = 0;
                         double z = 0;
@@ -71,10 +71,11 @@ public class LifestealEnchantment extends Enchantment {
                     ((ServerWorld) target.world).spawnParticles(ParticleTypes.COMPOSTER, target.getX() + x, target.getBodyY(0.5D), target.getZ() - y, 0, 1, 0.0D, 1, 0.0D);
                 }
             }
-            user.heal(counter + (level - 1));
+            user.heal(counter + (level));
             user.addStatusEffect(new StatusEffectInstance(EnchantsPlus.LIFESTEAL_COOLDOWN_EFFECT, 300 - (level * 20)));
             super.onTargetDamaged(user, target, level);
         }
+
     }
 
     @Override

@@ -15,7 +15,7 @@ import java.util.List;
 
 public class DuelingEnchantment  extends Enchantment {
     public DuelingEnchantment() {
-        super(Rarity.RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        super(Rarity.VERY_RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
     @Override
@@ -30,18 +30,21 @@ public class DuelingEnchantment  extends Enchantment {
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
-        if(EnchantmentHelper.getLevel(EnchantsPlus.DUELING, user.getMainHandStack()) == 0)
+        //check that enchant is not in offhand, and that player isnt using a bow and then switching to sword
+        if(EnchantmentHelper.getLevel(EnchantsPlus.DUELING, user.getMainHandStack()) == 0|| target.distanceTo(user) >= 6)
             return;
+
         List<LivingEntity> list = target.world.getNonSpectatingEntities(LivingEntity.class, target.getBoundingBox().expand(5.0D, 0.25D, 5.0D));
         boolean bl = false;
         for (LivingEntity e : list) {
             if (!e.equals(user) && !e.equals(target)) {
                 bl = true;
-                e.takeKnockback(1.5, target.getX() - e.getX(), target.getZ() - e.getZ());
+                e.takeKnockback(.7, target.getX() - e.getX(), target.getZ() - e.getZ());
             }
         }
 
         if (bl && target.world instanceof ServerWorld) {
+            System.out.println("test");
             for (double x = -6; x <= 6; x = x + 1) {
                 double y = Math.sqrt(36 - x * x);
                 ((ServerWorld) target.world).spawnParticles(ParticleTypes.CLOUD, target.getX() + x, target.getBodyY(0.5D), target.getZ() + y, 0, 1, 0.0D, 1, 0.0D);
@@ -52,7 +55,7 @@ public class DuelingEnchantment  extends Enchantment {
 
     @Override
     protected boolean canAccept(Enchantment other) {
-        if(other.equals(Enchantments.SWEEPING))
+        if(other.equals(Enchantments.SWEEPING) || other.equals(EnchantsPlus.INFERNO))
             return false;
         return super.canAccept(other);
     }

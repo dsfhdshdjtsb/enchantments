@@ -30,7 +30,7 @@ public class RampageEnchantment extends Enchantment {
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
         System.out.println(level);
-        if(EnchantmentHelper.getLevel(EnchantsPlus.RAMPAGE, user.getMainHandStack()) == 0)
+        if(EnchantmentHelper.getLevel(EnchantsPlus.RAMPAGE, user.getMainHandStack()) == 0||target.distanceTo(user) >= 6)
             return;
         if(target instanceof PlayerEntity)
         {
@@ -43,7 +43,7 @@ public class RampageEnchantment extends Enchantment {
             }
             if(user.getStatusEffect(EnchantsPlus.RAMPAGE_EFFECT) != null)
             {
-                ((LivingEntity)target).addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, level * 20, 0));
+                ((LivingEntity)target).addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, level * 20, 0));
             }
         }
 
@@ -59,7 +59,7 @@ public class RampageEnchantment extends Enchantment {
 
             if(user.getStatusEffect(EnchantsPlus.RAMPAGE_EFFECT) != null)
             {
-                ((LivingEntity)target).addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, level * 20, 0));
+                ((LivingEntity)target).addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, level * 20, 0));
             }
         }
         super.onTargetDamaged(user, target, level);

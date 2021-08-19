@@ -17,17 +17,17 @@ public class LethalityEnchantment extends Enchantment {
 
     @Override
     public int getMinPower(int level) {
-        return 5 + (level - 1) * 8;
+        return 1;
     }
 
     @Override
     public int getMaxPower(int level) {
-        return super.getMinPower(level) + 50;
+        return 15;
     }
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
-        if(EnchantmentHelper.getLevel(EnchantsPlus.LETHALITY, user.getMainHandStack()) == 0)
+        if(EnchantmentHelper.getLevel(EnchantsPlus.LETHALITY, user.getMainHandStack()) == 0||target.distanceTo(user) >= 6)
             return;
         if (user instanceof PlayerEntity && target instanceof LivingEntity) {
             float bDamage = (((LivingEntity) target).getArmor() - user.getArmor()) * (0.5f + level * 0.5f);

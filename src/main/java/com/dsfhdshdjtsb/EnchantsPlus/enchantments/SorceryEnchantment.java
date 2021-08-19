@@ -39,6 +39,7 @@ public class SorceryEnchantment extends Enchantment {
         };
 
         Random rand = new Random();
+
         if(rand.nextInt(4) == 0) {
             StatusEffect randEffect = effects[rand.nextInt(7)];
             int duration = level * 3;
