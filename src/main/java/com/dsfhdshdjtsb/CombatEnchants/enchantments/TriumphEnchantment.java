@@ -1,6 +1,6 @@
-package com.dsfhdshdjtsb.EnchantsPlus.enchantments;
+package com.dsfhdshdjtsb.CombatEnchants.enchantments;
 
-import com.dsfhdshdjtsb.EnchantsPlus.EnchantsPlus;
+import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentTarget;
@@ -12,8 +12,6 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
 
 public class TriumphEnchantment extends Enchantment {
     public TriumphEnchantment() {
@@ -32,7 +30,7 @@ public class TriumphEnchantment extends Enchantment {
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
-        if(EnchantmentHelper.getLevel(EnchantsPlus.TRIUMPH, user.getMainHandStack()) == 0||target.distanceTo(user) >= 6)
+        if(EnchantmentHelper.getLevel(CombatEnchants.TRIUMPH, user.getMainHandStack()) == 0||target.distanceTo(user) >= 6)
             return;
         if(target instanceof PlayerEntity && ((LivingEntity)target).isDead())
         {
@@ -55,7 +53,7 @@ public class TriumphEnchantment extends Enchantment {
 
     @Override
     protected boolean canAccept(Enchantment other) {
-        if(other.equals(EnchantsPlus.RAMPAGE))
+        if(other.equals(CombatEnchants.RAMPAGE))
             return false;
         return super.canAccept(other);
     }

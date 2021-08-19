@@ -1,6 +1,6 @@
-package com.dsfhdshdjtsb.EnchantsPlus.enchantments;
+package com.dsfhdshdjtsb.CombatEnchants.enchantments;
 
-import com.dsfhdshdjtsb.EnchantsPlus.EnchantsPlus;
+import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentTarget;
@@ -27,7 +27,7 @@ public class LethalityEnchantment extends Enchantment {
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
-        if(EnchantmentHelper.getLevel(EnchantsPlus.LETHALITY, user.getMainHandStack()) == 0||target.distanceTo(user) >= 6)
+        if(EnchantmentHelper.getLevel(CombatEnchants.LETHALITY, user.getMainHandStack()) == 0||target.distanceTo(user) >= 6)
             return;
         if (user instanceof PlayerEntity && target instanceof LivingEntity) {
             float bDamage = (((LivingEntity) target).getArmor() - user.getArmor()) * (0.5f + level * 0.5f);

@@ -1,7 +1,7 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "com.dsfhdshdjtsb.EnchantsPlus.mixin",
+  "package": "com.dsfhdshdjtsb.CombatEnchants.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
   ],

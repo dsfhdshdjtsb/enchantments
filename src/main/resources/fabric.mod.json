@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
-  "id": "enchantsp",
+  "id": "cenchants",
   "version": "${version}",
 
-  "name": "Enchants Plus",
-  "description": "More somewhat vanilla enchantments",
+  "name": "Combat Enchants",
+  "description": "Combat focused enchantments",
   "authors": [
     "Me!"
   ],
@@ -14,12 +14,12 @@
   },
 
   "license": "CC0-1.0",
-  "icon": "assets/enchantsp/icon.png",
+  "icon": "assets/cenchants/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "com.dsfhdshdjtsb.EnchantsPlus.EnchantsPlus"
+      "com.dsfhdshdjtsb.CombatEnchants.CombatEnchants"
     ]
   },
   "mixins": [

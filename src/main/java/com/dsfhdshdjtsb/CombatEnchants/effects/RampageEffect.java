@@ -1,4 +1,4 @@
-package com.dsfhdshdjtsb.EnchantsPlus.effects;
+package com.dsfhdshdjtsb.CombatEnchants.effects;
 
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectType;

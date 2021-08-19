@@ -1,13 +1,11 @@
-package com.dsfhdshdjtsb.EnchantsPlus.enchantments;
+package com.dsfhdshdjtsb.CombatEnchants.enchantments;
 
-import com.dsfhdshdjtsb.EnchantsPlus.EnchantsPlus;
+import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 
@@ -31,12 +29,12 @@ public class HunterEnchantment extends Enchantment {
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
         if(target instanceof LivingEntity) {
-            if(((LivingEntity) target).getStatusEffect(EnchantsPlus.MARK_EFFECT) == null)
+            if(((LivingEntity) target).getStatusEffect(CombatEnchants.MARK_EFFECT) == null)
             {
-                ((LivingEntity) target).addStatusEffect(new StatusEffectInstance(EnchantsPlus.MARK_EFFECT, 1, 5));
+                ((LivingEntity) target).addStatusEffect(new StatusEffectInstance(CombatEnchants.MARK_EFFECT, 1, 3));
                 ((LivingEntity) target).addStatusEffect(new StatusEffectInstance(StatusEffects.GLOWING, 100, 0));
             }
-            else if(Objects.requireNonNull(((LivingEntity) target).getStatusEffect(EnchantsPlus.MARK_EFFECT)).getAmplifier() == 0)
+            else if(Objects.requireNonNull(((LivingEntity) target).getStatusEffect(CombatEnchants.MARK_EFFECT)).getAmplifier() == 0)
             {
                 user.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, level * 40, 1));
                 user.addStatusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST, level * 40, 1));

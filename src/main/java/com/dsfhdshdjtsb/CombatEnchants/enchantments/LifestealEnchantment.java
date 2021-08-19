@@ -1,6 +1,6 @@
-package com.dsfhdshdjtsb.EnchantsPlus.enchantments;
+package com.dsfhdshdjtsb.CombatEnchants.enchantments;
 
-import com.dsfhdshdjtsb.EnchantsPlus.EnchantsPlus;
+import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentTarget;
@@ -32,9 +32,9 @@ public class LifestealEnchantment extends Enchantment {
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
-        if (EnchantmentHelper.getLevel(EnchantsPlus.LIFESTEAL, user.getMainHandStack()) == 0||target.distanceTo(user) >= 6)
+        if (EnchantmentHelper.getLevel(CombatEnchants.LIFESTEAL, user.getMainHandStack()) == 0||target.distanceTo(user) >= 6)
             return;
-        if (user.getStatusEffect(EnchantsPlus.LIFESTEAL_COOLDOWN_EFFECT) == null) {
+        if (user.getStatusEffect(CombatEnchants.LIFESTEAL_COOLDOWN_EFFECT) == null) {
             List<LivingEntity> list = target.world.getNonSpectatingEntities(LivingEntity.class, target.getBoundingBox()
                     .expand(1 + level, 0.25D, 1 + level));
             int counter = 0;
@@ -72,7 +72,7 @@ public class LifestealEnchantment extends Enchantment {
                 }
             }
             user.heal(counter + (level));
-            user.addStatusEffect(new StatusEffectInstance(EnchantsPlus.LIFESTEAL_COOLDOWN_EFFECT, 300 - (level * 20)));
+            user.addStatusEffect(new StatusEffectInstance(CombatEnchants.LIFESTEAL_COOLDOWN_EFFECT, 300 - (level * 20)));
             super.onTargetDamaged(user, target, level);
         }
 

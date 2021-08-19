@@ -1,6 +1,6 @@
-package com.dsfhdshdjtsb.EnchantsPlus.enchantments;
+package com.dsfhdshdjtsb.CombatEnchants.enchantments;
 
-import com.dsfhdshdjtsb.EnchantsPlus.EnchantsPlus;
+import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentTarget;
@@ -31,7 +31,7 @@ public class DuelingEnchantment  extends Enchantment {
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
         //check that enchant is not in offhand, and that player isnt using a bow and then switching to sword
-        if(EnchantmentHelper.getLevel(EnchantsPlus.DUELING, user.getMainHandStack()) == 0|| target.distanceTo(user) >= 6)
+        if(EnchantmentHelper.getLevel(CombatEnchants.DUELING, user.getMainHandStack()) == 0|| target.distanceTo(user) >= 6)
             return;
 
         List<LivingEntity> list = target.world.getNonSpectatingEntities(LivingEntity.class, target.getBoundingBox().expand(5.0D, 0.25D, 5.0D));
@@ -55,7 +55,7 @@ public class DuelingEnchantment  extends Enchantment {
 
     @Override
     protected boolean canAccept(Enchantment other) {
-        if(other.equals(Enchantments.SWEEPING) || other.equals(EnchantsPlus.INFERNO))
+        if(other.equals(Enchantments.SWEEPING) || other.equals(CombatEnchants.INFERNO))
             return false;
         return super.canAccept(other);
     }

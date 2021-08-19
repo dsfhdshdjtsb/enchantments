@@ -1,6 +1,6 @@
-package com.dsfhdshdjtsb.EnchantsPlus.effects;
+package com.dsfhdshdjtsb.CombatEnchants.effects;
 
-import com.dsfhdshdjtsb.EnchantsPlus.EnchantsPlus;
+import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
@@ -16,9 +16,9 @@ public class LifestealCooldwon extends StatusEffect {
 
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
-        if(EnchantmentHelper.getLevel(EnchantsPlus.LIFESTEAL, entity.getMainHandStack()) == 0) {
-            int currentDuration = Objects.requireNonNull(entity.getStatusEffect(EnchantsPlus.LIFESTEAL_COOLDOWN_EFFECT)).getDuration();
-            entity.addStatusEffect(new StatusEffectInstance(EnchantsPlus.LIFESTEAL_COOLDOWN_EFFECT, currentDuration + 20));
+        if(EnchantmentHelper.getLevel(CombatEnchants.LIFESTEAL, entity.getMainHandStack()) == 0) {
+            int currentDuration = Objects.requireNonNull(entity.getStatusEffect(CombatEnchants.LIFESTEAL_COOLDOWN_EFFECT)).getDuration();
+            entity.addStatusEffect(new StatusEffectInstance(CombatEnchants.LIFESTEAL_COOLDOWN_EFFECT, currentDuration + 20));
         }
         super.applyUpdateEffect(entity, amplifier);
     }

@@ -1,6 +1,6 @@
-package com.dsfhdshdjtsb.EnchantsPlus.effects;
+package com.dsfhdshdjtsb.CombatEnchants.effects;
 
-import com.dsfhdshdjtsb.EnchantsPlus.EnchantsPlus;
+import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -14,8 +14,8 @@ public class MarkEffect extends StatusEffect {
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
         //onTargetDamaged ran twice, so this whole file is a workaround sort of
-        entity.removeStatusEffect(EnchantsPlus.MARK_EFFECT);
-        entity.addStatusEffect(new StatusEffectInstance(EnchantsPlus.MARK_EFFECT, amplifier * 20, 0));
+        entity.removeStatusEffect(CombatEnchants.MARK_EFFECT);
+        entity.addStatusEffect(new StatusEffectInstance(CombatEnchants.MARK_EFFECT, amplifier * 20, 0));
         super.applyUpdateEffect(entity, amplifier);
     }
 
