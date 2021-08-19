@@ -32,12 +32,12 @@ public class HunterEnchantment extends Enchantment {
             if(((LivingEntity) target).getStatusEffect(CombatEnchants.MARK_EFFECT) == null)
             {
                 ((LivingEntity) target).addStatusEffect(new StatusEffectInstance(CombatEnchants.MARK_EFFECT, 1, 3));
-                ((LivingEntity) target).addStatusEffect(new StatusEffectInstance(StatusEffects.GLOWING, 100, 0));
+                ((LivingEntity) target).addStatusEffect(new StatusEffectInstance(StatusEffects.GLOWING, 60, 0));
             }
             else if(Objects.requireNonNull(((LivingEntity) target).getStatusEffect(CombatEnchants.MARK_EFFECT)).getAmplifier() == 0)
             {
-                user.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, level * 40, 1));
-                user.addStatusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST, level * 40, 1));
+                user.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 200, 1));
+                user.addStatusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST, 200, 1));
             }
         }
 
