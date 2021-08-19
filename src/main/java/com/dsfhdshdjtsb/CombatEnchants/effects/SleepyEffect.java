@@ -6,20 +6,22 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffectType;
+import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.Vec3d;
 
 public class SleepyEffect extends StatusEffect {
     public SleepyEffect() {
-        super(StatusEffectType.HARMFUL, 0x00FFFFFF);
+        super(StatusEffectType.HARMFUL, 0x00808080);
     }
 
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
         //tbh dont know what this does but vanilla code does it liek this so whatever
+        if (!(entity instanceof PlayerEntity))
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, amplifier * 20, 255));
         entity.setPose(EntityPose.SLEEPING);
-        entity.setVelocity(Vec3d.ZERO);
         entity.setSleepingPosition(entity.getBlockPos());
-        entity.velocityDirty = true;
     }
 
     @Override

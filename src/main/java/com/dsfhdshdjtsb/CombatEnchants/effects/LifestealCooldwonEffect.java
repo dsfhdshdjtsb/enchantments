@@ -7,12 +7,14 @@ import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffectType;
 
+import java.awt.*;
 import java.util.Objects;
 
 public class LifestealCooldwonEffect extends StatusEffect {
     public LifestealCooldwonEffect() {
-        super(StatusEffectType.HARMFUL, 0x00000000);
+        super(StatusEffectType.HARMFUL, 0);
     }
+
 
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {

@@ -5,10 +5,11 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffectType;
+import net.minecraft.entity.effect.StatusEffects;
 
 public class MarkEffect extends StatusEffect {
     public MarkEffect() {
-        super(StatusEffectType.HARMFUL, 0x00FFFFFF);
+        super(StatusEffectType.HARMFUL, 0);
     }
 
     @Override
