@@ -48,4 +48,11 @@ public class HunterEnchantment extends Enchantment {
     public int getMaxLevel() {
         return 1;
     }
+
+    @Override
+    protected boolean canAccept(Enchantment other) {
+        if(other.equals(CombatEnchants.ZAP)|| other.equals(CombatEnchants.VOLLEY))
+            return false;
+        return super.canAccept(other);
+    }
 }

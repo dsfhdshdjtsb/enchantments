@@ -1,7 +1,9 @@
 package com.dsfhdshdjtsb.CombatEnchants.enchantments;
 
+import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
@@ -59,8 +61,16 @@ public class VolleyEnchantment extends Enchantment {
         }
     }
 
+
     @Override
     public int getMaxLevel() {
         return 1;
+    }
+
+    @Override
+    protected boolean canAccept(Enchantment other) {
+        if(other.equals(CombatEnchants.ZAP)|| other.equals(CombatEnchants.HUNTER) )
+            return false;
+        return super.canAccept(other);
     }
 }

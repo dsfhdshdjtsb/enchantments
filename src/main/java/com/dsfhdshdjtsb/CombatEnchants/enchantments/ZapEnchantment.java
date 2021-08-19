@@ -1,5 +1,6 @@
 package com.dsfhdshdjtsb.CombatEnchants.enchantments;
 
+import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.enchantment.Enchantments;
@@ -80,7 +81,7 @@ public class ZapEnchantment extends Enchantment {
 
     @Override
     protected boolean canAccept(Enchantment other) {
-        if(other.equals(Enchantments.FLAME))
+        if(other.equals(CombatEnchants.VOLLEY)|| other.equals(CombatEnchants.HUNTER) )
             return false;
         return super.canAccept(other);
     }
