@@ -1,9 +1,6 @@
 package com.dsfhdshdjtsb.CombatEnchants;
 
-import com.dsfhdshdjtsb.CombatEnchants.effects.LifestealCooldwonEffect;
-import com.dsfhdshdjtsb.CombatEnchants.effects.MarkEffect;
-import com.dsfhdshdjtsb.CombatEnchants.effects.RampageEffect;
-import com.dsfhdshdjtsb.CombatEnchants.effects.SleepyEffect;
+import com.dsfhdshdjtsb.CombatEnchants.effects.*;
 import com.dsfhdshdjtsb.CombatEnchants.enchantments.*;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.enchantment.Enchantment;
@@ -72,10 +69,17 @@ public class CombatEnchants implements ModInitializer {
 			new Identifier("cenchants", "hunter"),
 			new HunterEnchantment()
 	);
+
 	public static final Enchantment TRANQUILIZE = Registry.register(
 			Registry.ENCHANTMENT,
 			new Identifier("cenchants", "tranquilize"),
 			new TranquilizeEnchantment()
+	);
+
+	public static final Enchantment FROST = Registry.register(
+			Registry.ENCHANTMENT,
+			new Identifier("cenchants", "frost"),
+			new FrostEnchantment()
 	);
 
 	public static final StatusEffect RAMPAGE_EFFECT = new RampageEffect();
