@@ -28,7 +28,6 @@ public class FrostEnchantment extends Enchantment {
         if(target.distanceTo(user) < 4)
             return;
         if(target instanceof LivingEntity) {
-            user.setFrozenTicks(145 + level * (81));
             target.setFrozenTicks(145 + level * (81));
         }
         super.onTargetDamaged(user, target, level);
