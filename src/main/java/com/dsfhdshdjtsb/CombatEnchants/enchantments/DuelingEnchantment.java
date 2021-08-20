@@ -39,7 +39,7 @@ public class DuelingEnchantment  extends Enchantment {
         for (LivingEntity e : list) {
             if (!e.equals(user) && !e.equals(target)) {
                 bl = true;
-                e.takeKnockback(.7, target.getX() - e.getX(), target.getZ() - e.getZ());
+                e.takeKnockback(1, target.getX() - e.getX(), target.getZ() - e.getZ());
             }
         }
 
