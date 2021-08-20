@@ -31,7 +31,7 @@ public class ZapEnchantment extends Enchantment {
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
-        if(target.distanceTo(user) < 6)
+        if(target.distanceTo(user) < 4)
             return;
         List<LivingEntity> hit = new ArrayList<>();
         if(target instanceof LivingEntity) {

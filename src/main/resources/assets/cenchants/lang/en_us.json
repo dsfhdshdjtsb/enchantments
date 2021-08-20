@@ -9,7 +9,9 @@
   "enchantment.cenchants.zap": "Zap",
   "enchantment.cenchants.volley": "Volley",
   "enchantment.cenchants.hunter": "Hunter",
+  "enchantment.cenchants.tranquilize": "Tranquilize",
   "effect.cenchants.lifesteal_cooldown": "Lifesteal Cooldown",
   "effect.cenchants.rampage": "Rampage",
-  "effect.cenchants.mark": "Marked"
+  "effect.cenchants.mark": "Marked",
+  "effect.cenchants.sleepy": "Sleepy"
 }

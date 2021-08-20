@@ -28,7 +28,7 @@ public class VolleyEnchantment extends Enchantment {
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
-        if(target.distanceTo(user) < 6)
+        if(target.distanceTo(user) < 4)
             return;
         World world = user.world;
         ArrowEntity[] arrowArray = new ArrowEntity[9];

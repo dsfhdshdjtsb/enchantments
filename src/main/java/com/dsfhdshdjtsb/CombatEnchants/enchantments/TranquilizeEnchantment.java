@@ -25,7 +25,7 @@ public class TranquilizeEnchantment extends Enchantment {
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
-        if(target.distanceTo(user) < 6)
+        if(target.distanceTo(user) < 4)
             return;
         if(target instanceof LivingEntity)
             ((LivingEntity) target).addStatusEffect(new StatusEffectInstance(CombatEnchants.SLEEPY_EFFECT, 200, level));

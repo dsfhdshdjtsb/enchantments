@@ -1,6 +1,8 @@
 package com.dsfhdshdjtsb.CombatEnchants.enchantments;
 
+import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
@@ -9,6 +11,10 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtElement;
+import net.minecraft.nbt.NbtList;
+
 import java.util.Random;
 
 public class SorceryEnchantment extends Enchantment {
