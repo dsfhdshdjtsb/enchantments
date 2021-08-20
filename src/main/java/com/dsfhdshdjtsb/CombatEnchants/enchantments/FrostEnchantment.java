@@ -37,4 +37,11 @@ public class FrostEnchantment extends Enchantment {
     public int getMaxLevel() {
         return 2;
     }
+
+    @Override
+    protected boolean canAccept(Enchantment other) {
+        if(other.equals(CombatEnchants.TRANQUILIZE))
+            return false;
+        return super.canAccept(other);
+    }
 }

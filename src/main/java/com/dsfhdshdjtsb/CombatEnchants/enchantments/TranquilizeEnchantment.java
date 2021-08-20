@@ -36,4 +36,11 @@ public class TranquilizeEnchantment extends Enchantment {
     public int getMaxLevel() {
         return 2;
     }
+
+    @Override
+    protected boolean canAccept(Enchantment other) {
+        if(other.equals(CombatEnchants.FROST))
+            return false;
+        return super.canAccept(other);
+    }
 }
