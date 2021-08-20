@@ -32,7 +32,7 @@ Inferno(I, II) - light enemies in a circle around the target on fire
 
 Lifesteal(I, II, III, IV, V) - Damage enemies in a circle around the target, and heal based on the number of enemies hit
   - Circle has radius (2 + level)
-  - Damage all enemies in circle for 1 hp, heal for (number of enemies hit + level) hp
+  - Damage all enemies in circle for 1 hp magic damage, heal for (number of enemies hit + level) hp
   - (15 - level) second cooldown(cooldown only decreases while holding the sword with lifesteal)
   - Uncommon
   - Mutually exclusive with sharpness, bane of arthopods, smite
