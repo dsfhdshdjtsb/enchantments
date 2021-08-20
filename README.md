@@ -38,7 +38,7 @@ Lifesteal(I, II, III, IV, V) - Damage enemies in a circle around the target, and
   - Mutually exclusive with sharpness, bane of arthopods, smite
 
 ### Bow
-*Bow and crossbow enchantments will not work within roughly sword range
+*Bow and crossbow enchantments will not work within roughly sword range*
 
 Hunter(I) - mark enemies you shoot, shoot marked enemies for speed and jump boost
   - mark lasts for 3 seconds, also applies glow effect
