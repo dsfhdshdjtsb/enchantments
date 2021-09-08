@@ -8,6 +8,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffectType;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 import java.util.Objects;
@@ -23,9 +24,10 @@ public class FireWalkEffect extends StatusEffect {
         if(entity.isOnGround())
         {
             World world = entity.world;
-            if(world.getBlockState(entity.getBlockPos()) == Blocks.AIR.getDefaultState()) {
+            BlockPos pos = entity.getBlockPos();
+            if(world.getBlockState(pos) == Blocks.AIR.getDefaultState()) {
                 BlockState fire = Blocks.FIRE.getDefaultState();
-                world.setBlockState(entity.getBlockPos(), fire);
+                world.setBlockState(pos, fire);
                 entity.setFireTicks(0);
             }
         }
