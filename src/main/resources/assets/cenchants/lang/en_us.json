@@ -11,8 +11,13 @@
   "enchantment.cenchants.hunter": "Hunter",
   "enchantment.cenchants.tranquilize": "Tranquilize",
   "enchantment.cenchants.frost": "Frost",
+  "enchantment.cenchants.shielding": "Shielding",
+  "enchantment.cenchants.flame_walker": "Flame Walker",
+  "enchantment.cenchants.suicide": "Suicide",
   "effect.cenchants.lifesteal_cooldown": "Lifesteal Cooldown",
   "effect.cenchants.rampage": "Rampage",
   "effect.cenchants.mark": "Marked",
-  "effect.cenchants.sleepy": "Sleepy"
+  "effect.cenchants.sleepy": "Sleepy",
+  "effect.cenchants.shielding_cooldown": "Shielding Cooldown",
+  "effect.cenchants.fire_walk": "Fire Walk"
 }
