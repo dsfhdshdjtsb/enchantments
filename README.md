@@ -81,6 +81,7 @@ Sorcery(I, II, III, IV) - randomly gain status effects upon taking damage
   - status effect upgrades if randomly selected again, caps at a strength of 2
   - Uncommon
   - mutually exclusive with protections
+ 
 Vision(I)* - apply glowing to enemies that attack you
   
 ## License
