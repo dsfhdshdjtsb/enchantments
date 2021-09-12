@@ -37,6 +37,8 @@ Lifesteal(I, II, III, IV, V) - Damage enemies in a circle around the target, and
   - Uncommon
   - Mutually exclusive with sharpness, bane of arthopods, smite
 
+Spin* - deal damage to all enemies around you in a circle on hit
+
 ### Bow
 *Bow and crossbow enchantments will not work within roughly sword range*
 
@@ -44,20 +46,20 @@ Hunter(I) - mark enemies you shoot, shoot marked enemies for speed and jump boos
   - mark lasts for 3 seconds, also applies glow effect
   - Gain speed 2 + jump 2 for 10 seconds on hitting a marked enemy
   - Rare
-  - Mutually exclusive with Zap, Volley
+  - Mutually exclusive with Zap, Volley, flame
 
 Zap(I) - send out bolts of lightning from the target that bounce to nearby enemies
   - targets enemies within 4 block circle
   - continuily bounces until no new targets are found(enemies can only be hit once)
   - Deals 2 hp magic damage, except to the original target
   - Very rare
-  - mutually exclusive with Hunter, Volley
+  - mutually exclusive with Hunter, Volley, flame
 
 Volley(I) - arrows fall from the sky around the target
   - arrows with roughly the same speed as a fully charged bow fall in a small area around the target
   - randomized pattern
   - Rare
-  - mutually exclusive with Zap, Hunter
+  - mutually exclusive with Zap, Hunter, flame
 
 ### Crossbow
 
@@ -72,6 +74,12 @@ Tranquilizer(I, II) - after a delay, the target goes to sleep
   - Sleeping targets cannot be damaged directly(swords, arrows)
   - Rare
   - mutually exclusive with Frost
+
+Teleport* - teleport to enemies you hit
+
+Confuse* - cause enemies you hit to move randomly
+
+cleanse* - remove all status effects from the target
 
 ### Armor(all)
 Sorcery(I, II, III, IV) - randomly gain status effects upon taking damage
