@@ -20,6 +20,8 @@ Strike - hit enemies to mark them, hit marked enemies to cause lightning to stri
 
 knockup - knock enemies upwards on hit(rather than back)
 
+Rapid - reduce bow charge time, exclusive with power
+
 ### Crossbow
 
 
