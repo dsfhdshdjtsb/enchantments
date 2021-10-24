@@ -44,7 +44,6 @@ public class DuelingEnchantment  extends Enchantment {
         }
 
         if (bl && target.world instanceof ServerWorld) {
-            System.out.println("test");
             for (double x = -6; x <= 6; x = x + 1) {
                 double y = Math.sqrt(36 - x * x);
                 ((ServerWorld) target.world).spawnParticles(ParticleTypes.CLOUD, target.getX() + x, target.getBodyY(0.5D), target.getZ() + y, 0, 1, 0.0D, 1, 0.0D);

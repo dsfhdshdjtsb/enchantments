@@ -100,6 +100,7 @@ public class CombatEnchants implements ModInitializer {
 			new FlameWalkerEnchantment()
 	);
 
+
 	public static final StatusEffect RAMPAGE_EFFECT = new RampageEffect();
 	public static final StatusEffect LIFESTEAL_COOLDOWN_EFFECT = new LifestealCooldownEffect();
 	public static final StatusEffect MARK_EFFECT = new MarkEffect();

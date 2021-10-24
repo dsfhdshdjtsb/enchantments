@@ -15,7 +15,7 @@ public class TranquilizeEnchantment extends Enchantment {
 
     @Override
     public int getMinPower(int level) {
-        return level * 25;
+        return 10 + 20 * (level - 1);
     }
 
     @Override

@@ -6,7 +6,6 @@ import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffectInstance;
 
 public class FrostEnchantment extends Enchantment {
     public FrostEnchantment() {
@@ -15,7 +14,7 @@ public class FrostEnchantment extends Enchantment {
 
     @Override
     public int getMinPower(int level) {
-        return level * 25;
+        return 10 + 20 * (level - 1);
     }
 
     @Override

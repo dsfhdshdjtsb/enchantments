@@ -15,7 +15,7 @@ import java.util.Random;
 
 public class FlameWalkerEnchantment extends Enchantment {
     public FlameWalkerEnchantment() {
-        super(Rarity.VERY_RARE, EnchantmentTarget.WEARABLE, new EquipmentSlot[] {EquipmentSlot.FEET});
+        super(Rarity.VERY_RARE, EnchantmentTarget.ARMOR_FEET, new EquipmentSlot[] {EquipmentSlot.FEET});
     }
 
     @Override

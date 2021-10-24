@@ -24,12 +24,12 @@ public class SorceryEnchantment extends Enchantment {
 
     @Override
     public int getMinPower(int level) {
-        return level * 25;
+        return 1 + (level - 1) * 10;
     }
 
     @Override
     public int getMaxPower(int level) {
-        return this.getMinPower(level) + 50;
+        return this.getMinPower(level) + 15;
     }
 
     @Override
