@@ -39,7 +39,7 @@ public class FrostEnchantment extends Enchantment {
 
     @Override
     protected boolean canAccept(Enchantment other) {
-        if(other.equals(CombatEnchants.TRANQUILIZE))
+        if(other.equals(CombatEnchants.TRANQUILIZE)|| other.equals(CombatEnchants.ANTIHEAL))
             return false;
         return super.canAccept(other);
     }
