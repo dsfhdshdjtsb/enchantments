@@ -100,6 +100,23 @@ public class CombatEnchants implements ModInitializer {
 			new FlameWalkerEnchantment()
 	);
 
+	public static final Enchantment VISION = Registry.register(
+			Registry.ENCHANTMENT,
+			new Identifier("cenchants", "vision"),
+			new VisionEnchantment()
+	);
+
+	public static final Enchantment VAMPIRISM = Registry.register(
+			Registry.ENCHANTMENT,
+			new Identifier("cenchants", "vampirism"),
+			new VampirismCurse()
+	);
+
+	public static final Enchantment ANTIHEAL = Registry.register(
+			Registry.ENCHANTMENT,
+			new Identifier("cenchants", "antiheal"),
+			new AntihealEnchantment()
+	);
 
 	public static final StatusEffect RAMPAGE_EFFECT = new RampageEffect();
 	public static final StatusEffect LIFESTEAL_COOLDOWN_EFFECT = new LifestealCooldownEffect();
@@ -107,6 +124,7 @@ public class CombatEnchants implements ModInitializer {
 	public static final StatusEffect SLEEPY_EFFECT = new SleepyEffect();
 	public static final StatusEffect SHIELDING_COOLDOWN_EFFECT = new ShieldingCooldown();
 	public static final StatusEffect FIRE_WALK_EFFECT = new FireWalkEffect();
+	public static final StatusEffect ANTIHEAL_EFFECT = new AntihealEffect();
 
 	@Override
 	public void onInitialize() {
@@ -119,6 +137,7 @@ public class CombatEnchants implements ModInitializer {
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "sleepy"), SLEEPY_EFFECT);
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "shielding_cooldown"), SHIELDING_COOLDOWN_EFFECT);
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "fire_walk"), FIRE_WALK_EFFECT);
+		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "antiheal"), ANTIHEAL_EFFECT);
 
 	}
 }

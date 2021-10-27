@@ -43,8 +43,10 @@ public class ZapEnchantment extends Enchantment {
 
     private void helper(LivingEntity source, int level, List<LivingEntity> hit)
     {
+        System.out.println(source.getHealth());
         if(!hit.contains(source))
             source.damage(DamageSource.MAGIC, level * 2);
+        System.out.println(source.getHealth());
         hit.add(source);
 
         List<LivingEntity> list = source.world.getNonSpectatingEntities(LivingEntity.class, source.getBoundingBox()
