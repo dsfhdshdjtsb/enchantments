@@ -12,7 +12,7 @@ import net.minecraft.entity.player.PlayerEntity;
 
 public class LethalityEnchantment extends Enchantment {
     public LethalityEnchantment() {
-        super(Rarity.UNCOMMON, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        super(Rarity.COMMON, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
     @Override
@@ -22,7 +22,7 @@ public class LethalityEnchantment extends Enchantment {
 
     @Override
     public int getMaxPower(int level) {
-        return 15;
+        return level * 4;
     }
 
     @Override

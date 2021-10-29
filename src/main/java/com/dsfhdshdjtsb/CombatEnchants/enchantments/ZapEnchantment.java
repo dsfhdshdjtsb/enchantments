@@ -21,7 +21,7 @@ public class ZapEnchantment extends Enchantment {
 
     @Override
     public int getMinPower(int level) {
-        return level * 25;
+        return 10 + 20 * (level - 1);
     }
 
     @Override
@@ -50,7 +50,7 @@ public class ZapEnchantment extends Enchantment {
         hit.add(source);
 
         List<LivingEntity> list = source.world.getNonSpectatingEntities(LivingEntity.class, source.getBoundingBox()
-                .expand(1.0D + level * 3, 0.25D, 1.0D + level * 3));
+                .expand(1.0D + 3, 0.25D, 1.0D + 3));
         for(LivingEntity e: list)
         {
             if(!e.equals(source) && !hit.contains(e)){
@@ -78,7 +78,7 @@ public class ZapEnchantment extends Enchantment {
 
     @Override
     public int getMaxLevel() {
-        return 1;
+        return 2;
     }
 
     @Override

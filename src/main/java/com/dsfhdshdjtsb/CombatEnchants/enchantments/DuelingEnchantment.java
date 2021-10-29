@@ -15,7 +15,7 @@ import java.util.List;
 
 public class DuelingEnchantment  extends Enchantment {
     public DuelingEnchantment() {
-        super(Rarity.VERY_RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        super(Rarity.RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
     @Override

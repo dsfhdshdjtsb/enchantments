@@ -13,12 +13,12 @@ import net.minecraft.world.World;
 
 public class VolleyEnchantment extends Enchantment {
     public VolleyEnchantment() {
-        super(Rarity.RARE, EnchantmentTarget.BOW, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        super(Rarity.UNCOMMON, EnchantmentTarget.BOW, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
     @Override
     public int getMinPower(int level) {
-        return 25;
+        return 10 + 20 * (level - 1);
     }
 
     @Override
@@ -54,7 +54,7 @@ public class VolleyEnchantment extends Enchantment {
 
             for (ArrowEntity arrowEntity : arrowArray) {
                 //arrowArray[i].setVelocity(arrowArray[i].getX(), arrowArray[i].getY(), arrowArray[i].getZ(), 10.0f, 1);
-                arrowEntity.setVelocity(0, -1 + (-1 * level), 0);
+                arrowEntity.setVelocity(0, -2 + (-1 * level), 0);
                 world.spawnEntity(arrowEntity);
             }
 
@@ -64,7 +64,7 @@ public class VolleyEnchantment extends Enchantment {
 
     @Override
     public int getMaxLevel() {
-        return 1;
+        return 2;
     }
 
     @Override

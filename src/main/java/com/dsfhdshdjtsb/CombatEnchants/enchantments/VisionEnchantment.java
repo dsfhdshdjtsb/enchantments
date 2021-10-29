@@ -12,7 +12,7 @@ import net.minecraft.entity.effect.StatusEffects;
 
 public class VisionEnchantment extends Enchantment {
     public VisionEnchantment() {
-        super(Rarity.VERY_RARE, EnchantmentTarget.ARMOR_HEAD, new EquipmentSlot[] {EquipmentSlot.HEAD});
+        super(Rarity.RARE, EnchantmentTarget.ARMOR_HEAD, new EquipmentSlot[] {EquipmentSlot.HEAD});
     }
 
     @Override

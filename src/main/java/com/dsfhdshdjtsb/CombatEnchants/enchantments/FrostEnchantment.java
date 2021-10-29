@@ -24,10 +24,10 @@ public class FrostEnchantment extends Enchantment {
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
-        if(target.distanceTo(user) < 4)
-            return;
+        //if(target.distanceTo(user) < 4)
+            //return;
         if(target instanceof LivingEntity) {
-            target.setFrozenTicks(145 + level * (81));
+            target.setFrozenTicks(155 + level * (81));
         }
         super.onTargetDamaged(user, target, level);
     }

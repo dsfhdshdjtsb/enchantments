@@ -14,7 +14,7 @@ import net.minecraft.world.explosion.Explosion;
 
 public class SuicideEnchantment extends Enchantment {
     public SuicideEnchantment() {
-        super(Rarity.RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        super(Rarity.UNCOMMON, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
     @Override
@@ -24,7 +24,7 @@ public class SuicideEnchantment extends Enchantment {
 
     @Override
     public int getMaxPower(int level) {
-        return 15;
+        return 10;
     }
 
     @Override

@@ -106,16 +106,34 @@ public class CombatEnchants implements ModInitializer {
 			new VisionEnchantment()
 	);
 
-	public static final Enchantment VAMPIRISM = Registry.register(
+	public static final Enchantment DARKNESS = Registry.register(
 			Registry.ENCHANTMENT,
-			new Identifier("cenchants", "vampirism"),
-			new VampirismCurse()
+			new Identifier("cenchants", "darkness"),
+			new DarknessCurse()
 	);
 
 	public static final Enchantment ANTIHEAL = Registry.register(
 			Registry.ENCHANTMENT,
 			new Identifier("cenchants", "antiheal"),
 			new AntihealEnchantment()
+	);
+
+	public static final Enchantment INSPIRATION = Registry.register(
+			Registry.ENCHANTMENT,
+			new Identifier("cenchants", "inspiration"),
+			new InspirationEnchantment()
+	);
+
+	public static final Enchantment RESILIENCE = Registry.register(
+			Registry.ENCHANTMENT,
+			new Identifier("cenchants", "resilience"),
+			new ResilienceEnchantment()
+	);
+
+	public static final Enchantment AGGRESSION = Registry.register(
+			Registry.ENCHANTMENT,
+			new Identifier("cenchants", "aggression"),
+			new AggressionEnchantment()
 	);
 
 	public static final StatusEffect RAMPAGE_EFFECT = new RampageEffect();
@@ -125,6 +143,7 @@ public class CombatEnchants implements ModInitializer {
 	public static final StatusEffect SHIELDING_COOLDOWN_EFFECT = new ShieldingCooldown();
 	public static final StatusEffect FIRE_WALK_EFFECT = new FireWalkEffect();
 	public static final StatusEffect ANTIHEAL_EFFECT = new AntihealEffect();
+	public static final StatusEffect DELAYED_DEATH_EFFECT = new DelayedDeathEffect();
 
 	@Override
 	public void onInitialize() {
@@ -138,6 +157,6 @@ public class CombatEnchants implements ModInitializer {
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "shielding_cooldown"), SHIELDING_COOLDOWN_EFFECT);
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "fire_walk"), FIRE_WALK_EFFECT);
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "antiheal"), ANTIHEAL_EFFECT);
-
+		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "delayed_death"), DELAYED_DEATH_EFFECT);
 	}
 }

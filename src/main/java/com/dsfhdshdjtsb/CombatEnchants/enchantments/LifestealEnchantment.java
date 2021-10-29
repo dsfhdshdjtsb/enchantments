@@ -73,7 +73,7 @@ public class LifestealEnchantment extends Enchantment {
                 }
             }
             user.heal(counter + (level));
-            user.addStatusEffect(new StatusEffectInstance(CombatEnchants.LIFESTEAL_COOLDOWN_EFFECT, 300 - (level * 20)));
+            user.addStatusEffect(new StatusEffectInstance(CombatEnchants.LIFESTEAL_COOLDOWN_EFFECT, 200 - (level * 20)));
             super.onTargetDamaged(user, target, level);
         }
 
@@ -86,7 +86,7 @@ public class LifestealEnchantment extends Enchantment {
 
     @Override
     protected boolean canAccept(Enchantment other) {
-        if(other.equals(Enchantments.SHARPNESS) || other.equals(Enchantments.BANE_OF_ARTHROPODS) || other.equals(Enchantments.SMITE))
+        if(other.equals(CombatEnchants.INSPIRATION)|| other.equals(Enchantments.SHARPNESS) || other.equals(Enchantments.BANE_OF_ARTHROPODS) || other.equals(Enchantments.SMITE))
             return false;
         return super.canAccept(other);
     }

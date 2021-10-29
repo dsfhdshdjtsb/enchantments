@@ -42,7 +42,7 @@ public abstract class VampirismMixin extends Entity {
     private void tick(CallbackInfo info) {
         ItemStack helmet = equippedArmor.get(3);
 
-        if(EnchantmentHelper.getLevel(CombatEnchants.VAMPIRISM, helmet) != 0)
+        if(EnchantmentHelper.getLevel(CombatEnchants.DARKNESS, helmet) != 0)
         {
 
             if(this.world.getLightLevel(this.getBlockPos()) >= 12 ) {
@@ -65,7 +65,7 @@ public abstract class VampirismMixin extends Entity {
     public void onAttacking(Entity target, CallbackInfo ci) {
         if(!(this.world.getLightLevel(this.getBlockPos()) >= 12)) {
             for (ItemStack i : this.getArmorItems()) {
-                if (EnchantmentHelper.getLevel(CombatEnchants.VAMPIRISM, i) != 0) {
+                if (EnchantmentHelper.getLevel(CombatEnchants.DARKNESS, i) != 0) {
                     this.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 100, 1));
                     break;
                 }

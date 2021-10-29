@@ -13,8 +13,8 @@ import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 
-public class VampirismCurse extends Enchantment {
-    public VampirismCurse() {
+public class DarknessCurse extends Enchantment {
+    public DarknessCurse() {
         super(Rarity.VERY_RARE, EnchantmentTarget.ARMOR_HEAD, new EquipmentSlot[] {EquipmentSlot.MAINHAND});
     }
 
