@@ -1,5 +1,5 @@
 # Combat Enchantments Ideas
-
+**THESE ARE ALL JUST IDEAS**
 ## Enchantments
 \* - incomplete
 ### Sword
