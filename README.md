@@ -22,9 +22,9 @@ knockup - knock enemies upwards on hit(rather than back)
 
 Rapid - reduce bow charge time, exclusive with power
 
+shieldbreak - disabled shields after hitting a shield
+
 ### Crossbow
-
-
 
 Teleport* - teleport to enemies you hit
 
