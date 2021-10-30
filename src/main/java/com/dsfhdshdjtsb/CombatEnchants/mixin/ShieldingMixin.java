@@ -5,6 +5,7 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
@@ -18,6 +19,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Objects;
 
@@ -57,6 +59,16 @@ public abstract class ShieldingMixin extends Entity {
             if(absorption != null && absorption.getAmplifier() > shieldingLevel / 4)
                 this.removeStatusEffect(StatusEffects.ABSORPTION);
             this.setStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, shieldingLevel * 10, shieldingLevel / 4, false, false, true), null);
+        }
+    }
+    @Inject(at = @At("HEAD"), method = "damage")
+    private void damage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
+        for(ItemStack i : equippedArmor)
+        {
+            if(EnchantmentHelper.getLevel(CombatEnchants.SHEILDING, i) != 0) {
+                this.setStatusEffect(new StatusEffectInstance(CombatEnchants.SHIELDING_COOLDOWN_EFFECT, 200), null);
+                break;
+            }
         }
     }
 }

@@ -39,7 +39,7 @@ public class TranquilizeEnchantment extends Enchantment {
 
     @Override
     protected boolean canAccept(Enchantment other) {
-        if(other.equals(CombatEnchants.FROST)|| other.equals(CombatEnchants.ANTIHEAL))
+        if(other.equals(CombatEnchants.FROST))
             return false;
         return super.canAccept(other);
     }

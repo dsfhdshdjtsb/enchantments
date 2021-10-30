@@ -54,8 +54,6 @@ public class DuelingEnchantment  extends Enchantment {
 
     @Override
     protected boolean canAccept(Enchantment other) {
-        if(other.equals(Enchantments.SWEEPING) || other.equals(CombatEnchants.INFERNO))
-            return false;
         return super.canAccept(other);
     }
 }

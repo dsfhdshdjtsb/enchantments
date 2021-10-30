@@ -90,7 +90,7 @@ public class InspirationEnchantment extends Enchantment {
 
     @Override
     protected boolean canAccept(Enchantment other) {
-        if(other.equals(CombatEnchants.LIFESTEAL) || other.equals(Enchantments.SHARPNESS) || other.equals(Enchantments.BANE_OF_ARTHROPODS) || other.equals(Enchantments.SMITE))
+        if(other.equals(CombatEnchants.LIFESTEAL))
             return false;
         return super.canAccept(other);
     }

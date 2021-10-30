@@ -56,7 +56,7 @@ public class HunterEnchantment extends Enchantment {
 
     @Override
     protected boolean canAccept(Enchantment other) {
-        if(other.equals(CombatEnchants.ZAP)|| other.equals(CombatEnchants.VOLLEY) || other.equals(Enchantments.FLAME))
+        if(other.equals(CombatEnchants.RESILIENCE))
             return false;
         return super.canAccept(other);
     }

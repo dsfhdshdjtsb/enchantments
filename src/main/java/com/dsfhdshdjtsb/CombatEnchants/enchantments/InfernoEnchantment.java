@@ -53,7 +53,7 @@ public class InfernoEnchantment extends Enchantment {
 
     @Override
     protected boolean canAccept(Enchantment other) {
-        if(other.equals(Enchantments.FIRE_ASPECT)|| other.equals(CombatEnchants.DUELING))
+        if(other.equals(Enchantments.FIRE_ASPECT))
             return false;
         return super.canAccept(other);
     }

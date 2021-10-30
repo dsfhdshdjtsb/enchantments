@@ -78,7 +78,7 @@ public class ResilienceEnchantment extends Enchantment {
 
     @Override
     protected boolean canAccept(Enchantment other) {
-        if (other.equals(CombatEnchants.ZAP) || other.equals(CombatEnchants.VOLLEY) || other.equals(Enchantments.FLAME) || other.equals(CombatEnchants.HUNTER))
+        if (other.equals(CombatEnchants.HUNTER))
             return false;
         return super.canAccept(other);
     }
