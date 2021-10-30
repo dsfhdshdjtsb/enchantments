@@ -73,7 +73,7 @@ public class LifestealEnchantment extends Enchantment {
                 }
             }
             user.heal(counter + (level));
-            user.addStatusEffect(new StatusEffectInstance(CombatEnchants.LIFESTEAL_COOLDOWN_EFFECT, 200 - (level * 20)));
+            user.addStatusEffect(new StatusEffectInstance(CombatEnchants.LIFESTEAL_COOLDOWN_EFFECT, 300 - (level * 20)));
             super.onTargetDamaged(user, target, level);
         }
 

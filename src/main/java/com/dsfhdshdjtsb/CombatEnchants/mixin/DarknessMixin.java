@@ -24,9 +24,9 @@ import java.util.Objects;
 import java.util.Random;
 
 @Mixin(LivingEntity.class)
-public abstract class VampirismMixin extends Entity {
+public abstract class DarknessMixin extends Entity {
 
-    public VampirismMixin(EntityType<?> type, World world) {
+    public DarknessMixin(EntityType<?> type, World world) {
         super(type, world);
     }
 

@@ -7,7 +7,7 @@
     "AntihealMixin",
     "ShieldingMixin",
     "SleepMixin",
-    "VampirismMixin"
+    "DarknessMixin"
   ],
   "client": [
   ],
