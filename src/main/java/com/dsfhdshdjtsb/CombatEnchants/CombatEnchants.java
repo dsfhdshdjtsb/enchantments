@@ -154,6 +154,12 @@ public class CombatEnchants implements ModInitializer {
 			new ComboEnchantment()
 	);
 
+	public static final Enchantment KNOCKUP = Registry.register(
+			Registry.ENCHANTMENT,
+			new Identifier("cenchants", "knockup"),
+			new KnockupEnchantment()
+	);
+
 
 	public static final StatusEffect RAMPAGE_EFFECT = new RampageEffect();
 	public static final StatusEffect LIFESTEAL_COOLDOWN_EFFECT = new LifestealCooldownEffect();

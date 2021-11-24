@@ -40,7 +40,7 @@ public class AggressionEnchantment extends Enchantment {
             wolf.setPos(target.getX() + posX, target.getY() + 1, target.getZ() + posY);
             wolf.setTarget((LivingEntity) target);
             wolf.setHealth(4 * level);
-            wolf.addStatusEffect(new StatusEffectInstance(CombatEnchants.DELAYED_DEATH_EFFECT, 30 * level + 10, 0));
+            wolf.addStatusEffect(new StatusEffectInstance(CombatEnchants.DELAYED_DEATH_EFFECT, 60 * level + 10, 0));
             world.spawnEntity(wolf);
         }
         super.onTargetDamaged(user, target, level);

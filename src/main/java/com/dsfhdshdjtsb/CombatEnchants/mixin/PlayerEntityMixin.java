@@ -28,7 +28,6 @@ public abstract class PlayerEntityMixin{
     private void attack(Entity target, CallbackInfo ci) {
         if (target.isAttackable() && !target.world.isClient) {
             if (!target.handleAttack((PlayerEntity)(Object) this) && target instanceof LivingEntity && !((PlayerEntity)(Object) this).handSwinging) {
-                System.out.println("test");
                 int combo = EnchantmentHelper.getLevel(CombatEnchants.COMBO, ((PlayerEntity)(Object) this).getMainHandStack());
                 if(combo != 0)
                 {
