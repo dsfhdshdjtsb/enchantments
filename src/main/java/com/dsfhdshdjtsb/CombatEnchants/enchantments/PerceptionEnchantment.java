@@ -34,6 +34,8 @@ public class PerceptionEnchantment extends Enchantment {
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
+        if (EnchantmentHelper.getLevel(CombatEnchants.PERCEPTION, user.getMainHandStack()) == 0||target.distanceTo(user) >= 6)
+            return;
         if(user instanceof PlayerEntity && target instanceof LivingEntity)
         {
 
@@ -41,12 +43,7 @@ public class PerceptionEnchantment extends Enchantment {
             int exp = ((PlayerEntity) user).experienceLevel;
             if(exp < 3)
                 exp = 3;
-
-            System.out.println("Initial: " + ((LivingEntity) target).getHealth());
-            System.out.println("exp: " + (int)Math.log(exp));
-            System.out.println("damage: " + (damage + (int)(Math.log(exp)) - 1));
             target.damage(DamageSource.player((PlayerEntity) user), damage + (int)(Math.log(exp)) - 1);
-            System.out.println("POST: " + ((LivingEntity) target).getHealth());
         }
     }
 
