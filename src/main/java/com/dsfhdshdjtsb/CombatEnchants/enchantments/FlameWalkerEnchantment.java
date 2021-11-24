@@ -41,8 +41,6 @@ public class FlameWalkerEnchantment extends Enchantment {
 
     @Override
     protected boolean canAccept(Enchantment other) {
-        if(other.equals(Enchantments.FROST_WALKER))
-            return false;
         return super.canAccept(other);
     }
 }

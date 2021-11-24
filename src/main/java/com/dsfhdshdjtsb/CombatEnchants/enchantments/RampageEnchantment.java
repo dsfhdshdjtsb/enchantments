@@ -14,7 +14,7 @@ import net.minecraft.entity.player.PlayerEntity;
 public class RampageEnchantment extends Enchantment {
 
     public RampageEnchantment() {
-        super(Rarity.VERY_RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        super(Rarity.RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
     @Override

@@ -69,7 +69,7 @@ public class VolleyEnchantment extends Enchantment {
 
     @Override
     protected boolean canAccept(Enchantment other) {
-        if(other.equals(CombatEnchants.ZAP)|| other.equals(Enchantments.FLAME))
+        if(other.equals(CombatEnchants.ZAP))
             return false;
         return super.canAccept(other);
     }

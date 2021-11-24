@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 
 public class AggressionEnchantment extends Enchantment {
     public AggressionEnchantment() {
-        super(Rarity.VERY_RARE, EnchantmentTarget.CROSSBOW, new EquipmentSlot[] {EquipmentSlot.MAINHAND});
+        super(Rarity.UNCOMMON, EnchantmentTarget.CROSSBOW, new EquipmentSlot[] {EquipmentSlot.MAINHAND});
     }
 
     @Override
@@ -53,8 +53,6 @@ public class AggressionEnchantment extends Enchantment {
 
     @Override
     protected boolean canAccept(Enchantment other) {
-        if(other.equals(CombatEnchants.ANTIHEAL))
-            return false;
         return super.canAccept(other);
     }
 }

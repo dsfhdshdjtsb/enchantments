@@ -29,7 +29,7 @@ public class AntihealEnchantment extends Enchantment {
         if(target.distanceTo(user) < 4)
             return;
         if(target instanceof LivingEntity)
-            ((LivingEntity) target).addStatusEffect(new StatusEffectInstance(CombatEnchants.ANTIHEAL_EFFECT, 60, level));
+            ((LivingEntity) target).addStatusEffect(new StatusEffectInstance(CombatEnchants.ANTIHEAL_EFFECT, 80, level));
         super.onTargetDamaged(user, target, level);
     }
 
@@ -40,8 +40,6 @@ public class AntihealEnchantment extends Enchantment {
 
     @Override
     protected boolean canAccept(Enchantment other) {
-        if(other.equals(CombatEnchants.AGGRESSION))
-            return false;
         return super.canAccept(other);
     }
 }

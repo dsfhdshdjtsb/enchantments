@@ -14,7 +14,7 @@ import java.util.Objects;
 
 public class HunterEnchantment extends Enchantment {
     public HunterEnchantment() {
-        super(Rarity.RARE, EnchantmentTarget.BOW, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        super(Rarity.UNCOMMON, EnchantmentTarget.BOW, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
     @Override
@@ -56,8 +56,6 @@ public class HunterEnchantment extends Enchantment {
 
     @Override
     protected boolean canAccept(Enchantment other) {
-        if(other.equals(CombatEnchants.RESILIENCE))
-            return false;
         return super.canAccept(other);
     }
 }

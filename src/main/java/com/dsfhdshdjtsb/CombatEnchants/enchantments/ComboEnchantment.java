@@ -16,7 +16,7 @@ import java.util.List;
 
 public class ComboEnchantment extends Enchantment {
     public ComboEnchantment() {
-        super(Rarity.RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        super(Rarity.UNCOMMON, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
     @Override
@@ -54,8 +54,6 @@ public class ComboEnchantment extends Enchantment {
 
     @Override
     protected boolean canAccept(Enchantment other) {
-        if(other.equals(CombatEnchants.INSPIRATION) || other.equals(CombatEnchants.LIFESTEAL))
-            return false;
         return super.canAccept(other);
     }
 }

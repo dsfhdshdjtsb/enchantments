@@ -15,7 +15,7 @@ import net.minecraft.server.world.ServerWorld;
 
 public class TriumphEnchantment extends Enchantment {
     public TriumphEnchantment() {
-        super(Rarity.VERY_RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        super(Rarity.RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
     @Override

@@ -39,9 +39,7 @@ public class ShieldingEnchantment extends Enchantment {
 
     @Override
     protected boolean canAccept(Enchantment other) {
-        if(other.equals(Enchantments.PROTECTION) || other.equals(Enchantments.FIRE_PROTECTION) ||
-                other.equals(Enchantments.BLAST_PROTECTION) ||other.equals(Enchantments.PROJECTILE_PROTECTION) ||
-                other.equals(CombatEnchants.SORCERY))
+        if(other.equals(CombatEnchants.SORCERY))
             return false;
         return super.canAccept(other);
     }

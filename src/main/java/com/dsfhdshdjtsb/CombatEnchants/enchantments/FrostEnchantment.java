@@ -9,7 +9,7 @@ import net.minecraft.entity.LivingEntity;
 
 public class FrostEnchantment extends Enchantment {
     public FrostEnchantment() {
-        super(Rarity.RARE, EnchantmentTarget.CROSSBOW, new EquipmentSlot[] {EquipmentSlot.MAINHAND});
+        super(Rarity.VERY_RARE, EnchantmentTarget.CROSSBOW, new EquipmentSlot[] {EquipmentSlot.MAINHAND});
     }
 
     @Override
@@ -39,7 +39,7 @@ public class FrostEnchantment extends Enchantment {
 
     @Override
     protected boolean canAccept(Enchantment other) {
-        if(other.equals(CombatEnchants.TRANQUILIZE)||other.equals(CombatEnchants.HOOK))
+        if(other.equals(CombatEnchants.TRANQUILIZE))
             return false;
         return super.canAccept(other);
     }
