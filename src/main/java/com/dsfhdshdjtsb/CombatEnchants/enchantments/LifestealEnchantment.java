@@ -86,7 +86,7 @@ public class LifestealEnchantment extends Enchantment {
 
     @Override
     protected boolean canAccept(Enchantment other) {
-        if(other.equals(CombatEnchants.INSPIRATION))
+        if(other.equals(CombatEnchants.INSPIRATION)||other.equals(CombatEnchants.COMBO))
             return false;
         return super.canAccept(other);
     }

@@ -45,7 +45,7 @@ public class ZapEnchantment extends Enchantment {
     {
         System.out.println(source.getHealth());
         if(!hit.contains(source))
-            source.damage(DamageSource.MAGIC, level * 2);
+            source.damage(DamageSource.MAGIC, level + 1.0f);
         System.out.println(source.getHealth());
         hit.add(source);
 

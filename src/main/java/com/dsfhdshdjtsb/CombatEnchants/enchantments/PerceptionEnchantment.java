@@ -5,52 +5,64 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityGroup;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.world.ServerWorld;
 
-public class LethalityEnchantment extends Enchantment {
-    public LethalityEnchantment() {
-        super(Rarity.COMMON, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+import java.util.List;
+
+public class PerceptionEnchantment extends Enchantment {
+    public PerceptionEnchantment() {
+        super(Rarity.VERY_RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
     @Override
     public int getMinPower(int level) {
-        return 1;
+        return 50;
     }
 
     @Override
     public int getMaxPower(int level) {
-        return level * 4;
+        return super.getMinPower(level) + 50;
     }
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
-        if(EnchantmentHelper.getLevel(CombatEnchants.LETHALITY, user.getMainHandStack()) == 0||target.distanceTo(user) >= 6)
-            return;
-        if (user instanceof PlayerEntity && target instanceof LivingEntity) {
-            float bDamage = ((((LivingEntity) target).getArmor() - user.getArmor()) / (6.0f - level));
+        if(user instanceof PlayerEntity && target instanceof LivingEntity)
+        {
+
             float damage = (float)user.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE) + EnchantmentHelper.getAttackDamage(user.getMainHandStack(), user.getGroup());
+            int exp = ((PlayerEntity) user).experienceLevel;
+            if(exp < 3)
+                exp = 3;
 
             System.out.println("Initial: " + ((LivingEntity) target).getHealth());
-            System.out.println("damage: " + (bDamage + damage));
-            if(bDamage > 0)
-                target.damage(DamageSource.player((PlayerEntity) user), bDamage + damage);
+            System.out.println("exp: " + (int)Math.log(exp));
+            System.out.println("damage: " + (damage + (int)(Math.log(exp)) - 1));
+            target.damage(DamageSource.player((PlayerEntity) user), damage + (int)(Math.log(exp)) - 1);
             System.out.println("POST: " + ((LivingEntity) target).getHealth());
         }
-        super.onTargetDamaged(user, target, level);
+    }
+
+    @Override
+    public boolean isTreasure() {
+        return true;
     }
 
     @Override
     public int getMaxLevel() {
-        return 3;
+        return 1;
     }
 
     @Override
     protected boolean canAccept(Enchantment other) {
-        if(other.equals(CombatEnchants.PERCEPTION))
+        if(other.equals(CombatEnchants.LETHALITY))
             return false;
         return super.canAccept(other);
     }

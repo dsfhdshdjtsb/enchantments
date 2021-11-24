@@ -4,13 +4,14 @@
   "version": "${version}",
 
   "name": "Combat Enchants",
-  "description": "Combat focused enchantments",
+  "description": "Adds pvp/pve combat enchantments",
   "authors": [
-    "Me!"
+    "dsfhdshdjtsb"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
-    "sources": "https://github.com/dsfhdshdjtsb/enchantments"
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/combat-enchantments",
+    "sources": "https://github.com/dsfhdshdjtsb/enchantments",
+    "issues": "https://github.com/dsfhdshdjtsb/enchantments/issues"
   },
 
   "license": "CC0-1.0",

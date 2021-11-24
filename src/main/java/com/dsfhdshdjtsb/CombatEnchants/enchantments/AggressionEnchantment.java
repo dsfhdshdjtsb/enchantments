@@ -39,7 +39,8 @@ public class AggressionEnchantment extends Enchantment {
             assert wolf != null;
             wolf.setPos(target.getX() + posX, target.getY() + 1, target.getZ() + posY);
             wolf.setTarget((LivingEntity) target);
-            wolf.addStatusEffect(new StatusEffectInstance(CombatEnchants.DELAYED_DEATH_EFFECT, 110, 0));
+            wolf.setHealth(4);
+            wolf.addStatusEffect(new StatusEffectInstance(CombatEnchants.DELAYED_DEATH_EFFECT, 90, 0));
             world.spawnEntity(wolf);
         }
         super.onTargetDamaged(user, target, level);
@@ -52,6 +53,8 @@ public class AggressionEnchantment extends Enchantment {
 
     @Override
     protected boolean canAccept(Enchantment other) {
+        if(other.equals(CombatEnchants.ANTIHEAL))
+            return false;
         return super.canAccept(other);
     }
 }

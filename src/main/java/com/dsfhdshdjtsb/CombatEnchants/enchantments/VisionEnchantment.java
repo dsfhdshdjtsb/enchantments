@@ -38,7 +38,7 @@ public class VisionEnchantment extends Enchantment {
 
     @Override
     protected boolean canAccept(Enchantment other) {
-        if(other.equals(Enchantments.FROST_WALKER))
+        if(other.equals(Enchantments.FROST_WALKER)||other.equals(CombatEnchants.HOOK))
             return false;
         return super.canAccept(other);
     }

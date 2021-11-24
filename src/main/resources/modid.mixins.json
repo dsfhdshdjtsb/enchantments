@@ -4,10 +4,8 @@
   "package": "com.dsfhdshdjtsb.CombatEnchants.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
-    "AntihealMixin",
-    "ShieldingMixin",
-    "SleepMixin",
-    "DarknessMixin"
+    "LivingEntityMixin",
+    "PlayerEntityMixin"
   ],
   "client": [
   ],

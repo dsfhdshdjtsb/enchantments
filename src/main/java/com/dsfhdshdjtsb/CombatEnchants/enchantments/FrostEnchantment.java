@@ -24,8 +24,8 @@ public class FrostEnchantment extends Enchantment {
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
-        //if(target.distanceTo(user) < 4)
-            //return;
+        if(target.distanceTo(user) < 4)
+            return;
         if(target instanceof LivingEntity) {
             target.setFrozenTicks(155 + level * (81));
         }
@@ -39,7 +39,7 @@ public class FrostEnchantment extends Enchantment {
 
     @Override
     protected boolean canAccept(Enchantment other) {
-        if(other.equals(CombatEnchants.TRANQUILIZE))
+        if(other.equals(CombatEnchants.TRANQUILIZE)||other.equals(CombatEnchants.HOOK))
             return false;
         return super.canAccept(other);
     }

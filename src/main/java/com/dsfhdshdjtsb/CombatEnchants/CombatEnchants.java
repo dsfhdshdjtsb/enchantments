@@ -136,6 +136,25 @@ public class CombatEnchants implements ModInitializer {
 			new AggressionEnchantment()
 	);
 
+	public static final Enchantment HOOK = Registry.register(
+			Registry.ENCHANTMENT,
+			new Identifier("cenchants", "hook"),
+			new HookEnchantment()
+	);
+
+	public static final Enchantment PERCEPTION = Registry.register(
+			Registry.ENCHANTMENT,
+			new Identifier("cenchants", "perception"),
+			new PerceptionEnchantment()
+	);
+
+	public static final Enchantment COMBO = Registry.register(
+			Registry.ENCHANTMENT,
+			new Identifier("cenchants", "combo"),
+			new ComboEnchantment()
+	);
+
+
 	public static final StatusEffect RAMPAGE_EFFECT = new RampageEffect();
 	public static final StatusEffect LIFESTEAL_COOLDOWN_EFFECT = new LifestealCooldownEffect();
 	public static final StatusEffect MARK_EFFECT = new MarkEffect();
