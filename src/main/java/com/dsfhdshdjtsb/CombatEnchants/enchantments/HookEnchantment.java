@@ -46,8 +46,6 @@ public class HookEnchantment extends Enchantment {
 
     @Override
     protected boolean canAccept(Enchantment other) {
-        if(other.equals(CombatEnchants.FROST)||other.equals(CombatEnchants.TRANQUILIZE))
-            return false;
         return super.canAccept(other);
     }
 }
