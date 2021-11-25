@@ -43,7 +43,7 @@ public class InspirationEnchantment extends Enchantment {
 
         boolean activated = false;
         for (LivingEntity e : list) {
-            if(e instanceof TameableEntity && user.equals(((WolfEntity)(e)).getOwner()))
+            if(e instanceof TameableEntity && user.equals(((TameableEntity)(e)).getOwner()))
             {
                 activated = true;
                 switch (level) {

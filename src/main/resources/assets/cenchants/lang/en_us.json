@@ -23,10 +23,13 @@
   "enchantment.cenchants.hook": "Hook",
   "enchantment.cenchants.perception": "Perception",
   "enchantment.cenchants.combo": "Combo",
+  "enchantment.cenchants.fervor": "Fervor",
+  "effect.cenchants.knockup": "Knockup",
   "effect.cenchants.lifesteal_cooldown": "Lifesteal Cooldown",
   "effect.cenchants.rampage": "Rampage",
   "effect.cenchants.mark": "Marked",
   "effect.cenchants.sleepy": "Sleepy",
   "effect.cenchants.shielding_cooldown": "Shielding Cooldown",
-  "effect.cenchants.fire_walk": "Fire Walk"
+  "effect.cenchants.fire_walk": "Fire Walk",
+  "effect.cenchants.fervor": "Fervor"
 }

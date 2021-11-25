@@ -45,6 +45,10 @@ public abstract class LivingEntityMixin extends Entity {
     @Shadow @Nullable public abstract StatusEffectInstance getStatusEffect(StatusEffect effect);
 
 
+    @Shadow public abstract ItemStack getMainHandStack();
+
+    @Shadow public boolean handSwinging;
+
     @Inject(at = @At("HEAD"), method = "tick")
     private void tick(CallbackInfo info) {
         ItemStack helmet = equippedArmor.get(3);
@@ -106,6 +110,19 @@ public abstract class LivingEntityMixin extends Entity {
                     break;
                 }
             }
+        }
+
+        int fervorLevel = EnchantmentHelper.getLevel(CombatEnchants.FERVOR, this.getMainHandStack());
+        if(fervorLevel != 0)
+        {
+            int curFervor = 0;
+            StatusEffectInstance fervorInstance = this.getStatusEffect(CombatEnchants.FERVOR_EFFECT);
+            if(fervorInstance != null) {
+                curFervor = fervorInstance.getAmplifier();
+                if (curFervor < fervorLevel * 2 - 1 && !this.handSwinging)
+                    curFervor++;
+            }
+            this.addStatusEffect(new StatusEffectInstance(CombatEnchants.FERVOR_EFFECT,  20 + fervorLevel * 12, curFervor));
         }
     }
 

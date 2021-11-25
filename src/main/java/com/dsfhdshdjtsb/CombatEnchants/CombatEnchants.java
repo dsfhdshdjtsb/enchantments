@@ -160,6 +160,12 @@ public class CombatEnchants implements ModInitializer {
 			new KnockupEnchantment()
 	);
 
+	public static final Enchantment FERVOR = Registry.register(
+			Registry.ENCHANTMENT,
+			new Identifier("cenchants", "fervor"),
+			new FervorEnchantment()
+	);
+
 
 	public static final StatusEffect RAMPAGE_EFFECT = new RampageEffect();
 	public static final StatusEffect LIFESTEAL_COOLDOWN_EFFECT = new LifestealCooldownEffect();
@@ -169,6 +175,7 @@ public class CombatEnchants implements ModInitializer {
 	public static final StatusEffect FIRE_WALK_EFFECT = new FireWalkEffect();
 	public static final StatusEffect ANTIHEAL_EFFECT = new AntihealEffect();
 	public static final StatusEffect DELAYED_DEATH_EFFECT = new DelayedDeathEffect();
+	public static final StatusEffect FERVOR_EFFECT = new FervorEffect();
 
 	@Override
 	public void onInitialize() {
@@ -183,5 +190,6 @@ public class CombatEnchants implements ModInitializer {
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "fire_walk"), FIRE_WALK_EFFECT);
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "antiheal"), ANTIHEAL_EFFECT);
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "delayed_death"), DELAYED_DEATH_EFFECT);
+		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "fervor"), FERVOR_EFFECT);
 	}
 }
