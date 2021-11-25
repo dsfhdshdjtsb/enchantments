@@ -24,6 +24,10 @@ Rapid - reduce bow charge time, exclusive with power
 
 shieldbreak - disabled shields after hitting a shield
 
+Crit - random chance to have an arrow critically strike and deal bonus damage
+
+mark - hit enemies to gain stacks, at max stacks, accuracy/atk speed/damage/smth increased
+
 ### Crossbow
 
 Teleport* - teleport to enemies you hit
@@ -41,6 +45,9 @@ shotgun - multishot but different bullet spray
 Vision(I)* - apply glowing to enemies that attack you
 
 MAgic protection - protect against magic damage
+
+Explode (IV) (all) - getting hit will increase charge stacks, at max charge stacks, attacks will cause you to explode
+- or, getting hit will increase stacks, at max stacks explode after a short delay + sound cue
   
 ## License
 
