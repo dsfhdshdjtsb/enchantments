@@ -32,7 +32,7 @@ public abstract class LivingEntityMixin extends Entity {
         super(type, world);
     }
 
-    @Shadow @Final private DefaultedList<ItemStack> equippedArmor;
+    @Shadow public abstract Iterable<ItemStack> getArmorItems();
 
     @Shadow public abstract void setStatusEffect(StatusEffectInstance effect, @Nullable Entity source);
 
@@ -49,42 +49,34 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Shadow public boolean handSwinging;
 
+    @Shadow public float sidewaysSpeed;
+
     @Inject(at = @At("HEAD"), method = "tick")
     private void tick(CallbackInfo info) {
-        ItemStack helmet = equippedArmor.get(3);
-        ItemStack chestplate = equippedArmor.get(2);
-        ItemStack leggings = equippedArmor.get(1);
-        ItemStack boots = equippedArmor.get(0);
-
         int shieldingLevel = 0;
+        int darkness = 0;
+        for(ItemStack i : getArmorItems())
+        {
+            shieldingLevel += EnchantmentHelper.getLevel(CombatEnchants.SHEILDING, i);
+            darkness += EnchantmentHelper.getLevel(CombatEnchants.DARKNESS, i);
+        }
 
-        shieldingLevel += EnchantmentHelper.getLevel(CombatEnchants.SHEILDING, helmet);
-        shieldingLevel += EnchantmentHelper.getLevel(CombatEnchants.SHEILDING, chestplate);
-        shieldingLevel += EnchantmentHelper.getLevel(CombatEnchants.SHEILDING, leggings);
-        shieldingLevel += EnchantmentHelper.getLevel(CombatEnchants.SHEILDING, boots);
-
+        System.out.println("shielding: " +shieldingLevel + " darkness: " + darkness);
         if(shieldingLevel > 0 && !this.hasStatusEffect(CombatEnchants.SHIELDING_COOLDOWN_EFFECT))
         {
             StatusEffectInstance absorption = this.getStatusEffect(StatusEffects.ABSORPTION);
             if(absorption != null && absorption.getAmplifier() > shieldingLevel / 4)
                 this.removeStatusEffect(StatusEffects.ABSORPTION);
-            this.setStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, shieldingLevel * 10, shieldingLevel / 4, false, false, true), null);
+            this.setStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, shieldingLevel * 10 + 5, shieldingLevel / 4, false, false, true), null);
         }
-
-        if(EnchantmentHelper.getLevel(CombatEnchants.DARKNESS, helmet) != 0)
+        if(darkness != 0)
         {
-
-            if(this.world.getLightLevel(this.getBlockPos()) >= 12 ) {
+            if(this.world.getLightLevel(this.getBlockPos()) >= 10 ) {
                 this.setFireTicks(20);
-                this.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 41, 0));
-                this.removeStatusEffect(StatusEffects.JUMP_BOOST);
-                this.removeStatusEffect(StatusEffects.SPEED);
-                this.removeStatusEffect(StatusEffects.FIRE_RESISTANCE);
             }
             else {
-                this.removeStatusEffect(StatusEffects.WEAKNESS);
-                this.addStatusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST, 41, 0));
-                this.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 41, 0));
+                this.addStatusEffect(new StatusEffectInstance(StatusEffects.JUMP_BOOST, 45, 0));
+                this.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 45, 0));
 
             }
         }
@@ -92,7 +84,7 @@ public abstract class LivingEntityMixin extends Entity {
 
     @Inject(at = @At("HEAD"), method = "damage")
     private void damage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
-        for(ItemStack i : equippedArmor)
+        for(ItemStack i : getArmorItems())
         {
             if(EnchantmentHelper.getLevel(CombatEnchants.SHEILDING, i) != 0) {
                 this.setStatusEffect(new StatusEffectInstance(CombatEnchants.SHIELDING_COOLDOWN_EFFECT, 200), null);
@@ -106,7 +98,7 @@ public abstract class LivingEntityMixin extends Entity {
         if(!(this.world.getLightLevel(this.getBlockPos()) >= 12)) {
             for (ItemStack i : this.getArmorItems()) {
                 if (EnchantmentHelper.getLevel(CombatEnchants.DARKNESS, i) != 0) {
-                    this.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 100, 1));
+                    this.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 100, 0));
                     break;
                 }
             }

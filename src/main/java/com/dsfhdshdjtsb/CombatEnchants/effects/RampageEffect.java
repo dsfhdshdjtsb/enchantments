@@ -1,10 +1,10 @@
 package com.dsfhdshdjtsb.CombatEnchants.effects;
 
 import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.entity.effect.StatusEffectType;
+import net.minecraft.entity.effect.StatusEffectCategory;
 
 public class RampageEffect extends StatusEffect {
     public RampageEffect() {
-        super(StatusEffectType.BENEFICIAL, 0);
+        super(StatusEffectCategory.BENEFICIAL, 0);
     }
 }

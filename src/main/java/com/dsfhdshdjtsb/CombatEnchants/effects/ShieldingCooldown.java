@@ -1,17 +1,12 @@
 package com.dsfhdshdjtsb.CombatEnchants.effects;
 
-import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffectType;
-
-import java.util.Objects;
+import net.minecraft.entity.effect.StatusEffectCategory;
 
 public class ShieldingCooldown extends StatusEffect {
     public ShieldingCooldown() {
-        super(StatusEffectType.HARMFUL, 0);
+        super(StatusEffectCategory.HARMFUL, 0);
     }
 
 

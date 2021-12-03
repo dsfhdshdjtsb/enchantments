@@ -167,6 +167,7 @@ public class CombatEnchants implements ModInitializer {
 	);
 
 
+
 	public static final StatusEffect RAMPAGE_EFFECT = new RampageEffect();
 	public static final StatusEffect LIFESTEAL_COOLDOWN_EFFECT = new LifestealCooldownEffect();
 	public static final StatusEffect MARK_EFFECT = new MarkEffect();
@@ -176,6 +177,7 @@ public class CombatEnchants implements ModInitializer {
 	public static final StatusEffect ANTIHEAL_EFFECT = new AntihealEffect();
 	public static final StatusEffect DELAYED_DEATH_EFFECT = new DelayedDeathEffect();
 	public static final StatusEffect FERVOR_EFFECT = new FervorEffect();
+	public static final StatusEffect BARRAGE_EFFECT = new BarrageEffect();
 
 	@Override
 	public void onInitialize() {
@@ -191,5 +193,6 @@ public class CombatEnchants implements ModInitializer {
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "antiheal"), ANTIHEAL_EFFECT);
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "delayed_death"), DELAYED_DEATH_EFFECT);
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "fervor"), FERVOR_EFFECT);
+		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "barrage"), BARRAGE_EFFECT);
 	}
 }
