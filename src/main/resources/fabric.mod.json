@@ -24,7 +24,7 @@
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "cenchants.mixins.json"
   ],
 
   "depends": {
