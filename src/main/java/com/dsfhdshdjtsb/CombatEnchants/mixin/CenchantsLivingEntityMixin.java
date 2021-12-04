@@ -26,9 +26,9 @@ import java.util.Objects;
 import java.util.Random;
 
 @Mixin(LivingEntity.class)
-public abstract class LivingEntityMixin extends Entity {
+public abstract class CenchantsLivingEntityMixin extends Entity {
 
-    public LivingEntityMixin(EntityType<?> type, World world) {
+    public CenchantsLivingEntityMixin(EntityType<?> type, World world) {
         super(type, world);
     }
 
@@ -60,8 +60,6 @@ public abstract class LivingEntityMixin extends Entity {
             shieldingLevel += EnchantmentHelper.getLevel(CombatEnchants.SHEILDING, i);
             darkness += EnchantmentHelper.getLevel(CombatEnchants.DARKNESS, i);
         }
-
-        System.out.println("shielding: " +shieldingLevel + " darkness: " + darkness);
         if(shieldingLevel > 0 && !this.hasStatusEffect(CombatEnchants.SHIELDING_COOLDOWN_EFFECT))
         {
             StatusEffectInstance absorption = this.getStatusEffect(StatusEffects.ABSORPTION);

@@ -4,8 +4,8 @@
   "package": "com.dsfhdshdjtsb.CombatEnchants.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
-    "LivingEntityMixin",
-    "PlayerEntityMixin"
+    "CenchantsLivingEntityMixin",
+    "CenchantsPlayerEntityMixin"
   ],
   "client": [
   ],

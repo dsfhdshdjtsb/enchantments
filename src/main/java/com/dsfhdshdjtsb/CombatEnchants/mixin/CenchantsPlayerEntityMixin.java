@@ -24,7 +24,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import java.util.Objects;
 
 @Mixin(PlayerEntity.class)
-public abstract class PlayerEntityMixin{
+public abstract class CenchantsPlayerEntityMixin {
 
     @Inject(at = @At("HEAD"), method = "attack")
     private void attack(Entity target, CallbackInfo ci) {
