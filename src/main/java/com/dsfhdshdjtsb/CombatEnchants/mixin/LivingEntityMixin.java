@@ -97,7 +97,7 @@ public abstract class LivingEntityMixin extends Entity {
     public void onAttacking(Entity target, CallbackInfo ci) {
         if(!(this.world.getLightLevel(this.getBlockPos()) >= 12)) {
             for (ItemStack i : this.getArmorItems()) {
-                if (EnchantmentHelper.getLevel(CombatEnchants.DARKNESS, i) != 0) {
+                if (EnchantmentHelper.getLevel(CombatEnchants.DARKNESS, i) != 0) { //FIX LIGHT LEVEL
                     this.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 100, 0));
                     break;
                 }

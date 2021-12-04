@@ -29,6 +29,8 @@ public class KnockupEnchantment extends Enchantment {
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
 
+        if(target.distanceTo(user) < 5 && !user.equals(target))
+            return;
         if(target instanceof LivingEntity)
         {
             target.addVelocity( 0, level / 5.0f, 0);
