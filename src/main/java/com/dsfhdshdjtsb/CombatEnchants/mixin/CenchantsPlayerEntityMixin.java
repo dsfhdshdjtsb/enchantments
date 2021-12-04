@@ -45,7 +45,8 @@ public abstract class CenchantsPlayerEntityMixin {
     }
 
     /**
-     * @author me
+     * @author dsfhdshdjtsb
+     * @reason cause im bad at injects
      */
     @Overwrite
     public float getAttackCooldownProgressPerTick() {
