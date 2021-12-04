@@ -6,6 +6,7 @@ import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 
 public class TranquilizeEnchantment extends Enchantment {
@@ -25,8 +26,11 @@ public class TranquilizeEnchantment extends Enchantment {
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
-        if(target.distanceTo(user) < 4)
-            return;
+        if(target instanceof LivingEntity) {
+            DamageSource damageSource = ((LivingEntity) target).getRecentDamageSource();
+            if(damageSource != null && !damageSource.isProjectile())
+                return;
+        }
         if(target instanceof LivingEntity)
             ((LivingEntity) target).addStatusEffect(new StatusEffectInstance(CombatEnchants.SLEEPY_EFFECT, 200, level + 1));
         super.onTargetDamaged(user, target, level);

@@ -166,6 +166,18 @@ public class CombatEnchants implements ModInitializer {
 			new FervorEnchantment()
 	);
 
+	public static final Enchantment BARRAGE = Registry.register(
+			Registry.ENCHANTMENT,
+			new Identifier("cenchants", "barrage"),
+			new BarrageEnchantment()
+	);
+
+	public static final Enchantment DEFLECT = Registry.register(
+			Registry.ENCHANTMENT,
+			new Identifier("cenchants", "deflect"),
+			new DeflectEnchantment()
+	);
+
 
 
 	public static final StatusEffect RAMPAGE_EFFECT = new RampageEffect();
@@ -178,6 +190,7 @@ public class CombatEnchants implements ModInitializer {
 	public static final StatusEffect DELAYED_DEATH_EFFECT = new DelayedDeathEffect();
 	public static final StatusEffect FERVOR_EFFECT = new FervorEffect();
 	public static final StatusEffect BARRAGE_EFFECT = new BarrageEffect();
+	public static final StatusEffect BARRAGE_STACK_EFFECT = new BarrageStackEffect();
 
 	@Override
 	public void onInitialize() {
@@ -194,5 +207,6 @@ public class CombatEnchants implements ModInitializer {
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "delayed_death"), DELAYED_DEATH_EFFECT);
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "fervor"), FERVOR_EFFECT);
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "barrage"), BARRAGE_EFFECT);
+		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "barrage_stack"), BARRAGE_STACK_EFFECT);
 	}
 }

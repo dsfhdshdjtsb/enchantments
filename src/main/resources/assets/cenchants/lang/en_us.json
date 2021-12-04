@@ -24,6 +24,8 @@
   "enchantment.cenchants.perception": "Perception",
   "enchantment.cenchants.combo": "Combo",
   "enchantment.cenchants.fervor": "Fervor",
+  "enchantment.cenchants.knockup": "Knockup",
+  "enchantment.cenchants.barrage": "Barrage",
   "effect.cenchants.knockup": "Knockup",
   "effect.cenchants.lifesteal_cooldown": "Lifesteal Cooldown",
   "effect.cenchants.rampage": "Rampage",
@@ -31,5 +33,7 @@
   "effect.cenchants.sleepy": "Sleepy",
   "effect.cenchants.shielding_cooldown": "Shielding Cooldown",
   "effect.cenchants.fire_walk": "Fire Walk",
-  "effect.cenchants.fervor": "Fervor"
+  "effect.cenchants.fervor": "Fervor",
+  "effect.cenchants.barrage": "Barrage",
+  "effect.cenchants.barrage_stack": "Barrage Stack"
 }

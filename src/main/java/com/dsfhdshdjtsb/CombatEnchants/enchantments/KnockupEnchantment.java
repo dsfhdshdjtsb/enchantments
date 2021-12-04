@@ -5,6 +5,7 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.*;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.Vec3d;
@@ -28,9 +29,11 @@ public class KnockupEnchantment extends Enchantment {
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
-
-        if(target.distanceTo(user) < 5 && !user.equals(target))
-            return;
+        if(target instanceof LivingEntity) {
+            DamageSource damageSource = ((LivingEntity) target).getRecentDamageSource();
+            if(damageSource != null && !damageSource.isProjectile())
+                return;
+        }
         if(target instanceof LivingEntity)
         {
             target.addVelocity( 0, level / 5.0f, 0);

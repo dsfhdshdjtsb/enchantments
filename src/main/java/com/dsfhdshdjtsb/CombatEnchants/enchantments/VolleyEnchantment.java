@@ -8,6 +8,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.world.World;
 
@@ -28,8 +29,13 @@ public class VolleyEnchantment extends Enchantment {
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
-        if(target.distanceTo(user) < 4)
-            return;
+        if(target instanceof LivingEntity) {
+            DamageSource damageSource = ((LivingEntity) target).getRecentDamageSource();
+            if(damageSource != null && !damageSource.isProjectile())
+                return;
+            if(user.hasStatusEffect(CombatEnchants.BARRAGE_EFFECT))
+                return;
+        }
         World world = user.world;
         ArrowEntity[] arrowArray = new ArrowEntity[9];
         int random = 2;

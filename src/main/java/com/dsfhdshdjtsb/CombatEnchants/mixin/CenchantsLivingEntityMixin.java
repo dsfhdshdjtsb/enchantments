@@ -4,6 +4,7 @@ import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
@@ -16,6 +17,7 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -49,7 +51,11 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
 
     @Shadow public boolean handSwinging;
 
-    @Shadow public float sidewaysSpeed;
+    @Shadow protected int itemUseTimeLeft;
+
+    @Shadow public abstract ItemStack getEquippedStack(EquipmentSlot slot);
+
+    @Shadow public abstract ItemStack getOffHandStack();
 
     @Inject(at = @At("HEAD"), method = "tick")
     private void tick(CallbackInfo info) {
@@ -80,13 +86,19 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
         }
     }
 
-    @Inject(at = @At("HEAD"), method = "damage")
+    @Inject(at = @At("HEAD"), method = "damage", cancellable = true)
     private void damage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
         for(ItemStack i : getArmorItems())
         {
             if(EnchantmentHelper.getLevel(CombatEnchants.SHEILDING, i) != 0) {
                 this.setStatusEffect(new StatusEffectInstance(CombatEnchants.SHIELDING_COOLDOWN_EFFECT, 200), null);
                 break;
+            }
+        }
+        if(source.isProjectile()) {
+            int deflectLevel = EnchantmentHelper.getLevel(CombatEnchants.DEFLECT, this.getEquippedStack(EquipmentSlot.CHEST));
+            if (deflectLevel != 0 && this.random.nextInt(100) < deflectLevel * 10) {
+                cir.cancel();
             }
         }
     }
@@ -129,4 +141,15 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
             ci.cancel();
         }
     }
+
+    /**
+     * @author dsfhdshdjtsb
+     */
+    @Overwrite
+    public int getItemUseTimeLeft() {
+        if(this.hasStatusEffect(CombatEnchants.BARRAGE_EFFECT) && EnchantmentHelper.getLevel(CombatEnchants.BARRAGE, this.getMainHandStack()) != 0 || EnchantmentHelper.getLevel(CombatEnchants.BARRAGE, this.getOffHandStack()) != 0)
+            return 0;
+        return itemUseTimeLeft;
+    }
+
 }

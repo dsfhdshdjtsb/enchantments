@@ -31,8 +31,13 @@ public class ZapEnchantment extends Enchantment {
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
-        if(target.distanceTo(user) < 4)
-            return;
+        if(target instanceof LivingEntity) {
+            DamageSource damageSource = ((LivingEntity) target).getRecentDamageSource();
+            if(damageSource != null && !damageSource.isProjectile())
+                return;
+            if(user.hasStatusEffect(CombatEnchants.BARRAGE_EFFECT))
+                return;
+        }
         List<LivingEntity> hit = new ArrayList<>();
         if(target instanceof LivingEntity) {
             hit.add((LivingEntity) target);

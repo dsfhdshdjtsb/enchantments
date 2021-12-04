@@ -7,6 +7,7 @@ import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 
@@ -19,18 +20,21 @@ public class HunterEnchantment extends Enchantment {
 
     @Override
     public int getMinPower(int level) {
-        return 25;
+        return 12 + (level - 1) * 20;
     }
 
     @Override
     public int getMaxPower(int level) {
-        return this.getMinPower(level) + 50;
+        return this.getMinPower(level) + 25;
     }
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
-        if(target.distanceTo(user) < 4)
-            return;
+        if(target instanceof LivingEntity) {
+            DamageSource damageSource = ((LivingEntity) target).getRecentDamageSource();
+            if(damageSource != null && !damageSource.isProjectile())
+                return;
+        }
         if(target instanceof LivingEntity) {
             if(((LivingEntity) target).getStatusEffect(CombatEnchants.MARK_EFFECT) == null)
             {

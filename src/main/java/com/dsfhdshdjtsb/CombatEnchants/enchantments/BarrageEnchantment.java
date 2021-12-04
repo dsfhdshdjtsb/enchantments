@@ -1,8 +1,8 @@
 package com.dsfhdshdjtsb.CombatEnchants.enchantments;
 
 import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
+import com.dsfhdshdjtsb.CombatEnchants.effects.BarrageEffect;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
@@ -10,16 +10,17 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.util.math.MathHelper;
 
-public class HookEnchantment extends Enchantment {
-    public HookEnchantment() {
-        super(Rarity.RARE, EnchantmentTarget.CROSSBOW, new EquipmentSlot[] {EquipmentSlot.MAINHAND});
+import java.util.Objects;
+
+public class BarrageEnchantment extends Enchantment {
+    public BarrageEnchantment() {
+        super(Rarity.VERY_RARE, EnchantmentTarget.BOW, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
     @Override
     public int getMinPower(int level) {
-        return 10 + 20 * (level - 1);
+        return 25;
     }
 
     @Override
@@ -33,19 +34,29 @@ public class HookEnchantment extends Enchantment {
             DamageSource damageSource = ((LivingEntity) target).getRecentDamageSource();
             if(damageSource != null && !damageSource.isProjectile())
                 return;
-        }
-        if(target instanceof LivingEntity) {
-            target.setVelocity(0, 0, 0);
-            ((LivingEntity)target).takeKnockback(level * 0.5, -MathHelper.sin(user.getYaw() * 0.017453292F),(MathHelper.cos(user.getYaw() * 0.017453292F)));
-        }
 
-
+            StatusEffectInstance barrageStackInstance = user.getStatusEffect(CombatEnchants.BARRAGE_STACK_EFFECT);
+            int barrageStacks = 0;
+            if(!user.hasStatusEffect(CombatEnchants.BARRAGE_EFFECT)) {
+                if(barrageStackInstance != null) {
+                    barrageStacks = barrageStackInstance.getAmplifier();
+                    if (!(barrageStacks >= 10))
+                        user.addStatusEffect(new StatusEffectInstance(CombatEnchants.BARRAGE_STACK_EFFECT, 3, ++barrageStacks + 10));
+                }
+                else
+                    user.addStatusEffect(new StatusEffectInstance(CombatEnchants.BARRAGE_STACK_EFFECT, 3, 10));
+            }
+            if(barrageStacks == 2)
+            {
+                user.addStatusEffect(new StatusEffectInstance(CombatEnchants.BARRAGE_STACK_EFFECT, 3, 20));
+            }
+        }
         super.onTargetDamaged(user, target, level);
     }
 
     @Override
     public int getMaxLevel() {
-        return 2;
+        return 1;
     }
 
     @Override

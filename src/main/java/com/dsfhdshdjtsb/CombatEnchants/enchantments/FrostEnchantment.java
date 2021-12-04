@@ -6,6 +6,7 @@ import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
 
 public class FrostEnchantment extends Enchantment {
     public FrostEnchantment() {
@@ -24,8 +25,11 @@ public class FrostEnchantment extends Enchantment {
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
-        if(target.distanceTo(user) < 4)
-            return;
+        if(target instanceof LivingEntity) {
+            DamageSource damageSource = ((LivingEntity) target).getRecentDamageSource();
+            if(damageSource != null && !damageSource.isProjectile())
+                return;
+        }
         if(target instanceof LivingEntity) {
             target.setFrozenTicks(155 + level * (81));
         }
