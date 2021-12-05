@@ -45,7 +45,9 @@ Vision(I)* - apply glowing to enemies that attack you
 MAgic protection - protect against magic damage
 
 Explode (IV) (all) - getting hit will increase charge stacks, at max charge stacks, attacks will cause you to explode
-- or, getting hit will increase stacks, at max stacks explode after a short delay + sound cue
+- or, getting hit will increase stacks, at max stacks explode after a short delay + sound cue'
+
+slam(boots) - upon taking fall damage, hurt all nearby enemies relative to the amount of fall damage taken
 
 
 ##Trident
