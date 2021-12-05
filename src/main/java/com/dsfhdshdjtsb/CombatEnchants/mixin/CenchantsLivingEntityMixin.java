@@ -10,22 +10,15 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-
-import java.util.Objects;
-import java.util.Random;
 
 @Mixin(LivingEntity.class)
 public abstract class CenchantsLivingEntityMixin extends Entity {
@@ -142,14 +135,10 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
         }
     }
 
-    /**
-     * @author dsfhdshdjtsb
-     */
-    @Overwrite
-    public int getItemUseTimeLeft() {
+    @Inject(at = @At("HEAD"), method = "getItemUseTimeLeft", cancellable = true)
+    public void getItemUseTimeLeft(CallbackInfoReturnable<Integer> cir) {
         if(this.hasStatusEffect(CombatEnchants.BARRAGE_EFFECT) && EnchantmentHelper.getLevel(CombatEnchants.BARRAGE, this.getMainHandStack()) != 0 || EnchantmentHelper.getLevel(CombatEnchants.BARRAGE, this.getOffHandStack()) != 0)
-            return 0;
-        return itemUseTimeLeft;
+            cir.setReturnValue(0);
     }
 
 }
