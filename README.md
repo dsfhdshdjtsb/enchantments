@@ -1,7 +1,5 @@
 # Ideas
 **THESE ARE ALL JUST IDEAS**
-## Enchantments
-\* - incomplete
 ### Sword
 Radiant - hit enemies to gain stacks, explode(does not damage self) on max stacks
 
@@ -30,9 +28,9 @@ mark - hit enemies to gain stacks, at max stacks, accuracy/atk speed/damage/smth
 
 ### Crossbow
 
-Teleport* - teleport to enemies you hit
+Teleport - teleport to enemies you hit
 
-Confuse* - cause enemies you hit to move randomly
+Confuse - cause enemies you hit to move randomly
 
 blind - blinds
 
