@@ -46,6 +46,24 @@ MAgic protection - protect against magic damage
 
 Explode (IV) (all) - getting hit will increase charge stacks, at max charge stacks, attacks will cause you to explode
 - or, getting hit will increase stacks, at max stacks explode after a short delay + sound cue
+
+
+##Trident
+
+Whirlpool - using a trident will create a zone around you tht damages and slows enemies, also grants you resistance(only works when wet)
+
+Drowning - applies affect that causes enemies to drown
+
+Snap - summon evoker fangs
+
+
+##Shield
+
+Reflect - deal damage to enemies that hit the shield
+
+Recovery - recover faster from axe hits and faster equip time
+
+bubble - create a protective bubble that blocks all incoming damage(from all sides) by 50%
   
 ## License
 
