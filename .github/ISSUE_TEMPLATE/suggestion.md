@@ -7,11 +7,11 @@ assignees: ''
 
 ---
 
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
+**Describe the suggestion you'd like**
+A clear and concise description of your suggestion.
 
-**Is your suggestion related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+**Describe the reasoning for the suggestion. Balance? Fixing a frustrating mechanic? New Idea?**
+A clear and concise description of what the reason is. Ex. I'm always frustrated when [...]
 
 **Additional context**
 Add any other context or screenshots about the feature request here.
