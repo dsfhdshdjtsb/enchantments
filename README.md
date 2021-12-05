@@ -1,4 +1,4 @@
-# Combat Enchantments Ideas
+#Ideas
 **THESE ARE ALL JUST IDEAS**
 ## Enchantments
 \* - incomplete
