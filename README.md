@@ -36,6 +36,7 @@ blind - blinds
 
 shotgun - multishot but different bullet spray
 
+restoration - provide healing/resistance/other benefits to all nearby players/tamed animals
 
 
 ### Armor(all)
