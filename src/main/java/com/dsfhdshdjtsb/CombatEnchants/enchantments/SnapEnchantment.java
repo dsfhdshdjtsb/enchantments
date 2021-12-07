@@ -2,6 +2,7 @@ package com.dsfhdshdjtsb.CombatEnchants.enchantments;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
@@ -15,7 +16,7 @@ import java.util.UUID;
 
 public class SnapEnchantment extends Enchantment {
     public SnapEnchantment() {
-        super(Rarity.VERY_RARE, EnchantmentTarget.TRIDENT, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        super(Rarity.RARE, EnchantmentTarget.TRIDENT, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
     @Override
@@ -25,7 +26,7 @@ public class SnapEnchantment extends Enchantment {
 
     @Override
     public int getMaxLevel() {
-        return 3;
+        return 1;
     }
 
     @Override
@@ -35,6 +36,8 @@ public class SnapEnchantment extends Enchantment {
 
     @Override
     protected boolean canAccept(Enchantment other) {
+        if(other.equals(Enchantments.RIPTIDE))
+            return false;
         return super.canAccept(other);
     }
 }
