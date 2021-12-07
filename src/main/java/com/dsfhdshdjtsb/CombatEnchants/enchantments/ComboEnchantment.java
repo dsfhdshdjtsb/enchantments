@@ -33,7 +33,7 @@ public class ComboEnchantment extends Enchantment {
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
         if (EnchantmentHelper.getLevel(CombatEnchants.COMBO, user.getMainHandStack()) == 0||target.distanceTo(user) >= 6)
             return;
-        if(target instanceof LivingEntity)
+        if(target instanceof LivingEntity && user.world instanceof ServerWorld)
         {
             StatusEffectInstance mark = ((LivingEntity) target).getStatusEffect(CombatEnchants.MARK_EFFECT);
             if(mark != null && mark.getAmplifier() > 10 - level)

@@ -11,6 +11,7 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.passive.WolfEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
 
 public class AggressionEnchantment extends Enchantment {
@@ -35,7 +36,7 @@ public class AggressionEnchantment extends Enchantment {
             if(damageSource != null && !damageSource.isProjectile())
                 return;
         }
-        if(target instanceof LivingEntity && user instanceof PlayerEntity) {
+        if(target.world instanceof ServerWorld && target instanceof LivingEntity && user instanceof PlayerEntity) {
             World world = target.world;
             WolfEntity wolf = EntityType.WOLF.create(world);
             double posX = Math.random() * 2 - 1;
