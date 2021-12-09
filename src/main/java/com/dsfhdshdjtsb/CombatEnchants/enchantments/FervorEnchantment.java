@@ -14,7 +14,6 @@ import net.minecraft.world.World;
 import java.util.UUID;
 
 public class FervorEnchantment extends Enchantment {
-    public static EntityAttributeModifier entityAttributeModifier = new EntityAttributeModifier(UUID.fromString("FA233E1C-4180-4965-B01B-BCCE9785ACA3"),"Attack Speed buff", 1f, EntityAttributeModifier.Operation.ADDITION);
     public FervorEnchantment() {
         super(Rarity.UNCOMMON, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }

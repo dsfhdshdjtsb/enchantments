@@ -178,6 +178,12 @@ public class CombatEnchants implements ModInitializer {
 			new DeflectEnchantment()
 	);
 
+	public static final Enchantment SNAP = Registry.register(
+			Registry.ENCHANTMENT,
+			new Identifier("cenchants", "snap"),
+			new SnapEnchantment()
+	);
+
 
 
 	public static final StatusEffect RAMPAGE_EFFECT = new RampageEffect();
