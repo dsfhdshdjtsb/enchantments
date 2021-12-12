@@ -20,7 +20,7 @@ import java.util.Random;
 
 public class SorceryEnchantment extends Enchantment {
     public SorceryEnchantment() {
-        super(Rarity.UNCOMMON, EnchantmentTarget.WEARABLE, new EquipmentSlot[] {EquipmentSlot.MAINHAND});
+        super(Rarity.UNCOMMON, EnchantmentTarget.WEARABLE, CombatEnchants.ALL_ARMOR);
     }
 
     @Override

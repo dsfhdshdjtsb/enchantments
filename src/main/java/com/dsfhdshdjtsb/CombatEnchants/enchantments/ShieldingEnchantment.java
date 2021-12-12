@@ -15,17 +15,17 @@ import java.util.Random;
 
 public class ShieldingEnchantment extends Enchantment {
     public ShieldingEnchantment() {
-        super(Rarity.UNCOMMON, EnchantmentTarget.WEARABLE, new EquipmentSlot[] {EquipmentSlot.MAINHAND});
+        super(Rarity.UNCOMMON, EnchantmentTarget.WEARABLE, CombatEnchants.ALL_ARMOR);
     }
 
     @Override
     public int getMinPower(int level) {
-        return level * 25;
+        return 1 + (level - 1) * 10;
     }
 
     @Override
     public int getMaxPower(int level) {
-        return this.getMinPower(level) + 50;
+        return this.getMinPower(level) + 15;
     }
 
     @Override
