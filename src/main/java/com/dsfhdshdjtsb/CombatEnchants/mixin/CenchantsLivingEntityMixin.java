@@ -16,7 +16,9 @@ import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
@@ -51,7 +53,7 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
     @Shadow public abstract ItemStack getOffHandStack();
 
     @Inject(at = @At("HEAD"), method = "tick")
-    private void tick(CallbackInfo info) {
+    private void tick(CallbackInfo info) { //move to player entity
         int shieldingLevel = 0;
         int darkness = 0;
         for(ItemStack i : getArmorItems())
@@ -141,4 +143,11 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
             cir.setReturnValue(0);
     }
 
+    @ModifyConstant(method = "isBlocking", constant = @Constant(intValue = 5))
+    public int modifyArmTime(int constant)
+    {
+        LivingEntity user = ((LivingEntity)((Object)this));
+        int lightweightLevel = Math.max(0, Math.max(EnchantmentHelper.getLevel(CombatEnchants.LIGHTWEIGHT, user.getMainHandStack()),  EnchantmentHelper.getLevel(CombatEnchants.LIGHTWEIGHT, user.getOffHandStack())));
+        return constant - lightweightLevel;
+    }
 }

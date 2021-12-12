@@ -25,6 +25,8 @@ dependencies {
 
 	//Fabric api
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	modImplementation "com.github.CrimsonDawn45:Fabric-Shield-Lib:v1.4.5-1.18"
+
 }
 
 processResources {
@@ -64,9 +66,10 @@ publishing {
 
 	// See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
 	repositories {
-		// Add repositories to publish to here.
-		// Notice: This block does NOT have the same function as the block in the top level.
-		// The repositories here will be used for publishing your artifact, not for
-		// retrieving dependencies.
+		allprojects {
+			repositories {
+				maven { url 'https://jitpack.io' }
+			}
+		}
 	}
 }
