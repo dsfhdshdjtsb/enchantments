@@ -4,7 +4,9 @@ import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentTarget;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.*;
+import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
@@ -36,9 +38,8 @@ public class KnockupEnchantment extends Enchantment {
         }
         if(target instanceof LivingEntity)
         {
-            target.addVelocity( 0, level / 5.0f, 0);
+            target.addVelocity( 0, (level / 6.0f) * (1.0D - user.getAttributeValue(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE)), 0);
         }
-
     }
 
     @Override
@@ -48,6 +49,8 @@ public class KnockupEnchantment extends Enchantment {
 
     @Override
     protected boolean canAccept(Enchantment other) {
+        if(other.equals(Enchantments.PUNCH))
+            return false;
         return super.canAccept(other);
     }
 }

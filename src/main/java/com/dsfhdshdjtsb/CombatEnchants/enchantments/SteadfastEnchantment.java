@@ -1,18 +1,25 @@
 package com.dsfhdshdjtsb.CombatEnchants.enchantments;
 
 import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
+import com.github.crimsondawn45.fabricshieldlib.lib.object.FabricShieldEnchantment;
+import com.github.crimsondawn45.fabricshieldlib.lib.object.FabricShieldItem;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
-import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.ShieldItem;
 
-public class VisionEnchantment extends Enchantment {
-    public VisionEnchantment() {
-        super(Rarity.RARE, EnchantmentTarget.ARMOR_HEAD, new EquipmentSlot[] {EquipmentSlot.HEAD});
+import java.util.Random;
+
+public class SteadfastEnchantment extends Enchantment {
+    public SteadfastEnchantment() {
+        super(Rarity.RARE, EnchantmentTarget.BREAKABLE, new EquipmentSlot[] {EquipmentSlot.MAINHAND, EquipmentSlot.OFFHAND});
+
     }
 
     @Override
@@ -22,13 +29,12 @@ public class VisionEnchantment extends Enchantment {
 
     @Override
     public int getMaxPower(int level) {
-        return this.getMinPower(level) + 50;
+        return super.getMinPower(level) + 50;
     }
 
     @Override
-    public void onUserDamaged(LivingEntity user, Entity attacker, int level) {
-        if(attacker instanceof LivingEntity)
-            ((LivingEntity)(attacker)).addStatusEffect(new StatusEffectInstance(StatusEffects.GLOWING, level * 20, 0));
+    public boolean isAcceptableItem(ItemStack stack) {
+        return stack.getItem() instanceof ShieldItem || stack.getItem() instanceof FabricShieldItem;
     }
 
     @Override

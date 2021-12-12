@@ -4,12 +4,14 @@ import com.dsfhdshdjtsb.CombatEnchants.effects.*;
 import com.dsfhdshdjtsb.CombatEnchants.enchantments.*;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 
 public class CombatEnchants implements ModInitializer {
+	public static final EquipmentSlot[] ALL_ARMOR = new EquipmentSlot[] {EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET};
 	public static final Enchantment DUELING = Registry.register(
 			Registry.ENCHANTMENT,
 			new Identifier("cenchants", "dueling"),
@@ -183,8 +185,23 @@ public class CombatEnchants implements ModInitializer {
 			new Identifier("cenchants", "snap"),
 			new SnapEnchantment()
 	);
+	public static final Enchantment STEADFAST = Registry.register(
+			Registry.ENCHANTMENT,
+			new Identifier("cenchants", "steadfast"),
+			new SteadfastEnchantment()
+	);
 
+	public static final Enchantment REPEL = Registry.register(
+			Registry.ENCHANTMENT,
+			new Identifier("cenchants", "repel"),
+			new RepelEnchantment()
+	);
 
+	public static final Enchantment LIGHTWEIGHT = Registry.register(
+			Registry.ENCHANTMENT,
+			new Identifier("cenchants", "lightweight"),
+			new LightweightEnchantment()
+	);
 
 	public static final StatusEffect RAMPAGE_EFFECT = new RampageEffect();
 	public static final StatusEffect LIFESTEAL_COOLDOWN_EFFECT = new LifestealCooldownEffect();
@@ -214,5 +231,7 @@ public class CombatEnchants implements ModInitializer {
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "fervor"), FERVOR_EFFECT);
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "barrage"), BARRAGE_EFFECT);
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "barrage_stack"), BARRAGE_STACK_EFFECT);
+
+		RepelEnchantment.onInitialize();
 	}
 }
