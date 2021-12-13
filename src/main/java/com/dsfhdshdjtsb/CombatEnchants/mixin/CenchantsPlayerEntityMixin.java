@@ -10,6 +10,8 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.ItemCooldownManager;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.world.ServerWorld;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -57,7 +59,11 @@ public abstract class CenchantsPlayerEntityMixin {
             int steadfastLevel = Math.max(0, Math.max(EnchantmentHelper.getLevel(CombatEnchants.STEADFAST, user.getMainHandStack()), EnchantmentHelper.getLevel(CombatEnchants.STEADFAST, user.getOffHandStack())));
             if (steadfastLevel != 0) {
                 user.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 5, steadfastLevel - 1, true, false));
+                if (user.world instanceof ServerWorld) {
+                    ((ServerWorld) user.world).spawnParticles(ParticleTypes.END_ROD, user.getX(), user.getBodyY(0.5D), user.getZ(), 1, 0.4, 0.2, 0.4, 0.0D);
+                }
             }
+
         }
     }
 

@@ -191,11 +191,11 @@ public class CombatEnchants implements ModInitializer {
 			new SteadfastEnchantment()
 	);
 
-	public static final Enchantment REPEL = Registry.register(
-			Registry.ENCHANTMENT,
-			new Identifier("cenchants", "repel"),
-			new RepelEnchantment()
-	);
+//	public static final Enchantment REPEL = Registry.register(
+//			Registry.ENCHANTMENT,
+//			new Identifier("cenchants", "repel"),
+//			new RepelEnchantment()
+//	);
 
 	public static final Enchantment LIGHTWEIGHT = Registry.register(
 			Registry.ENCHANTMENT,
@@ -232,6 +232,5 @@ public class CombatEnchants implements ModInitializer {
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "barrage"), BARRAGE_EFFECT);
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "barrage_stack"), BARRAGE_STACK_EFFECT);
 
-		RepelEnchantment.onInitialize();
 	}
 }

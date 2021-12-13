@@ -48,21 +48,4 @@ public class RepelEnchantment extends Enchantment {
         return super.canAccept(other);
     }
 
-    public static void onInitialize(){
-        ShieldBlockCallback.EVENT.register((defender, source, amount, hand, shield) -> {
-
-            int repelLevel = Math.max(0, EnchantmentHelper.getLevel(CombatEnchants.REPEL, shield));
-            if(repelLevel != 0) {
-                Entity attacker = source.getAttacker();
-
-                assert attacker != null;
-                if(defender instanceof PlayerEntity && attacker instanceof LivingEntity) {  //Defender should always be a player, but check anyways
-                    double j = repelLevel * (1.0D - defender.getAttributeValue(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE));
-                    ((LivingEntity) attacker).takeKnockback((j), MathHelper.sin(defender.getYaw() * 0.017453292F), (-MathHelper.cos(defender.getYaw() * 0.017453292F)));
-                }
-            }
-
-            return ActionResult.PASS;
-        });
-    }
 }
