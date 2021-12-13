@@ -34,7 +34,7 @@ public class LightweightEnchantment extends Enchantment {
 
     @Override
     public boolean isAcceptableItem(ItemStack stack) {
-        return stack.getItem() instanceof ShieldItem || stack.getItem() instanceof FabricShieldItem;
+        return stack.getItem() instanceof ShieldItem;
     }
 
     @Override
