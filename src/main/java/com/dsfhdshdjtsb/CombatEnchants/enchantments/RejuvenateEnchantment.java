@@ -1,26 +1,20 @@
 package com.dsfhdshdjtsb.CombatEnchants.enchantments;
 
-import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentTarget;
-import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.entity.passive.TameableEntity;
-import net.minecraft.entity.passive.WolfEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 
 import java.util.List;
-import java.util.Objects;
 
-public class ResilienceEnchantment extends Enchantment {
-    public ResilienceEnchantment() {
+public class RejuvenateEnchantment extends Enchantment {
+    public RejuvenateEnchantment() {
         super(Rarity.RARE, EnchantmentTarget.BOW, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
@@ -47,23 +41,19 @@ public class ResilienceEnchantment extends Enchantment {
 
         boolean activated = false;
         for (LivingEntity e : list) {
-            if (e instanceof TameableEntity && user.equals(((WolfEntity) (e)).getOwner())) {
-                activated = true;
-                switch (level) {
-                    case 1 -> {
-                        e.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 60, 0));
-                        e.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 60, 0));
-                        e.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 60, 0));
-                    }
-                    case 2 -> {
-                        e.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 100, 1));
-                        e.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 100, 0));
-                        e.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 100, 0));
-                        e.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 100, 0));
-                    }
+            activated = true;
+            switch (level) {
+                case 1 -> {
+                    e.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 60, 0));
+                    e.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 60, 0));
                 }
-                super.onTargetDamaged(user, target, level);
+                case 2 -> {
+                    e.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 100, 1));
+                    e.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 100, 0));
+                    e.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 100, 0));
+                }
             }
+            super.onTargetDamaged(user, target, level);
         }
 
         if (activated && user.world instanceof ServerWorld) {

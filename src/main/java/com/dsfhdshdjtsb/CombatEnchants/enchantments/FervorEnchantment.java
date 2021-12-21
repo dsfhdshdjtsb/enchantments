@@ -1,17 +1,8 @@
 package com.dsfhdshdjtsb.CombatEnchants.enchantments;
 
-import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.*;
-import net.minecraft.entity.attribute.EntityAttributeInstance;
-import net.minecraft.entity.attribute.EntityAttributeModifier;
-import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.world.World;
-
-import java.util.UUID;
 
 public class FervorEnchantment extends Enchantment {
     public FervorEnchantment() {

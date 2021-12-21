@@ -1,20 +1,10 @@
 package com.dsfhdshdjtsb.CombatEnchants.enchantments;
 
-import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
-import com.github.crimsondawn45.fabricshieldlib.lib.object.FabricShieldEnchantment;
-import com.github.crimsondawn45.fabricshieldlib.lib.object.FabricShieldItem;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ShieldItem;
-
-import java.util.Random;
 
 public class SteadfastEnchantment extends Enchantment {
     public SteadfastEnchantment() {

@@ -65,11 +65,5 @@ publishing {
 	}
 
 	// See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
-	repositories {
-		allprojects {
-			repositories {
-				maven { url 'https://jitpack.io' }
-			}
-		}
-	}
+	repositories { allprojects { repositories { maven { url 'https://jitpack.io' } } } }
 }

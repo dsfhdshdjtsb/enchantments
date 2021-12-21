@@ -4,22 +4,19 @@ import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentTarget;
-import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.passive.TameableEntity;
-import net.minecraft.entity.passive.WolfEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 
 import java.util.List;
 
-public class InspirationEnchantment extends Enchantment {
-    public InspirationEnchantment() {
+public class InspireEnchantment extends Enchantment {
+    public InspireEnchantment() {
         super(Rarity.RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
@@ -35,7 +32,7 @@ public class InspirationEnchantment extends Enchantment {
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
-        if (EnchantmentHelper.getLevel(CombatEnchants.INSPIRATION, user.getMainHandStack()) == 0 || target.distanceTo(user) >= 6)
+        if (EnchantmentHelper.getLevel(CombatEnchants.INSPIRE, user.getMainHandStack()) == 0 || target.distanceTo(user) >= 6)
             return;
 
         List<LivingEntity> list = user.world.getNonSpectatingEntities(LivingEntity.class, user.getBoundingBox()

@@ -7,16 +7,13 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.entity.player.ItemCooldownManager;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
-import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
@@ -60,7 +57,7 @@ public abstract class CenchantsPlayerEntityMixin {
             if (steadfastLevel != 0) {
                 user.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 5, steadfastLevel - 1, true, false));
                 if (user.world instanceof ServerWorld) {
-                    ((ServerWorld) user.world).spawnParticles(ParticleTypes.END_ROD, user.getX(), user.getBodyY(0.5D), user.getZ(), 1, 0.4, 0.2, 0.4, 0.0D);
+                    ((ServerWorld) user.world).spawnParticles(ParticleTypes.ELECTRIC_SPARK, user.getX(), user.getBodyY(0.5D), user.getZ(), 1, 0.4, 0.1, 0.4, 0.0D);
                 }
             }
 

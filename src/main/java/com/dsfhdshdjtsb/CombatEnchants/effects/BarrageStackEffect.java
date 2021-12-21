@@ -1,13 +1,11 @@
 package com.dsfhdshdjtsb.CombatEnchants.effects;
 
 import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.effect.StatusEffectInstance;
 
-import java.util.Objects;
 
 public class BarrageStackEffect extends StatusEffect {
     public BarrageStackEffect() {

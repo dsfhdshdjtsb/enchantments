@@ -1,20 +1,10 @@
 package com.dsfhdshdjtsb.CombatEnchants.enchantments;
 
-import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
-import com.github.crimsondawn45.fabricshieldlib.lib.event.ShieldBlockCallback;
-import com.github.crimsondawn45.fabricshieldlib.lib.object.FabricShieldItem;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentTarget;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ShieldItem;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.math.MathHelper;
 
 public class LightweightEnchantment extends Enchantment {
     public LightweightEnchantment() {
@@ -39,7 +29,7 @@ public class LightweightEnchantment extends Enchantment {
 
     @Override
     public int getMaxLevel() {
-        return 4;
+        return 5;
     }
 
     @Override

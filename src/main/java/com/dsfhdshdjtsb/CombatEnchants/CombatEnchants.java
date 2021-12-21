@@ -120,22 +120,22 @@ public class CombatEnchants implements ModInitializer {
 			new AntihealEnchantment()
 	);
 
-	public static final Enchantment INSPIRATION = Registry.register(
+	public static final Enchantment INSPIRE = Registry.register(
 			Registry.ENCHANTMENT,
-			new Identifier("cenchants", "inspiration"),
-			new InspirationEnchantment()
+			new Identifier("cenchants", "inspire"),
+			new InspireEnchantment()
 	);
 
-	public static final Enchantment RESILIENCE = Registry.register(
+	public static final Enchantment REJUVENATE = Registry.register(
 			Registry.ENCHANTMENT,
-			new Identifier("cenchants", "resilience"),
-			new ResilienceEnchantment()
+			new Identifier("cenchants", "rejuvenate"),
+			new RejuvenateEnchantment()
 	);
 
-	public static final Enchantment AGGRESSION = Registry.register(
+	public static final Enchantment BITE = Registry.register(
 			Registry.ENCHANTMENT,
-			new Identifier("cenchants", "aggression"),
-			new AggressionEnchantment()
+			new Identifier("cenchants", "bite"),
+			new BiteEnchantment()
 	);
 
 	public static final Enchantment HOOK = Registry.register(

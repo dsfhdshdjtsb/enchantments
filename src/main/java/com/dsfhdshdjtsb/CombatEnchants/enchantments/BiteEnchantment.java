@@ -14,8 +14,8 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
 
-public class AggressionEnchantment extends Enchantment {
-    public AggressionEnchantment() {
+public class BiteEnchantment extends Enchantment {
+    public BiteEnchantment() {
         super(Rarity.UNCOMMON, EnchantmentTarget.CROSSBOW, new EquipmentSlot[] {EquipmentSlot.MAINHAND});
     }
 
