@@ -33,6 +33,11 @@ public class LightweightEnchantment extends Enchantment {
     }
 
     @Override
+    public boolean isTreasure() {
+        return true;
+    }
+
+    @Override
     protected boolean canAccept(Enchantment other) {
         return super.canAccept(other);
     }

@@ -28,6 +28,11 @@ public class SteadfastEnchantment extends Enchantment {
     }
 
     @Override
+    public boolean isTreasure() {
+        return true;
+    }
+
+    @Override
     public int getMaxLevel() {
         return 2;
     }
