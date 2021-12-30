@@ -11,10 +11,10 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(EnchantmentHelper.class)
 public abstract class CenchantsEnchantmentHelperMixin {
-    @Redirect(at = @At(value="INVOKE", target = "Lnet/minecraft/enchantment/EnchantmentTarget;isAcceptableItem(Lnet/minecraft/item/Item;)Z"), method = "getPossibleEntries"  )
-    private static boolean isAcceptableItem(EnchantmentTarget instance, Item item)
-    {
-
-        return false;
-    }
+//    @Redirect(at = @At(value="INVOKE", target = "Lnet/minecraft/enchantment/EnchantmentTarget;isAcceptableItem(Lnet/minecraft/item/Item;)Z"), method = "getPossibleEntries"  )
+//    private static boolean isAcceptableItem(EnchantmentTarget instance, Item item)
+//    {
+//
+//        return false;
+//    }
 }
