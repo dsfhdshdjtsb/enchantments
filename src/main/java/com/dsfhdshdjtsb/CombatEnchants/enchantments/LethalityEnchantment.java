@@ -34,11 +34,8 @@ public class LethalityEnchantment extends Enchantment {
             float bDamage = ((((LivingEntity) target).getArmor() - user.getArmor()) / (6.0f - level));
             float damage = (float)user.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE) + EnchantmentHelper.getAttackDamage(user.getMainHandStack(), user.getGroup());
 
-            System.out.println("Initial: " + ((LivingEntity) target).getHealth());
-            System.out.println("damage: " + (bDamage + damage));
             if(bDamage > 0)
                 target.damage(DamageSource.player((PlayerEntity) user), bDamage + damage);
-            System.out.println("POST: " + ((LivingEntity) target).getHealth());
         }
         super.onTargetDamaged(user, target, level);
     }

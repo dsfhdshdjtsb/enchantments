@@ -31,7 +31,8 @@ public class KnockupEnchantment extends Enchantment {
         }
         if(target instanceof LivingEntity)
         {
-            target.addVelocity( 0, (level / 6.0f) * (1.0D - user.getAttributeValue(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE)), 0);
+            System.out.println(user.getAttributeValue(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE));
+            target.addVelocity( 0, (level / 6.0f) * (1.0D - ((LivingEntity)(target)).getAttributeValue(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE) * 0.5), 0);
         }
     }
 
