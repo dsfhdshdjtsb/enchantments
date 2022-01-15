@@ -13,7 +13,9 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Constant;
@@ -21,6 +23,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import java.util.Iterator;
+import java.util.Map;
 
 @Mixin(LivingEntity.class)
 public abstract class CenchantsLivingEntityMixin extends Entity {
@@ -51,6 +56,10 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
     @Shadow public abstract ItemStack getEquippedStack(EquipmentSlot slot);
 
     @Shadow public abstract ItemStack getOffHandStack();
+
+    @Shadow @Final private Map<StatusEffect, StatusEffectInstance> activeStatusEffects;
+
+    @Shadow protected abstract void onStatusEffectRemoved(StatusEffectInstance effect);
 
     @Inject(at = @At("HEAD"), method = "tick")
     private void tick(CallbackInfo info) { //move to player entity
@@ -152,4 +161,32 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
         int lightweightLevel = Math.max(0, Math.max(EnchantmentHelper.getLevel(CombatEnchants.LIGHTWEIGHT, user.getMainHandStack()),  EnchantmentHelper.getLevel(CombatEnchants.LIGHTWEIGHT, user.getOffHandStack())));
         return constant - lightweightLevel;
     }
+
+    /**
+     * @author Dsfhdshdjtsb
+     */
+    @Overwrite
+    public boolean clearStatusEffects() {
+        if (this.world.isClient) {
+            return false;
+        } else {
+            StatusEffectInstance[] cooldowns = new StatusEffectInstance[]{this.getStatusEffect(CombatEnchants.LIFELINE_COOLDOWN_EFFECT),
+                    this.getStatusEffect(CombatEnchants.LIFESTEAL_COOLDOWN_EFFECT),
+                    this.getStatusEffect(CombatEnchants.SHIELDING_COOLDOWN_EFFECT)};
+            Iterator<StatusEffectInstance> iterator = this.activeStatusEffects.values().iterator();
+
+            boolean bl;
+            for(bl = false; iterator.hasNext(); bl = true) {
+                this.onStatusEffectRemoved((StatusEffectInstance)iterator.next());
+                iterator.remove();
+            }
+
+            for(StatusEffectInstance i : cooldowns)
+                if(i != null)
+                    this.addStatusEffect(i);
+            return bl;
+        }
+    }
+
+
 }

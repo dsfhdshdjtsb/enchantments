@@ -25,6 +25,8 @@
   "enchantment.cenchants.frost.desc": "Your attacks deeply chill their target, slowing them",
   "enchantment.cenchants.shielding": "Shielding",
   "enchantment.cenchants.shielding.desc": "Gain absorption when out of combat",
+  "enchantment.cenchants.lifeline": "Lifeline",
+  "enchantment.cenchants.lifeline.desc": "Gain absorption when low on HP based on the number of nearby enemies",
   "enchantment.cenchants.flame_walker": "Flame Walker",
   "enchantment.cenchants.flame_walker.desc": "Leave a trail of flame after taking damage",
   "enchantment.cenchants.suicide": "Self-Destruct",
@@ -72,5 +74,5 @@
   "effect.cenchants.fire_walk": "Fire Walk",
   "effect.cenchants.fervor": "Fervor",
   "effect.cenchants.barrage": "Barrage",
-  "effect.cenchants.barrage_stack": "Barrage Stack"
-}
+  "effect.cenchants.barrage_stack": "Barrage Stack",
+  "effect.cenchants.lifeline_cooldown": "Lifeline Cooldown"
