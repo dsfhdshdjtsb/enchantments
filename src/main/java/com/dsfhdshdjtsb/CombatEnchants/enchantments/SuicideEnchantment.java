@@ -8,6 +8,8 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.world.GameRules;
 import net.minecraft.world.explosion.Explosion;
 
 public class SuicideEnchantment extends Enchantment {
@@ -28,6 +30,8 @@ public class SuicideEnchantment extends Enchantment {
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
         if(EnchantmentHelper.getLevel(CombatEnchants.SUICIDE, user.getMainHandStack()) == 0||target.distanceTo(user) >= 6)
+            return;
+        if(!(user instanceof PlayerEntity) && !user.world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING))
             return;
         if(target instanceof LivingEntity)
         {

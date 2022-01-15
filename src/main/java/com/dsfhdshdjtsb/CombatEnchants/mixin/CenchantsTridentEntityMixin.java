@@ -4,6 +4,8 @@ import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.EvokerFangsEntity;
 import net.minecraft.entity.projectile.TridentEntity;
 import net.minecraft.item.ItemStack;
@@ -14,6 +16,8 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
+import java.util.Random;
 
 @Mixin(TridentEntity.class)
 public abstract class CenchantsTridentEntityMixin {
@@ -50,6 +54,23 @@ public abstract class CenchantsTridentEntityMixin {
                     fangsEntity.setFireTicks(0);
                     entity.world.spawnEntity(fangsEntity);
                 }
+            }
+        }
+
+        int inkingLevel = EnchantmentHelper.getLevel(CombatEnchants.INKING, tridentStack);
+        if (trident.world instanceof ServerWorld && inkingLevel != 0 && trident.getOwner() != null && entity instanceof LivingEntity) {
+            int chance = inkingLevel * 10;
+            if(trident.world.isRaining())
+            {
+                chance += 10;
+            }
+            if(trident.world.isThundering()) {
+                chance += 20;
+            }
+            Random rand = new Random();
+            if(rand.nextInt(100) < chance)
+            {
+                ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, inkingLevel * 10 + 10, 0));
             }
         }
     }

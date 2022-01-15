@@ -7,19 +7,18 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 
-public class SnapEnchantment extends Enchantment {
-    public SnapEnchantment() {
+public class InkingEnchantment extends Enchantment {
+    public InkingEnchantment() {
         super(Rarity.RARE, EnchantmentTarget.TRIDENT, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
     }
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
-
     }
 
     @Override
     public int getMaxLevel() {
-        return 1;
+        return 2;
     }
 
     @Override
@@ -27,3 +26,4 @@ public class SnapEnchantment extends Enchantment {
         return super.canAccept(other);
     }
 }
+

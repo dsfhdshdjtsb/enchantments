@@ -31,12 +31,13 @@ public class LifelineEnchantment extends Enchantment {
         if(user.getHealth() <= 10.0f && !user.hasStatusEffect(CombatEnchants.LIFELINE_COOLDOWN_EFFECT))
         {
             int attackerCount = user.world.getNonSpectatingEntities(LivingEntity.class, user.getBoundingBox()
-                    .expand(5.0D + level, 0.25D, 5.0D + level)).size() - 1;
+                    .expand(8.0D, 0.25D, 8.0D)).size() - 1;
 
             if(attackerCount >= 4)
                 attackerCount = 4;
-            user.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 20 + attackerCount * 20, attackerCount));
-            user.addStatusEffect(new StatusEffectInstance(CombatEnchants.LIFELINE_COOLDOWN_EFFECT, 300, 0));
+
+            user.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 40 + attackerCount * 20, attackerCount));
+            user.addStatusEffect(new StatusEffectInstance(CombatEnchants.LIFELINE_COOLDOWN_EFFECT, 1200, 0));
         }
     }
 

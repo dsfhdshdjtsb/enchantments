@@ -209,6 +209,12 @@ public class CombatEnchants implements ModInitializer {
 			new LifelineEnchantment()
 	);
 
+	public static final Enchantment INKING = Registry.register(
+			Registry.ENCHANTMENT,
+			new Identifier("cenchants", "inking"),
+			new InkingEnchantment()
+	);
+
 	public static final StatusEffect RAMPAGE_EFFECT = new RampageEffect();
 	public static final StatusEffect LIFESTEAL_COOLDOWN_EFFECT = new LifestealCooldownEffect();
 	public static final StatusEffect MARK_EFFECT = new MarkEffect();

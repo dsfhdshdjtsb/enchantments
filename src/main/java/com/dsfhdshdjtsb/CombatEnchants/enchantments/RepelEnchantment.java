@@ -1,6 +1,5 @@
 package com.dsfhdshdjtsb.CombatEnchants.enchantments;
 
-import com.github.crimsondawn45.fabricshieldlib.lib.object.FabricShieldItem;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EquipmentSlot;
@@ -26,7 +25,7 @@ public class RepelEnchantment extends Enchantment {
 
     @Override
     public boolean isAcceptableItem(ItemStack stack) {
-        return stack.getItem() instanceof ShieldItem || stack.getItem() instanceof FabricShieldItem;
+        return stack.getItem() instanceof ShieldItem;
     }
 
     @Override

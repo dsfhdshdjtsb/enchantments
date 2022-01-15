@@ -8,6 +8,8 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.passive.TameableEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 
@@ -41,19 +43,20 @@ public class RejuvenateEnchantment extends Enchantment {
 
         boolean activated = false;
         for (LivingEntity e : list) {
-            activated = true;
-            switch (level) {
-                case 1 -> {
-                    e.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 60, 0));
-                    e.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 60, 0));
-                }
-                case 2 -> {
-                    e.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 100, 1));
-                    e.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 100, 0));
-                    e.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 100, 0));
+            if(!e.equals(user) && (e instanceof PlayerEntity || (e instanceof TameableEntity && user.equals(((TameableEntity)(e)).getOwner())))) {
+                activated = true;
+                switch (level) {
+                    case 1 -> {
+                        e.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 60, 0));
+                        e.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 60, 0));
+                    }
+                    case 2 -> {
+                        e.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 100, 1));
+                        e.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 100, 0));
+                        e.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 100, 0));
+                    }
                 }
             }
-            super.onTargetDamaged(user, target, level);
         }
 
         if (activated && user.world instanceof ServerWorld) {
