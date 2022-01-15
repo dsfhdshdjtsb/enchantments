@@ -12,6 +12,7 @@
   "enchantment.cenchants.tranquilize": "Tranquilize",
   "enchantment.cenchants.frost": "Frost",
   "enchantment.cenchants.shielding": "Shielding",
+  "enchantment.cenchants.lifeline": "Lifeline",
   "enchantment.cenchants.flame_walker": "Flame Walker",
   "enchantment.cenchants.suicide": "Suicide",
   "enchantment.cenchants.vision": "Vision",
@@ -40,5 +41,6 @@
   "effect.cenchants.fire_walk": "Fire Walk",
   "effect.cenchants.fervor": "Fervor",
   "effect.cenchants.barrage": "Barrage",
-  "effect.cenchants.barrage_stack": "Barrage Stack"
+  "effect.cenchants.barrage_stack": "Barrage Stack",
+  "effect.cenchants.lifeline_cooldown": "Lifeline Cooldown"
 }
