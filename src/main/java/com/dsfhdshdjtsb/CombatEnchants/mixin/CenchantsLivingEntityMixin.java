@@ -11,6 +11,8 @@ import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.ItemStack;
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
@@ -26,6 +28,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Random;
 
 @Mixin(LivingEntity.class)
 public abstract class CenchantsLivingEntityMixin extends Entity {
@@ -67,7 +70,7 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
         int darkness = 0;
         for(ItemStack i : getArmorItems())
         {
-            shieldingLevel += EnchantmentHelper.getLevel(CombatEnchants.SHEILDING, i);
+            shieldingLevel += EnchantmentHelper.getLevel(CombatEnchants.SHIELDING, i);
             darkness += EnchantmentHelper.getLevel(CombatEnchants.DARKNESS, i);
         }
         if(shieldingLevel > 0 && !this.hasStatusEffect(CombatEnchants.SHIELDING_COOLDOWN_EFFECT))
@@ -92,16 +95,50 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
 
     @Inject(at = @At("HEAD"), method = "damage", cancellable = true)
     private void damage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
+        int sorcLevel = 0;
         for(ItemStack i : getArmorItems())
         {
-            if(EnchantmentHelper.getLevel(CombatEnchants.SHEILDING, i) != 0) {
+            if(EnchantmentHelper.getLevel(CombatEnchants.SHIELDING, i) != 0) {
+                if(!this.hasStatusEffect(CombatEnchants.SHIELDING_COOLDOWN_EFFECT) && this.world instanceof ServerWorld)
+                    ((ServerWorld) this.world).spawnParticles(CombatEnchants.SHIELD_PARTICLE, this.getX(), this.getBodyY(0.5D), this.getZ(), 3, 0.3D, 0.3D, 0.3D, 0.0D);
                 this.setStatusEffect(new StatusEffectInstance(CombatEnchants.SHIELDING_COOLDOWN_EFFECT, 200), null);
                 break;
+            }
+            int tempSorcLevel = EnchantmentHelper.getLevel(CombatEnchants.SORCERY, i);
+            if(tempSorcLevel != 0)
+            {
+                sorcLevel += tempSorcLevel;
+            }
+        }
+        if(sorcLevel != 0)
+        {
+            StatusEffect[] effects = {
+                    StatusEffects.ABSORPTION,
+                    StatusEffects.RESISTANCE,
+                    StatusEffects.FIRE_RESISTANCE,
+                    StatusEffects.HEALTH_BOOST,
+                    StatusEffects.SPEED,
+                    StatusEffects.REGENERATION,
+            };
+
+            Random rand = new Random();
+            System.out.println(sorcLevel);
+            if(rand.nextInt(16) < sorcLevel) {
+                StatusEffect randEffect = effects[rand.nextInt(6)];
+                int duration = sorcLevel/4 * 3;
+                if (this.getStatusEffect(randEffect) == null)
+                    this.addStatusEffect(new StatusEffectInstance(randEffect, duration * 20, 0));
+                else
+                    this.addStatusEffect(new StatusEffectInstance(randEffect, duration * 20, 1));
             }
         }
         if(source.isProjectile()) {
             int deflectLevel = EnchantmentHelper.getLevel(CombatEnchants.DEFLECT, this.getEquippedStack(EquipmentSlot.CHEST));
             if (deflectLevel != 0 && this.random.nextInt(100) < deflectLevel * 10) {
+                if(this.world instanceof ServerWorld)
+                {
+                    ((ServerWorld) this.world).spawnParticles(ParticleTypes.POOF, this.getX(), this.getBodyY(0.5D), this.getZ(), 5, 0.3, 0.5, 0.3, 0.0D);
+                }
                 cir.cancel();
             }
         }

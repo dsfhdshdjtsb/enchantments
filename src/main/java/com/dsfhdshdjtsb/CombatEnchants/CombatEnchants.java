@@ -1,219 +1,55 @@
 package com.dsfhdshdjtsb.CombatEnchants;
 
+import com.dsfhdshdjtsb.CombatEnchants.config.ModConfigs;
 import com.dsfhdshdjtsb.CombatEnchants.effects.*;
 import com.dsfhdshdjtsb.CombatEnchants.enchantments.*;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
 
 public class CombatEnchants implements ModInitializer {
 	public static final EquipmentSlot[] ALL_ARMOR = new EquipmentSlot[] {EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET};
-	public static final Enchantment DUELING = Registry.register(
-			Registry.ENCHANTMENT,
-			new Identifier("cenchants", "dueling"),
-			new DuelingEnchantment()
-	);
+	public static final String MOD_ID = "cenchants";
 
-	public static final Enchantment LETHALITY = Registry.register(
-			Registry.ENCHANTMENT,
-			new Identifier("cenchants", "lethality"),
-			new LethalityEnchantment()
-	);
-
-	public static final Enchantment TRIUMPH = Registry.register(
-			Registry.ENCHANTMENT,
-			new Identifier("cenchants", "triumph"),
-			new TriumphEnchantment()
-	);
-
-	public static final Enchantment RAMPAGE = Registry.register(
-			Registry.ENCHANTMENT,
-			new Identifier("cenchants", "rampage"),
-			new RampageEnchantment()
-	);
-
-	public static final Enchantment INFERNO = Registry.register(
-			Registry.ENCHANTMENT,
-			new Identifier("cenchants", "inferno"),
-			new InfernoEnchantment()
-	);
-
-	public static final Enchantment SORCERY = Registry.register(
-			Registry.ENCHANTMENT,
-			new Identifier("cenchants", "sorcery"),
-			new SorceryEnchantment()
-	);
-
-	public static final Enchantment LIFESTEAL = Registry.register(
-			Registry.ENCHANTMENT,
-			new Identifier("cenchants", "lifesteal"),
-			new LifestealEnchantment()
-	);
-
-	public static final Enchantment ZAP = Registry.register(
-			Registry.ENCHANTMENT,
-			new Identifier("cenchants", "zap"),
-			new ZapEnchantment()
-	);
-
-	public static final Enchantment VOLLEY = Registry.register(
-			Registry.ENCHANTMENT,
-			new Identifier("cenchants", "volley"),
-			new VolleyEnchantment()
-	);
-
-	public static final Enchantment HUNTER = Registry.register(
-			Registry.ENCHANTMENT,
-			new Identifier("cenchants", "hunter"),
-			new HunterEnchantment()
-	);
-
-	public static final Enchantment TRANQUILIZE = Registry.register(
-			Registry.ENCHANTMENT,
-			new Identifier("cenchants", "tranquilize"),
-			new TranquilizeEnchantment()
-	);
-
-	public static final Enchantment FROST = Registry.register(
-			Registry.ENCHANTMENT,
-			new Identifier("cenchants", "frost"),
-			new FrostEnchantment()
-	);
-
-	public static final Enchantment SHEILDING = Registry.register(
-			Registry.ENCHANTMENT,
-			new Identifier("cenchants", "shielding"),
-			new ShieldingEnchantment()
-	);
-
-	public static final Enchantment SUICIDE = Registry.register(
-			Registry.ENCHANTMENT,
-			new Identifier("cenchants", "suicide"),
-			new SuicideEnchantment()
-	);
-
-	public static final Enchantment FLAME_WALKER = Registry.register(
-			Registry.ENCHANTMENT,
-			new Identifier("cenchants", "flame_walker"),
-			new FlameWalkerEnchantment()
-	);
-
-	public static final Enchantment VISION = Registry.register(
-			Registry.ENCHANTMENT,
-			new Identifier("cenchants", "vision"),
-			new VisionEnchantment()
-	);
-
-	public static final Enchantment DARKNESS = Registry.register(
-			Registry.ENCHANTMENT,
-			new Identifier("cenchants", "darkness"),
-			new DarknessCurse()
-	);
-
-	public static final Enchantment ANTIHEAL = Registry.register(
-			Registry.ENCHANTMENT,
-			new Identifier("cenchants", "antiheal"),
-			new AntihealEnchantment()
-	);
-
-	public static final Enchantment INSPIRE = Registry.register(
-			Registry.ENCHANTMENT,
-			new Identifier("cenchants", "inspire"),
-			new InspireEnchantment()
-	);
-
-	public static final Enchantment REJUVENATE = Registry.register(
-			Registry.ENCHANTMENT,
-			new Identifier("cenchants", "rejuvenate"),
-			new RejuvenateEnchantment()
-	);
-
-	public static final Enchantment BITE = Registry.register(
-			Registry.ENCHANTMENT,
-			new Identifier("cenchants", "bite"),
-			new BiteEnchantment()
-	);
-
-	public static final Enchantment HOOK = Registry.register(
-			Registry.ENCHANTMENT,
-			new Identifier("cenchants", "hook"),
-			new HookEnchantment()
-	);
-
-	public static final Enchantment PERCEPTION = Registry.register(
-			Registry.ENCHANTMENT,
-			new Identifier("cenchants", "perception"),
-			new PerceptionEnchantment()
-	);
-
-	public static final Enchantment COMBO = Registry.register(
-			Registry.ENCHANTMENT,
-			new Identifier("cenchants", "combo"),
-			new ComboEnchantment()
-	);
-
-	public static final Enchantment KNOCKUP = Registry.register(
-			Registry.ENCHANTMENT,
-			new Identifier("cenchants", "knockup"),
-			new KnockupEnchantment()
-	);
-
-	public static final Enchantment FERVOR = Registry.register(
-			Registry.ENCHANTMENT,
-			new Identifier("cenchants", "fervor"),
-			new FervorEnchantment()
-	);
-
-	public static final Enchantment BARRAGE = Registry.register(
-			Registry.ENCHANTMENT,
-			new Identifier("cenchants", "barrage"),
-			new BarrageEnchantment()
-	);
-
-	public static final Enchantment DEFLECT = Registry.register(
-			Registry.ENCHANTMENT,
-			new Identifier("cenchants", "deflect"),
-			new DeflectEnchantment()
-	);
-
-	public static final Enchantment SNAP = Registry.register(
-			Registry.ENCHANTMENT,
-			new Identifier("cenchants", "snap"),
-			new SnapEnchantment()
-	);
-	public static final Enchantment STEADFAST = Registry.register(
-			Registry.ENCHANTMENT,
-			new Identifier("cenchants", "steadfast"),
-			new SteadfastEnchantment()
-	);
-
-//	public static final Enchantment REPEL = Registry.register(
-//			Registry.ENCHANTMENT,
-//			new Identifier("cenchants", "repel"),
-//			new RepelEnchantment()
-//	);
-
-	public static final Enchantment LIGHTWEIGHT = Registry.register(
-			Registry.ENCHANTMENT,
-			new Identifier("cenchants", "lightweight"),
-			new LightweightEnchantment()
-	);
-
-	public static final Enchantment LIFELINE = Registry.register(
-			Registry.ENCHANTMENT,
-			new Identifier("cenchants", "lifeline"),
-			new LifelineEnchantment()
-	);
-
-	public static final Enchantment INKING = Registry.register(
-			Registry.ENCHANTMENT,
-			new Identifier("cenchants", "inking"),
-			new InkingEnchantment()
-	);
+	public static Enchantment DUELING;
+	public static Enchantment LETHALITY;
+	public static Enchantment TRIUMPH;
+	public static Enchantment RAMPAGE;
+	public static Enchantment INFERNO;
+	public static Enchantment SORCERY;
+	public static Enchantment LIFESTEAL;
+	public static Enchantment ZAP;
+	public static Enchantment VOLLEY;
+	public static Enchantment HUNTER;
+	public static Enchantment TRANQUILIZE;
+	public static Enchantment FROST;
+	public static Enchantment SHIELDING;
+	public static Enchantment SUICIDE;
+	public static Enchantment FLAME_WALKER;
+	public static Enchantment VISION;
+	public static Enchantment DARKNESS;
+	public static Enchantment ANTIHEAL;
+	public static Enchantment INSPIRE;
+	public static Enchantment REJUVENATE;
+	public static Enchantment BITE;
+	public static Enchantment HOOK;
+	public static Enchantment PERCEPTION;
+	public static Enchantment COMBO;
+	public static Enchantment KNOCKUP;
+	public static Enchantment FERVOR;
+	public static Enchantment BARRAGE;
+	public static Enchantment DEFLECT;
+	public static Enchantment SNAP;
+	public static Enchantment STEADFAST;
+	public static Enchantment LIGHTWEIGHT;
+	public static Enchantment LIFELINE;
+	public static Enchantment INKING;
 
 	public static final StatusEffect RAMPAGE_EFFECT = new RampageEffect();
 	public static final StatusEffect LIFESTEAL_COOLDOWN_EFFECT = new LifestealCooldownEffect();
@@ -227,12 +63,51 @@ public class CombatEnchants implements ModInitializer {
 	public static final StatusEffect BARRAGE_EFFECT = new BarrageEffect();
 	public static final StatusEffect BARRAGE_STACK_EFFECT = new BarrageStackEffect();
 	public static final StatusEffect LIFELINE_COOLDOWN_EFFECT = new LifelineCooldownEffect();
+	public static final StatusEffect FROST_PARTICLE_EFFECT = new FrostParticleEffect();
+	public static final StatusEffect SLEEPY_PARTICLE_EFFECT = new SleepyParticleEffect();
+
+	public static final DefaultParticleType SHIELD_PARTICLE = FabricParticleTypes.simple();
+	public static final DefaultParticleType SLEEPY_PARTICLE = FabricParticleTypes.simple();
 
 	@Override
 	public void onInitialize() {
-		// This code runs as soon as Minecraft is in a mod-load-ready state.
-		// However, some things (like resources) may still be uninitialized.
-		// Proceed with mild caution.
+		ModConfigs.registerConfigs();
+
+		ANTIHEAL = new AntihealEnchantment();
+		BARRAGE = new BarrageEnchantment();
+		BITE = new BiteEnchantment();
+		COMBO = new ComboEnchantment();
+		DARKNESS = new DarknessCurse();
+		DEFLECT = new DeflectEnchantment();
+		DUELING = new DuelingEnchantment();
+		FERVOR = new FervorEnchantment();
+		FLAME_WALKER = new FlameWalkerEnchantment();
+		FROST = new FrostEnchantment();
+		HOOK = new HookEnchantment();
+		HUNTER = new HunterEnchantment();
+		INFERNO = new InfernoEnchantment();
+		INKING = new InkingEnchantment();
+		INSPIRE = new InspireEnchantment();
+		KNOCKUP = new KnockupEnchantment();
+		LETHALITY = new LethalityEnchantment();
+		LIFELINE = new LifelineEnchantment();
+		LIFESTEAL = new LifestealEnchantment();
+		LIGHTWEIGHT = new LightweightEnchantment();
+		PERCEPTION = new PerceptionEnchantment();
+		RAMPAGE = new RampageEnchantment();
+		REJUVENATE = new RejuvenateEnchantment();
+		SHIELDING = new ShieldingEnchantment();
+		SNAP = new SnapEnchantment();
+		SORCERY = new SorceryEnchantment();
+		STEADFAST = new SteadfastEnchantment();
+		SUICIDE = new SuicideEnchantment();
+		TRANQUILIZE = new TranquilizeEnchantment();
+		TRIUMPH = new TriumphEnchantment();
+		VISION = new VisionEnchantment();
+		VOLLEY = new VolleyEnchantment();
+		ZAP = new ZapEnchantment();
+
+
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "rampage"), RAMPAGE_EFFECT);
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "lifesteal_cooldown"), LIFESTEAL_COOLDOWN_EFFECT);
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "mark"), MARK_EFFECT);
@@ -245,5 +120,11 @@ public class CombatEnchants implements ModInitializer {
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "barrage"), BARRAGE_EFFECT);
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "barrage_stack"), BARRAGE_STACK_EFFECT);
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "lifeline_cooldown"), LIFELINE_COOLDOWN_EFFECT);
+		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "frost_particle"), FROST_PARTICLE_EFFECT);
+		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "sleepy_particle"), SLEEPY_PARTICLE_EFFECT);
+
+		Registry.register(Registry.PARTICLE_TYPE, new Identifier("cenchants", "shield"), SHIELD_PARTICLE);
+		Registry.register(Registry.PARTICLE_TYPE, new Identifier("cenchants", "sleepy"), SLEEPY_PARTICLE);
+
 	}
 }

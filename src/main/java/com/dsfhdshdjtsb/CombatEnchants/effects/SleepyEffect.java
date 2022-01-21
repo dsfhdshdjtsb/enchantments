@@ -10,7 +10,7 @@ import net.minecraft.entity.player.PlayerEntity;
 
 public class SleepyEffect extends StatusEffect {
     public SleepyEffect() {
-        super(StatusEffectCategory.HARMFUL, 0x00808080);
+        super(StatusEffectCategory.HARMFUL, 0);
     }
 
     @Override

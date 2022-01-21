@@ -1,6 +1,7 @@
 package com.dsfhdshdjtsb.CombatEnchants.enchantments;
 
 import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
+import com.dsfhdshdjtsb.CombatEnchants.config.ModConfigs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentTarget;
@@ -9,12 +10,16 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.explosion.Explosion;
 
 public class SuicideEnchantment extends Enchantment {
     public SuicideEnchantment() {
         super(Rarity.UNCOMMON, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        if(ModConfigs.SUICIDE)
+            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "suicide"), this);
     }
 
     @Override

@@ -1,14 +1,19 @@
 package com.dsfhdshdjtsb.CombatEnchants.enchantments;
 
 import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
+import com.dsfhdshdjtsb.CombatEnchants.config.ModConfigs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 
 public class ShieldingEnchantment extends Enchantment {
     public ShieldingEnchantment() {
         super(Rarity.UNCOMMON, EnchantmentTarget.WEARABLE, CombatEnchants.ALL_ARMOR);
+        if(ModConfigs.SHIELDING)
+            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "shielding"), this);
     }
 
     @Override

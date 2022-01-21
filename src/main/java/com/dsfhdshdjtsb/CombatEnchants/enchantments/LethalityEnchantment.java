@@ -1,6 +1,7 @@
 package com.dsfhdshdjtsb.CombatEnchants.enchantments;
 
 import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
+import com.dsfhdshdjtsb.CombatEnchants.config.ModConfigs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentTarget;
@@ -10,10 +11,14 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 
 public class LethalityEnchantment extends Enchantment {
     public LethalityEnchantment() {
         super(Rarity.COMMON, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        if(ModConfigs.LETHALITY)
+            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "lethality"), this);
     }
 
     @Override
@@ -37,7 +42,6 @@ public class LethalityEnchantment extends Enchantment {
             if(bDamage > 0)
                 target.damage(DamageSource.player((PlayerEntity) user), bDamage + damage);
         }
-        super.onTargetDamaged(user, target, level);
     }
 
     @Override

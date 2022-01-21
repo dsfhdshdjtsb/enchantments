@@ -1,14 +1,19 @@
 package com.dsfhdshdjtsb.CombatEnchants.enchantments;
 
+import com.dsfhdshdjtsb.CombatEnchants.config.ModConfigs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 
 public class DarknessCurse extends Enchantment {
     public DarknessCurse() {
         super(Rarity.VERY_RARE, EnchantmentTarget.ARMOR_HEAD, new EquipmentSlot[] {EquipmentSlot.MAINHAND});
+        if(ModConfigs.DARKNESS)
+            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "darkness"), this);
     }
 
     @Override

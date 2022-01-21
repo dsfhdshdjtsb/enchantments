@@ -1,6 +1,7 @@
 package com.dsfhdshdjtsb.CombatEnchants.enchantments;
 
 import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
+import com.dsfhdshdjtsb.CombatEnchants.config.ModConfigs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.Entity;
@@ -9,11 +10,16 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.projectile.ArrowEntity;
+import net.minecraft.item.CrossbowItem;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
 public class VolleyEnchantment extends Enchantment {
     public VolleyEnchantment() {
         super(Rarity.UNCOMMON, EnchantmentTarget.BOW, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        if(ModConfigs.VOLLEY)
+            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "volley"), this);
     }
 
     @Override
@@ -30,7 +36,7 @@ public class VolleyEnchantment extends Enchantment {
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
         if(target instanceof LivingEntity) {
             DamageSource damageSource = ((LivingEntity) target).getRecentDamageSource();
-            if(damageSource != null && !damageSource.isProjectile())
+            if((damageSource != null && !damageSource.isProjectile()) || user.getMainHandStack().getItem() instanceof CrossbowItem)
                 return;
             if(user.hasStatusEffect(CombatEnchants.BARRAGE_EFFECT))
                 return;

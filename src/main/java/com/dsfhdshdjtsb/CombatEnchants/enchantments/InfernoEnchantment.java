@@ -1,6 +1,7 @@
 package com.dsfhdshdjtsb.CombatEnchants.enchantments;
 
 import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
+import com.dsfhdshdjtsb.CombatEnchants.config.ModConfigs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentTarget;
@@ -10,12 +11,16 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 
 import java.util.List;
 
 public class InfernoEnchantment extends Enchantment {
     public InfernoEnchantment() {
         super(Rarity.RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        if(ModConfigs.INFERNO)
+            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "inferno"), this);
     }
 
     @Override
@@ -41,14 +46,10 @@ public class InfernoEnchantment extends Enchantment {
             }
         }
 
-        if (target.world instanceof ServerWorld) {
-            for (double x = -(2.0D + level * 2); x <= (2.0D + level * 2); x = x + 1) {
-                double y = Math.sqrt((2.0D + level * 2) * (2.0D + level * 2) - x * x);
-                ((ServerWorld) target.world).spawnParticles(ParticleTypes.FLAME, target.getX() + x, target.getBodyY(0.5D), target.getZ() + y, 0, 1, 0.0D, 1, 0.0D);
-                ((ServerWorld) target.world).spawnParticles(ParticleTypes.FLAME, target.getX() + x, target.getBodyY(0.5D), target.getZ() - y, 0, 1, 0.0D, 1, 0.0D);
-            }
+        if (target.world instanceof ServerWorld && list.size() > 2) {
+            ((ServerWorld) target.world).spawnParticles(ParticleTypes.FLAME, target.getX(), target.getBodyY(0.5D), target.getZ(), 7, 0.0D, 0.5D, 0.0D, 0.4D);
+
         }
-        super.onTargetDamaged(user, target, level);
     }
 
     @Override

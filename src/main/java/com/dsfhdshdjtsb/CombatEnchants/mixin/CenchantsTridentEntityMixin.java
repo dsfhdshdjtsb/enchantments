@@ -9,6 +9,7 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.EvokerFangsEntity;
 import net.minecraft.entity.projectile.TridentEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.hit.EntityHitResult;
 import org.spongepowered.asm.mixin.Mixin;
@@ -23,6 +24,8 @@ import java.util.Random;
 public abstract class CenchantsTridentEntityMixin {
 
     @Shadow private ItemStack tridentStack;
+
+    @Shadow private boolean dealtDamage;
 
     @Inject(at = @At("TAIL"), method = "onEntityHit")
     protected void onEntityHit(EntityHitResult entityHitResult, CallbackInfo ci)
@@ -74,4 +77,14 @@ public abstract class CenchantsTridentEntityMixin {
             }
         }
     }
+
+    @Inject(at =  @At("TAIL"), method="tick")
+    public void tick(CallbackInfo ci) {
+        TridentEntity trident = ((TridentEntity)(Object)(this));
+        if(!dealtDamage && EnchantmentHelper.getLevel(CombatEnchants.INKING, tridentStack) != 0 && trident.world instanceof ServerWorld)
+        {
+            ((ServerWorld) trident.world).spawnParticles(ParticleTypes.SQUID_INK, trident.getX(), trident.getBodyY(0.5D), trident.getZ(), 0, 0.0D, 0.0D, 0.0D, 0.0D);
+        }
+    }
+
 }

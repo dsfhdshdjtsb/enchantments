@@ -1,6 +1,7 @@
 package com.dsfhdshdjtsb.CombatEnchants.enchantments;
 
 import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
+import com.dsfhdshdjtsb.CombatEnchants.config.ModConfigs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentTarget;
@@ -10,11 +11,17 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 
 public class RampageEnchantment extends Enchantment {
 
     public RampageEnchantment() {
         super(Rarity.RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        if(ModConfigs.RAMPAGE)
+            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "rampage"), this);
     }
 
     @Override
@@ -38,7 +45,10 @@ public class RampageEnchantment extends Enchantment {
                 user.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 80 + level * 40, 1));
                 user.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 80 + level * 40, 1));
                 user.addStatusEffect(new StatusEffectInstance(CombatEnchants.RAMPAGE_EFFECT, 80 + level * 40, 0));
-                super.onTargetDamaged(user, target, level);
+                if (user.world instanceof ServerWorld) {
+                    ((ServerWorld) target.world).spawnParticles(ParticleTypes.SOUL, target.getX(), target.getBodyY(0.5D), target.getZ(), 0, 1, 0.0D, 1, 0.0D);
+                    ((ServerWorld) user.world).spawnParticles(ParticleTypes.ANGRY_VILLAGER, user.getX(), user.getBodyY(0.5D) + 0.5, user.getZ(), 2, 0.4, 0.0D, 0.4, 0.0D);
+                }
                 return;
             }
             if(user.getStatusEffect(CombatEnchants.RAMPAGE_EFFECT) != null)
@@ -53,7 +63,10 @@ public class RampageEnchantment extends Enchantment {
                 user.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 20 + level * 20, 0));
                 user.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 20 + level * 20, 0));
                 user.addStatusEffect(new StatusEffectInstance(CombatEnchants.RAMPAGE_EFFECT, 20 + level * 20, 0));
-                super.onTargetDamaged(user, target, level);
+                if (user.world instanceof ServerWorld) {
+                    ((ServerWorld) target.world).spawnParticles(ParticleTypes.SOUL, target.getX(), target.getBodyY(0.5D), target.getZ(), 0, 1, 0.0D, 1, 0.0D);
+                    ((ServerWorld) user.world).spawnParticles(ParticleTypes.ANGRY_VILLAGER, user.getX(), user.getBodyY(0.5D) + 0.5, user.getZ(), 2, 0.4, 0.0D, 0.4, 0.0D);
+                }
                 return;
             }
 
@@ -62,7 +75,6 @@ public class RampageEnchantment extends Enchantment {
                 ((LivingEntity)target).addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, level * 20, 0));
             }
         }
-        super.onTargetDamaged(user, target, level);
     }
 
     @Override

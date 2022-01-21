@@ -19,6 +19,9 @@
 
   "environment": "*",
   "entrypoints": {
+    "client": [
+      "com.dsfhdshdjtsb.CombatEnchants.CombatEnchantsClient"
+    ],
     "main": [
       "com.dsfhdshdjtsb.CombatEnchants.CombatEnchants"
     ]

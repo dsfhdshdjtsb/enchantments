@@ -1,18 +1,24 @@
 package com.dsfhdshdjtsb.CombatEnchants.enchantments;
 
 import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
+import com.dsfhdshdjtsb.CombatEnchants.config.ModConfigs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.*;
 import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 
 
 public class ComboEnchantment extends Enchantment {
     public ComboEnchantment() {
         super(Rarity.UNCOMMON, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        if(ModConfigs.COMBO)
+            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "combo"), this);
     }
 
     @Override
@@ -40,6 +46,12 @@ public class ComboEnchantment extends Enchantment {
                 lightning.setPos(target.getX(), target.getY(), target.getZ());
                 world.spawnEntity(lightning);
                 ((LivingEntity) target).removeStatusEffect(CombatEnchants.MARK_EFFECT);
+                ((ServerWorld) user.world).spawnParticles(ParticleTypes.END_ROD, target.getX(), target.getBodyY(0.5D), target.getZ(), 20, 0.3, 0.5, 0.3, 0.5D);
+
+            }
+            else
+            {
+                ((ServerWorld) user.world).spawnParticles(ParticleTypes.ELECTRIC_SPARK, target.getX(), target.getBodyY(0.5D), target.getZ(), 5, 0.3, 0.5, 0.3, 0.0D);
             }
         }
 

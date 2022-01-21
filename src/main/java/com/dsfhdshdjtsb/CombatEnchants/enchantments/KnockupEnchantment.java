@@ -1,15 +1,21 @@
 package com.dsfhdshdjtsb.CombatEnchants.enchantments;
 
+import com.dsfhdshdjtsb.CombatEnchants.config.ModConfigs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.*;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.item.CrossbowItem;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 
 public class KnockupEnchantment extends Enchantment {
     public KnockupEnchantment() {
         super(Rarity.VERY_RARE, EnchantmentTarget.BOW, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        if(ModConfigs.KNOCKUP)
+            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "knockup"), this);
     }
 
     @Override
@@ -26,7 +32,7 @@ public class KnockupEnchantment extends Enchantment {
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
         if(target instanceof LivingEntity) {
             DamageSource damageSource = ((LivingEntity) target).getRecentDamageSource();
-            if(damageSource != null && !damageSource.isProjectile())
+            if((damageSource != null && !damageSource.isProjectile()) || user.getMainHandStack().getItem() instanceof CrossbowItem)
                 return;
         }
         if(target instanceof LivingEntity)

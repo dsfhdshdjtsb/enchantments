@@ -1,6 +1,7 @@
 package com.dsfhdshdjtsb.CombatEnchants.enchantments;
 
 import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
+import com.dsfhdshdjtsb.CombatEnchants.config.ModConfigs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentTarget;
@@ -11,12 +12,16 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 
 import java.util.List;
 
 public class LifestealEnchantment extends Enchantment {
     public LifestealEnchantment() {
         super(Rarity.UNCOMMON, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        if(ModConfigs.LIFESTEAL)
+            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "lifesteal"), this);
     }
 
     @Override
@@ -31,7 +36,7 @@ public class LifestealEnchantment extends Enchantment {
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
-        if (EnchantmentHelper.getLevel(CombatEnchants.LIFESTEAL, user.getMainHandStack()) == 0||target.distanceTo(user) >= 6)
+        if (EnchantmentHelper.getLevel(CombatEnchants.LIFESTEAL, user.getMainHandStack()) == 0 || target.distanceTo(user) >= 6)
             return;
         if (user.getStatusEffect(CombatEnchants.LIFESTEAL_COOLDOWN_EFFECT) == null) {
             List<LivingEntity> list = target.world.getNonSpectatingEntities(LivingEntity.class, target.getBoundingBox()
@@ -63,18 +68,11 @@ public class LifestealEnchantment extends Enchantment {
                     }
                 }
             }
-            if (target.world instanceof ServerWorld) {
-                for (double x = -(2 + level); x <= (2 + level); x = x + 1) {
-                    double y = Math.sqrt((2 + level) * (2 + level) - x * x);
-                    ((ServerWorld) target.world).spawnParticles(ParticleTypes.COMPOSTER, target.getX() + x, target.getBodyY(0.5D), target.getZ() + y, 0, 1, 0.0D, 1, 0.0D);
-                    ((ServerWorld) target.world).spawnParticles(ParticleTypes.COMPOSTER, target.getX() + x, target.getBodyY(0.5D), target.getZ() - y, 0, 1, 0.0D, 1, 0.0D);
-                }
-            }
             user.heal(counter + (level));
             user.addStatusEffect(new StatusEffectInstance(CombatEnchants.LIFESTEAL_COOLDOWN_EFFECT, 300 - (level * 20)));
-            super.onTargetDamaged(user, target, level);
+            if(user.world instanceof ServerWorld)
+                ((ServerWorld) user.world).spawnParticles(ParticleTypes.HEART, user.getX(), user.getBodyY(0.5D), user.getZ(), 3, 0.4, 0.5, 0.4, 0.0D);
         }
-
     }
 
     @Override
