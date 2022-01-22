@@ -224,6 +224,4 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
             return bl;
         }
     }
-
-
 }

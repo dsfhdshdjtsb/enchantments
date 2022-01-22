@@ -16,6 +16,7 @@ repositories {
 	// Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
 	// See https://docs.gradle.org/current/userguide/declaring_repositories.html
 	// for more information about repositories.
+	maven { url = "https://jitpack.io" }
 }
 
 dependencies {
@@ -25,6 +26,11 @@ dependencies {
 
 	//Fabric api
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+	modImplementation("com.github.Chocohead:Fabric-ASM:v${project.fabric_asm_version}") {
+		exclude (group: "net.fabricmc.fabric-api")
+	}
+	include("com.github.Chocohead:Fabric-ASM:v${project.fabric_asm_version}")
 }
 
 processResources {
@@ -58,10 +64,16 @@ jar {
 publishing {
 	publications {
 		mavenJava(MavenPublication) {
-			from components.java
+			// add all the jars that should be included when publishing to maven
+			artifact(remapJar) {
+				builtBy remapJar
+			}
+			artifact(sourcesJar) {
+				builtBy remapSourcesJar
+			}
 		}
 	}
 
-	// See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
-	repositories { allprojects { repositories { maven { url 'https://jitpack.io' } } } }
+	repositories {
+	}
 }

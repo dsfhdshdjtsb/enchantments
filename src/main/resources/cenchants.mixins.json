@@ -5,10 +5,10 @@
   "compatibilityLevel": "JAVA_16",
   "mixins": [
     "CenchantsBowItemMixin",
-    "CenchantsEnchantmentHelperMixin",
     "CenchantsLivingEntityMixin",
     "CenchantsPlayerEntityMixin",
-    "CenchantsTridentEntityMixin"
+    "CenchantsTridentEntityMixin",
+    "CenchantsEnchantmentTargetMixin"
   ],
   "client": [
   ],

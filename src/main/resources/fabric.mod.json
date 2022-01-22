@@ -29,12 +29,13 @@
   "mixins": [
     "cenchants.mixins.json"
   ],
-
+  "accessWidener": "cenchants.accesswidener",
   "depends": {
     "fabricloader": ">=0.11.3",
     "fabric": "*",
     "minecraft": "1.18.x",
-    "java": ">=17"
+    "java": ">=17",
+    "mm":">=2.3"
   },
   "suggests": {
     "another-mod": "*"

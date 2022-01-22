@@ -1,6 +1,8 @@
 package com.dsfhdshdjtsb.CombatEnchants.enchantments;
 
 import com.dsfhdshdjtsb.CombatEnchants.config.ModConfigs;
+import com.dsfhdshdjtsb.CombatEnchants.mixin.CenchantsShieldTarget;
+import com.dsfhdshdjtsb.CombatEnchants.mixin.CenchantsShieldTargetLib;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.EquipmentSlot;
@@ -11,7 +13,7 @@ import net.minecraft.util.registry.Registry;
 
 public class SteadfastEnchantment extends Enchantment {
     public SteadfastEnchantment() {
-        super(Rarity.RARE, EnchantmentTarget.BREAKABLE, new EquipmentSlot[] {EquipmentSlot.MAINHAND, EquipmentSlot.OFFHAND});
+        super(Rarity.RARE, CenchantsShieldTargetLib.SHIELD_TARGET, new EquipmentSlot[] {EquipmentSlot.MAINHAND, EquipmentSlot.OFFHAND});
         if(ModConfigs.STEADFAST)
             Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "steadfast"), this);
 
@@ -30,11 +32,6 @@ public class SteadfastEnchantment extends Enchantment {
     @Override
     public boolean isAcceptableItem(ItemStack stack) {
         return stack.getItem() instanceof ShieldItem;
-    }
-
-    @Override
-    public boolean isTreasure() {
-        return true;
     }
 
     @Override
