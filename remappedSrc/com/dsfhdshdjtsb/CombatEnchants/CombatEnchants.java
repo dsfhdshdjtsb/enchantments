@@ -50,7 +50,6 @@ public class CombatEnchants implements ModInitializer {
 	public static Enchantment LIGHTWEIGHT;
 	public static Enchantment LIFELINE;
 	public static Enchantment INKING;
-	public static Enchantment GRAB;
 
 	public static final StatusEffect RAMPAGE_EFFECT = new RampageEffect();
 	public static final StatusEffect LIFESTEAL_COOLDOWN_EFFECT = new LifestealCooldownEffect();
@@ -66,7 +65,6 @@ public class CombatEnchants implements ModInitializer {
 	public static final StatusEffect LIFELINE_COOLDOWN_EFFECT = new LifelineCooldownEffect();
 	public static final StatusEffect FROST_PARTICLE_EFFECT = new FrostParticleEffect();
 	public static final StatusEffect SLEEPY_PARTICLE_EFFECT = new SleepyParticleEffect();
-	public static final StatusEffect GRAB_EFFECT = new GrabEffect();
 
 	public static final DefaultParticleType SHIELD_PARTICLE = FabricParticleTypes.simple();
 	public static final DefaultParticleType SLEEPY_PARTICLE = FabricParticleTypes.simple();
@@ -85,7 +83,6 @@ public class CombatEnchants implements ModInitializer {
 		FERVOR = new FervorEnchantment();
 		FLAME_WALKER = new FlameWalkerEnchantment();
 		FROST = new FrostEnchantment();
-		GRAB = new GrabEnchantment();
 		HOOK = new HookEnchantment();
 		HUNTER = new HunterEnchantment();
 		INFERNO = new InfernoEnchantment();
@@ -125,7 +122,6 @@ public class CombatEnchants implements ModInitializer {
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "lifeline_cooldown"), LIFELINE_COOLDOWN_EFFECT);
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "frost_particle"), FROST_PARTICLE_EFFECT);
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "sleepy_particle"), SLEEPY_PARTICLE_EFFECT);
-		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "grab"), GRAB_EFFECT);
 
 		Registry.register(Registry.PARTICLE_TYPE, new Identifier("cenchants", "shield"), SHIELD_PARTICLE);
 		Registry.register(Registry.PARTICLE_TYPE, new Identifier("cenchants", "sleepy"), SLEEPY_PARTICLE);

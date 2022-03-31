@@ -9,22 +9,22 @@ import net.minecraft.item.ShieldItem;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
-public class SteadfastEnchantment extends Enchantment {
-    public SteadfastEnchantment() {
-        super(Rarity.RARE, EnchantmentTarget.BREAKABLE, new EquipmentSlot[] {EquipmentSlot.MAINHAND, EquipmentSlot.OFFHAND});
-        if(ModConfigs.STEADFAST)
-            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "steadfast"), this);
+public class LightweightEnchantment extends Enchantment {
+    public LightweightEnchantment() {
+        super(Rarity.UNCOMMON, EnchantmentTarget.BREAKABLE, new EquipmentSlot[] {EquipmentSlot.MAINHAND, EquipmentSlot.OFFHAND});
+        if(ModConfigs.LIGHTWEIGHT)
+            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "lightweight"), this);
 
     }
 
     @Override
     public int getMinPower(int level) {
-        return 10 + 20 * (level - 1);
+        return 1 + (level - 1) * 10;
     }
 
     @Override
     public int getMaxPower(int level) {
-        return super.getMinPower(level) + 50;
+        return this.getMinPower(level) + 15;
     }
 
     @Override
@@ -33,13 +33,13 @@ public class SteadfastEnchantment extends Enchantment {
     }
 
     @Override
-    public boolean isTreasure() {
-        return super.isTreasure();
+    public int getMaxLevel() {
+        return 5;
     }
 
     @Override
-    public int getMaxLevel() {
-        return 2;
+    public boolean isTreasure() {
+        return true;
     }
 
     @Override

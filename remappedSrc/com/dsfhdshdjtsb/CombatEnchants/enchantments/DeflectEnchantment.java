@@ -3,18 +3,17 @@ package com.dsfhdshdjtsb.CombatEnchants.enchantments;
 import com.dsfhdshdjtsb.CombatEnchants.config.ModConfigs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ShieldItem;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
-public class SteadfastEnchantment extends Enchantment {
-    public SteadfastEnchantment() {
-        super(Rarity.RARE, EnchantmentTarget.BREAKABLE, new EquipmentSlot[] {EquipmentSlot.MAINHAND, EquipmentSlot.OFFHAND});
-        if(ModConfigs.STEADFAST)
-            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "steadfast"), this);
-
+public class DeflectEnchantment extends Enchantment {
+    public DeflectEnchantment() {
+        super(Enchantment.Rarity.VERY_RARE, EnchantmentTarget.ARMOR_CHEST, new EquipmentSlot[] {EquipmentSlot.CHEST});
+        if(ModConfigs.DEFLECT)
+            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "deflect"), this);
     }
 
     @Override
@@ -24,17 +23,12 @@ public class SteadfastEnchantment extends Enchantment {
 
     @Override
     public int getMaxPower(int level) {
-        return super.getMinPower(level) + 50;
+        return this.getMinPower(level) + 50;
     }
 
     @Override
-    public boolean isAcceptableItem(ItemStack stack) {
-        return stack.getItem() instanceof ShieldItem;
-    }
+    public void onUserDamaged(LivingEntity user, Entity attacker, int level) {
 
-    @Override
-    public boolean isTreasure() {
-        return super.isTreasure();
     }
 
     @Override

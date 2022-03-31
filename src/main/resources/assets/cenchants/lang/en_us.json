@@ -67,6 +67,8 @@
   "enchantment.cenchants.snap.desc": "Summon a line of fangs after hitting an enemy",
   "enchantment.cenchants.inking": "Inking",
   "enchantment.cenchants.inking.desc": "Chance to blind enemies",
+  "enchantment.cenchants.grab": "Grab",
+  "enchantment.cenchants.grab.desc": "Launch enemies towards each other",
   "effect.cenchants.knockup": "Knockup",
   "effect.cenchants.lifesteal_cooldown": "Lifesteal Cooldown",
   "effect.cenchants.rampage": "Rampage",

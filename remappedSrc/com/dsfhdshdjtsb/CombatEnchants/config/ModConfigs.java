@@ -17,7 +17,6 @@ public class ModConfigs {
     public static boolean FERVOR;
     public static boolean FLAMEWALKER;
     public static boolean FROST;
-    public static boolean GRAB;
     public static boolean HOOK;
     public static boolean HUNTER;
     public static boolean INFERNO;
@@ -62,7 +61,6 @@ public class ModConfigs {
         configs.addKeyValuePair(new Pair<>("fervor.enabled", true));
         configs.addKeyValuePair(new Pair<>("flamewalker.enabled", true));
         configs.addKeyValuePair(new Pair<>("frost.enabled", true));
-        configs.addKeyValuePair(new Pair<>("grab.enabled", true));
         configs.addKeyValuePair(new Pair<>("hook.enabled", true));
         configs.addKeyValuePair(new Pair<>("hunter.enabled", true));
         configs.addKeyValuePair(new Pair<>("inferno.enabled", true));
@@ -72,14 +70,14 @@ public class ModConfigs {
         configs.addKeyValuePair(new Pair<>("lethality.enabled", true));
         configs.addKeyValuePair(new Pair<>("lifeline.enabled", true));
         configs.addKeyValuePair(new Pair<>("lifesteal.enabled", true));
-        configs.addKeyValuePair(new Pair<>("lightweight.enabled", false));
+        configs.addKeyValuePair(new Pair<>("lightweight.enabled", true));
         configs.addKeyValuePair(new Pair<>("perception.enabled", true));
         configs.addKeyValuePair(new Pair<>("rampage.enabled", true));
         configs.addKeyValuePair(new Pair<>("rejuvenate.enabled", true));
         configs.addKeyValuePair(new Pair<>("shielding.enabled", true));
         configs.addKeyValuePair(new Pair<>("snap.enabled", true));
         configs.addKeyValuePair(new Pair<>("sorcery.enabled", true));
-        configs.addKeyValuePair(new Pair<>("steadfast.enabled", false));
+        configs.addKeyValuePair(new Pair<>("steadfast.enabled", true));
         configs.addKeyValuePair(new Pair<>("suicide.enabled", true));
         configs.addKeyValuePair(new Pair<>("tranquilize.enabled", true));
         configs.addKeyValuePair(new Pair<>("triumph.enabled", true));
@@ -101,7 +99,6 @@ public class ModConfigs {
         FERVOR = CONFIG.getOrDefault("fervor.enabled", true);
         FLAMEWALKER = CONFIG.getOrDefault("flamewalker.enabled", true);
         FROST = CONFIG.getOrDefault("frost.enabled", true);
-        GRAB = CONFIG.getOrDefault("grab.enabled", true);
         HOOK = CONFIG.getOrDefault("hook.enabled", true);
         HUNTER = CONFIG.getOrDefault("hunter.enabled", true);
         INFERNO = CONFIG.getOrDefault("inferno.enabled", true);

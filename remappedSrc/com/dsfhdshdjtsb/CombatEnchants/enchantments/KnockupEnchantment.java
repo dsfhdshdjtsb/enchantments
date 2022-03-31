@@ -1,6 +1,5 @@
 package com.dsfhdshdjtsb.CombatEnchants.enchantments;
 
-import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
 import com.dsfhdshdjtsb.CombatEnchants.config.ModConfigs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
@@ -8,7 +7,6 @@ import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.*;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.item.BowItem;
 import net.minecraft.item.CrossbowItem;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -51,7 +49,7 @@ public class KnockupEnchantment extends Enchantment {
 
     @Override
     protected boolean canAccept(Enchantment other) {
-        if(other.equals(Enchantments.PUNCH) || other.equals(CombatEnchants.GRAB))
+        if(other.equals(Enchantments.PUNCH))
             return false;
         return super.canAccept(other);
     }
