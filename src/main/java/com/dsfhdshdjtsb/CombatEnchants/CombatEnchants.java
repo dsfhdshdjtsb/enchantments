@@ -30,7 +30,7 @@ public class CombatEnchants implements ModInitializer {
 	public static Enchantment TRANQUILIZE;
 	public static Enchantment FROST;
 	public static Enchantment SHIELDING;
-	public static Enchantment SUICIDE;
+	public static Enchantment EXPLODE;
 	public static Enchantment FLAME_WALKER;
 	public static Enchantment VISION;
 	public static Enchantment DARKNESS;
@@ -104,7 +104,7 @@ public class CombatEnchants implements ModInitializer {
 		SNAP = new SnapEnchantment();
 		SORCERY = new SorceryEnchantment();
 		STEADFAST = new SteadfastEnchantment();
-		SUICIDE = new SuicideEnchantment();
+		EXPLODE = new ExplodeEnchantment();
 		TRANQUILIZE = new TranquilizeEnchantment();
 		TREMOR = new TremorEnchantment();
 		TRIUMPH = new TriumphEnchantment();

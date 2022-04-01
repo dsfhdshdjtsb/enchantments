@@ -35,7 +35,7 @@ public class ModConfigs {
     public static boolean SNAP;
     public static boolean SORCERY;
     public static boolean STEADFAST;
-    public static boolean SUICIDE;
+    public static boolean EXPLODE;
     public static boolean TRANQUILIZE;
     public static boolean TREMOR;
     public static boolean TRIUMPH;
@@ -81,7 +81,7 @@ public class ModConfigs {
         configs.addKeyValuePair(new Pair<>("snap.enabled", true));
         configs.addKeyValuePair(new Pair<>("sorcery.enabled", true));
         configs.addKeyValuePair(new Pair<>("steadfast.enabled", false));
-        configs.addKeyValuePair(new Pair<>("suicide.enabled", true));
+        configs.addKeyValuePair(new Pair<>("explode.enabled", true));
         configs.addKeyValuePair(new Pair<>("tranquilize.enabled", true));
         configs.addKeyValuePair(new Pair<>("tremor.enabled", true));
         configs.addKeyValuePair(new Pair<>("triumph.enabled", true));
@@ -121,7 +121,7 @@ public class ModConfigs {
         SNAP = CONFIG.getOrDefault("snap.enabled", true);
         SORCERY = CONFIG.getOrDefault("sorcery.enabled", true);
         STEADFAST = CONFIG.getOrDefault("steadfast.enabled", true);
-        SUICIDE = CONFIG.getOrDefault("suicide.enabled", true);
+        EXPLODE = CONFIG.getOrDefault("explode.enabled", true);
         TRANQUILIZE = CONFIG.getOrDefault("tranquilize.enabled", true);
         TREMOR = CONFIG.getOrDefault("tremor.enabled", true);
         TRIUMPH = CONFIG.getOrDefault("triumph.enabled", true);

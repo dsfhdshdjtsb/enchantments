@@ -43,7 +43,7 @@ public class ComboEnchantment extends Enchantment {
                 World world = target.world;
                 LightningEntity lightning = EntityType.LIGHTNING_BOLT.create(world);
                 assert lightning != null;
-                lightning.setPos(target.getX(), target.getY(), target.getZ());
+                lightning.setPos(target.getX(), target.getY() + 5, target.getZ());
                 world.spawnEntity(lightning);
                 ((LivingEntity) target).removeStatusEffect(CombatEnchants.MARK_EFFECT);
                 ((ServerWorld) user.world).spawnParticles(ParticleTypes.END_ROD, target.getX(), target.getBodyY(0.5D), target.getZ(), 20, 0.3, 0.5, 0.3, 0.5D);

@@ -15,11 +15,11 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.explosion.Explosion;
 
-public class SuicideEnchantment extends Enchantment {
-    public SuicideEnchantment() {
+public class ExplodeEnchantment extends Enchantment {
+    public ExplodeEnchantment() {
         super(Rarity.UNCOMMON, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
-        if(ModConfigs.SUICIDE)
-            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "suicide"), this);
+        if(ModConfigs.EXPLODE)
+            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "explode"), this);
     }
 
     @Override
@@ -34,7 +34,7 @@ public class SuicideEnchantment extends Enchantment {
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
-        if(EnchantmentHelper.getLevel(CombatEnchants.SUICIDE, user.getMainHandStack()) == 0||target.distanceTo(user) >= 6)
+        if(EnchantmentHelper.getLevel(CombatEnchants.EXPLODE, user.getMainHandStack()) == 0||target.distanceTo(user) >= 6)
             return;
         if(!(user instanceof PlayerEntity) && !user.world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING))
             return;
