@@ -50,7 +50,7 @@ public class GrabEnchantment extends Enchantment {
         System.out.println("test1");
         if(target instanceof LivingEntity) {
             List<LivingEntity> list = target.world.getNonSpectatingEntities(LivingEntity.class, target.getBoundingBox()
-                    .expand(15 + level * 5, 0.25D, 15 + level * 5));
+                    .expand(15 + level * 5, 10, 15 + level * 5));
             if (list.size() > 1) {
                 LivingEntity closest = (LivingEntity) target;
                 double closestdistance = 100;
@@ -66,10 +66,10 @@ public class GrabEnchantment extends Enchantment {
                     double closestX = closest.getX();
                     double closestZ = closest.getZ();
 
-                    double knockbackLevel = 1 * target.distanceTo(closest) / Math.sqrt(2 * Math.pow((5 + level * 2.5), 2));
+                    double knockbackLevel = 1.2 * target.distanceTo(closest) / Math.sqrt(2 * Math.pow((5 + level * 2.5), 2));
 
-                    closest.setVelocity(0, 0, 0);
-                    target.setVelocity(0, 0, 0);
+                    closest.setVelocity(0, 1, 0);
+                    target.setVelocity(0, 1, 0);
                     closest.takeKnockback(knockbackLevel, (closestX - targetX), (closestZ - targetZ));
                     ((LivingEntity) target).takeKnockback(knockbackLevel, targetX - closestX, targetZ - closestZ);
 

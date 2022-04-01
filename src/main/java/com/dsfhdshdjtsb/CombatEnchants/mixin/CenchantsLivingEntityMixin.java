@@ -1,6 +1,8 @@
 package com.dsfhdshdjtsb.CombatEnchants.mixin;
 
 import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
+import net.minecraft.block.BlockRenderType;
+import net.minecraft.block.BlockState;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -11,8 +13,13 @@ import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.ItemStack;
+import net.minecraft.particle.BlockStateParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.Heightmap;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
@@ -26,9 +33,7 @@ import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 @Mixin(LivingEntity.class)
 public abstract class CenchantsLivingEntityMixin extends Entity {
@@ -139,6 +144,39 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
                     this.addStatusEffect(new StatusEffectInstance(randEffect, duration * 20, 0));
                 else
                     this.addStatusEffect(new StatusEffectInstance(randEffect, duration * 20, 1));
+            }
+        }
+        int tremor = EnchantmentHelper.getLevel(CombatEnchants.TREMOR, this.getEquippedStack(EquipmentSlot.FEET));
+        if(tremor > 0 && source.isFromFalling())
+        {
+            float damage = Math.min(10, amount);
+            LivingEntity user = ((LivingEntity)((Object)this));
+            List<LivingEntity> list = this.world.getNonSpectatingEntities(LivingEntity.class, this.getBoundingBox()
+                    .expand(damage, 1D, damage));
+            list.remove(user);
+
+            for (LivingEntity e : list)
+            {
+                e.damage(DamageSource.mob(user), damage);
+                e.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, (int)damage * 10, 1));
+            }
+            if (user.world instanceof ServerWorld)
+            {
+                System.out.println("test");
+                for(double i = user.getX() - damage / 2; i <= user.getX() + damage / 2; i++)
+                {
+                    for(double j = user.getZ() - damage / 2; j <= user.getZ() + damage / 2; j++)
+                    {
+                        int x = MathHelper.floor(i);
+                        int y = MathHelper.floor(this.getY() - 0.20000000298023224D);
+                        int z = MathHelper.floor(j);
+                        BlockPos blockPos = new BlockPos(x, y, z);
+                        BlockState blockState = user.world.getBlockState(blockPos);
+                        ((ServerWorld) user.world).spawnParticles( new BlockStateParticleEffect(ParticleTypes.BLOCK, blockState), x,
+                                y + 1, z, 4, 1, 0.0D, 1, 0.0D);
+
+                    }
+                }
             }
         }
 

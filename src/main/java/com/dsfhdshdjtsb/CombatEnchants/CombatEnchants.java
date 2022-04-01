@@ -51,6 +51,7 @@ public class CombatEnchants implements ModInitializer {
 	public static Enchantment LIFELINE;
 	public static Enchantment INKING;
 	public static Enchantment GRAB;
+	public static Enchantment TREMOR;
 
 	public static final StatusEffect RAMPAGE_EFFECT = new RampageEffect();
 	public static final StatusEffect LIFESTEAL_COOLDOWN_EFFECT = new LifestealCooldownEffect();
@@ -105,6 +106,7 @@ public class CombatEnchants implements ModInitializer {
 		STEADFAST = new SteadfastEnchantment();
 		SUICIDE = new SuicideEnchantment();
 		TRANQUILIZE = new TranquilizeEnchantment();
+		TREMOR = new TremorEnchantment();
 		TRIUMPH = new TriumphEnchantment();
 		VISION = new VisionEnchantment();
 		VOLLEY = new VolleyEnchantment();

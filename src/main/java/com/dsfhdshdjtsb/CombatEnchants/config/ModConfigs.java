@@ -37,6 +37,7 @@ public class ModConfigs {
     public static boolean STEADFAST;
     public static boolean SUICIDE;
     public static boolean TRANQUILIZE;
+    public static boolean TREMOR;
     public static boolean TRIUMPH;
     public static boolean VISION;
     public static boolean VOLLEY;
@@ -82,6 +83,7 @@ public class ModConfigs {
         configs.addKeyValuePair(new Pair<>("steadfast.enabled", false));
         configs.addKeyValuePair(new Pair<>("suicide.enabled", true));
         configs.addKeyValuePair(new Pair<>("tranquilize.enabled", true));
+        configs.addKeyValuePair(new Pair<>("tremor.enabled", true));
         configs.addKeyValuePair(new Pair<>("triumph.enabled", true));
         configs.addKeyValuePair(new Pair<>("vision.enabled", true));
         configs.addKeyValuePair(new Pair<>("volley.enabled", true));
@@ -121,6 +123,7 @@ public class ModConfigs {
         STEADFAST = CONFIG.getOrDefault("steadfast.enabled", true);
         SUICIDE = CONFIG.getOrDefault("suicide.enabled", true);
         TRANQUILIZE = CONFIG.getOrDefault("tranquilize.enabled", true);
+        TREMOR = CONFIG.getOrDefault("tremor.enabled", true);
         TRIUMPH = CONFIG.getOrDefault("triumph.enabled", true);
         VISION = CONFIG.getOrDefault("vision.enabled", true);
         VOLLEY = CONFIG.getOrDefault("volley.enabled", true);
