@@ -17,7 +17,7 @@ public class SleepyEffect extends StatusEffect {
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
         //tbh dont know what this does but vanilla code does it liek this so whatever
         if (!(entity instanceof PlayerEntity))
-            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, amplifier * 20, 255));
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, amplifier * 20, 255, true, false));
         entity.setPose(EntityPose.SLEEPING);
         entity.setSleepingPosition(entity.getBlockPos());
     }
