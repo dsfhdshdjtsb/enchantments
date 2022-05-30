@@ -3,13 +3,13 @@ package com.dsfhdshdjtsb.CombatEnchants.effects;
 import net.minecraft.entity.LivingEntity;
 
 import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.entity.effect.StatusEffectCategory;
+import net.minecraft.entity.effect.StatusEffectType;
 
 
 public class FervorEffect extends StatusEffect {
 
     public FervorEffect() {
-        super(StatusEffectCategory.BENEFICIAL, 0);
+        super(StatusEffectType.BENEFICIAL, 0);
     }
 
 

@@ -66,7 +66,7 @@ public class GrabEnchantment extends Enchantment {
                     double closestX = closest.getX();
                     double closestZ = closest.getZ();
 
-                    double knockbackLevel = 1.2 * target.distanceTo(closest) / Math.sqrt(2 * Math.pow((5 + level * 2.5), 2));
+                    float knockbackLevel = (float) (1.2 * target.distanceTo(closest) / Math.sqrt(2 * Math.pow((5 + level * 2.5), 2)));
 
                     closest.setVelocity(0, 1, 0);
                     target.setVelocity(0, 1, 0);

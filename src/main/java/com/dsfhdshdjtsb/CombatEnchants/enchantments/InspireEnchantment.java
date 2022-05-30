@@ -49,30 +49,30 @@ public class InspireEnchantment extends Enchantment {
             {
                 activated = true;
                 switch (level) {
-                    case 1 -> {
+                    case 1:
                         e.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 20, 0));
-                    }
-                    case 2 -> {
+                        break;
+                    case 2:
                         e.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 40, 0));
                         e.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 40, 0));
-                    }
-                    case 3 -> {
+                        break;
+                    case 3:
                         e.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 60, 0));
                         e.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 60, 0));
                         e.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 60, 0));
-                    }
-                    case 4 -> {
+                        break;
+                    case 4:
                         e.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 80, 0));
                         e.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 80, 0));
                         e.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 80, 0));
                         e.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 80, 0));
-                    }
-                    case 5 -> {
+                        break;
+                    case 5:
                         e.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 100, 0));
                         e.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 100, 1));
                         e.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 100, 0));
                         e.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 100, 1));
-                    }
+                        break;
                 }
             }
         }

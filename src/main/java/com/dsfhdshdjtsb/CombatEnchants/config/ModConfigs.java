@@ -16,7 +16,6 @@ public class ModConfigs {
     public static boolean DUELING;
     public static boolean FERVOR;
     public static boolean FLAMEWALKER;
-    public static boolean FROST;
     public static boolean GRAB;
     public static boolean HOOK;
     public static boolean HUNTER;
@@ -62,7 +61,6 @@ public class ModConfigs {
         configs.addKeyValuePair(new Pair<>("dueling.enabled", true));
         configs.addKeyValuePair(new Pair<>("fervor.enabled", true));
         configs.addKeyValuePair(new Pair<>("flamewalker.enabled", true));
-        configs.addKeyValuePair(new Pair<>("frost.enabled", true));
         configs.addKeyValuePair(new Pair<>("grab.enabled", true));
         configs.addKeyValuePair(new Pair<>("hook.enabled", true));
         configs.addKeyValuePair(new Pair<>("hunter.enabled", true));
@@ -102,7 +100,6 @@ public class ModConfigs {
         DUELING = CONFIG.getOrDefault("dueling.enabled", true);
         FERVOR = CONFIG.getOrDefault("fervor.enabled", true);
         FLAMEWALKER = CONFIG.getOrDefault("flamewalker.enabled", true);
-        FROST = CONFIG.getOrDefault("frost.enabled", true);
         GRAB = CONFIG.getOrDefault("grab.enabled", true);
         HOOK = CONFIG.getOrDefault("hook.enabled", true);
         HUNTER = CONFIG.getOrDefault("hunter.enabled", true);

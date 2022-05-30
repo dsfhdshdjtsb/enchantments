@@ -49,10 +49,6 @@ public class ComboEnchantment extends Enchantment {
                 ((ServerWorld) user.world).spawnParticles(ParticleTypes.END_ROD, target.getX(), target.getBodyY(0.5D), target.getZ(), 20, 0.3, 0.5, 0.3, 0.5D);
 
             }
-            else
-            {
-                ((ServerWorld) user.world).spawnParticles(ParticleTypes.ELECTRIC_SPARK, target.getX(), target.getBodyY(0.5D), target.getZ(), 5, 0.3, 0.5, 0.3, 0.0D);
-            }
         }
 
     }

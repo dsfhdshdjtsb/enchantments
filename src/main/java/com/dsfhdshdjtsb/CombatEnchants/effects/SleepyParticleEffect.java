@@ -3,13 +3,12 @@ package com.dsfhdshdjtsb.CombatEnchants.effects;
 import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.entity.effect.StatusEffectCategory;
-import net.minecraft.particle.ParticleTypes;
+import net.minecraft.entity.effect.StatusEffectType;
 import net.minecraft.server.world.ServerWorld;
 
 public class SleepyParticleEffect extends StatusEffect {
     public SleepyParticleEffect() {
-        super(StatusEffectCategory.HARMFUL, 0);
+        super(StatusEffectType.HARMFUL, 0);
     }
 
     @Override

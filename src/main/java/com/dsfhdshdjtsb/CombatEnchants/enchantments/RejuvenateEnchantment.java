@@ -54,15 +54,15 @@ public class RejuvenateEnchantment extends Enchantment {
             if(!e.equals(user) && (e instanceof PlayerEntity || (e instanceof TameableEntity && user.equals(((TameableEntity)(e)).getOwner())))) {
                 activated = true;
                 switch (level) {
-                    case 1 -> {
+                    case 1:
                         e.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 60, 0));
                         e.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 60, 0));
-                    }
-                    case 2 -> {
+                        break;
+                    case 2:
                         e.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 100, 1));
                         e.addStatusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 100, 0));
                         e.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 100, 0));
-                    }
+                        break;
                 }
                 if(e.world instanceof ServerWorld)
                 {

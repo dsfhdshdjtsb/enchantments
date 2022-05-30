@@ -44,8 +44,6 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
 
     @Shadow public abstract Iterable<ItemStack> getArmorItems();
 
-    @Shadow public abstract void setStatusEffect(StatusEffectInstance effect, @Nullable Entity source);
-
     @Shadow public abstract boolean addStatusEffect(StatusEffectInstance effect);
 
     @Shadow public abstract boolean removeStatusEffect(StatusEffect type);
@@ -83,7 +81,7 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
             StatusEffectInstance absorption = this.getStatusEffect(StatusEffects.ABSORPTION);
             if(absorption != null && absorption.getAmplifier() > shieldingLevel / 4)
                 this.removeStatusEffect(StatusEffects.ABSORPTION);
-            this.setStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, shieldingLevel * 10 + 5, shieldingLevel / 4, false, false, true), null);
+            this.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, shieldingLevel * 10 + 5, shieldingLevel / 4, false, false, true));
         }
         if(darkness != 0)
         {
@@ -116,7 +114,7 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
             if(EnchantmentHelper.getLevel(CombatEnchants.SHIELDING, i) != 0) {
                 if(!this.hasStatusEffect(CombatEnchants.SHIELDING_COOLDOWN_EFFECT) && this.world instanceof ServerWorld)
                     ((ServerWorld) this.world).spawnParticles(CombatEnchants.SHIELD_PARTICLE, this.getX(), this.getBodyY(0.5D), this.getZ(), 3, 0.3D, 0.3D, 0.3D, 0.0D);
-                this.setStatusEffect(new StatusEffectInstance(CombatEnchants.SHIELDING_COOLDOWN_EFFECT, 200), null);
+                this.addStatusEffect(new StatusEffectInstance(CombatEnchants.SHIELDING_COOLDOWN_EFFECT, 200));
                 break;
             }
             int tempSorcLevel = EnchantmentHelper.getLevel(CombatEnchants.SORCERY, i);
@@ -147,7 +145,7 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
             }
         }
         int tremor = EnchantmentHelper.getLevel(CombatEnchants.TREMOR, this.getEquippedStack(EquipmentSlot.FEET));
-        if(tremor > 0 && source.isFromFalling())
+        if(tremor > 0 && source == DamageSource.FALL)
         {
             float damage = Math.min(10, amount);
             LivingEntity user = ((LivingEntity)((Object)this));

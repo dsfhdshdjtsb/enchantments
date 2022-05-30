@@ -4,14 +4,14 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.entity.effect.StatusEffectCategory;
+import net.minecraft.entity.effect.StatusEffectType;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 
 public class FireWalkEffect extends StatusEffect {
     public FireWalkEffect() {
-        super(StatusEffectCategory.BENEFICIAL, 0);
+        super(StatusEffectType.BENEFICIAL, 0);
     }
 
 

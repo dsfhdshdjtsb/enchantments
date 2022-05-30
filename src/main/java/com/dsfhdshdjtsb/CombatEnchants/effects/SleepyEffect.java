@@ -3,14 +3,14 @@ package com.dsfhdshdjtsb.CombatEnchants.effects;
 import net.minecraft.entity.EntityPose;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffectType;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 
 public class SleepyEffect extends StatusEffect {
     public SleepyEffect() {
-        super(StatusEffectCategory.HARMFUL, 0);
+        super(StatusEffectType.HARMFUL, 0);
     }
 
     @Override

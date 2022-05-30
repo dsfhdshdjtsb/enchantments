@@ -1,10 +1,10 @@
 package com.dsfhdshdjtsb.CombatEnchants.effects;
 
 import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.entity.effect.StatusEffectCategory;
+import net.minecraft.entity.effect.StatusEffectType;
 
 public class AntihealEffect extends StatusEffect {
     public AntihealEffect() {
-        super(StatusEffectCategory.HARMFUL, 0xBF40BF);
+        super(StatusEffectType.HARMFUL, 0xBF40BF);
     }
 }

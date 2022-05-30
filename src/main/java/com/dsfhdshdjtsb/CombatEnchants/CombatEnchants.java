@@ -28,7 +28,6 @@ public class CombatEnchants implements ModInitializer {
 	public static Enchantment VOLLEY;
 	public static Enchantment HUNTER;
 	public static Enchantment TRANQUILIZE;
-	public static Enchantment FROST;
 	public static Enchantment SHIELDING;
 	public static Enchantment EXPLODE;
 	public static Enchantment FLAME_WALKER;
@@ -65,7 +64,6 @@ public class CombatEnchants implements ModInitializer {
 	public static final StatusEffect BARRAGE_EFFECT = new BarrageEffect();
 	public static final StatusEffect BARRAGE_STACK_EFFECT = new BarrageStackEffect();
 	public static final StatusEffect LIFELINE_COOLDOWN_EFFECT = new LifelineCooldownEffect();
-	public static final StatusEffect FROST_PARTICLE_EFFECT = new FrostParticleEffect();
 	public static final StatusEffect SLEEPY_PARTICLE_EFFECT = new SleepyParticleEffect();
 	public static final StatusEffect GRAB_EFFECT = new GrabEffect();
 
@@ -85,7 +83,6 @@ public class CombatEnchants implements ModInitializer {
 		DUELING = new DuelingEnchantment();
 		FERVOR = new FervorEnchantment();
 		FLAME_WALKER = new FlameWalkerEnchantment();
-		FROST = new FrostEnchantment();
 		GRAB = new GrabEnchantment();
 		HOOK = new HookEnchantment();
 		HUNTER = new HunterEnchantment();
@@ -125,7 +122,6 @@ public class CombatEnchants implements ModInitializer {
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "barrage"), BARRAGE_EFFECT);
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "barrage_stack"), BARRAGE_STACK_EFFECT);
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "lifeline_cooldown"), LIFELINE_COOLDOWN_EFFECT);
-		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "frost_particle"), FROST_PARTICLE_EFFECT);
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "sleepy_particle"), SLEEPY_PARTICLE_EFFECT);
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "grab"), GRAB_EFFECT);
 

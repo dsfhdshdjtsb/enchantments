@@ -75,7 +75,7 @@ public class ZapEnchantment extends Enchantment {
                     double y = 0;
                     double z = 0;
                     while (Math.abs(x) < Math.abs(xdif)) {
-                        ((ServerWorld) source.world).spawnParticles(ParticleTypes.ELECTRIC_SPARK, source.getX() + x,
+                        ((ServerWorld) source.world).spawnParticles(ParticleTypes.END_ROD, source.getX() + x,
                                 source.getBodyY(0.5D) + y, source.getZ() + z, 0, 1, 0.0D, 1, 0.0D);
                         x = x + xdif / particleNumConstant;
                         y = y + ydif / particleNumConstant;

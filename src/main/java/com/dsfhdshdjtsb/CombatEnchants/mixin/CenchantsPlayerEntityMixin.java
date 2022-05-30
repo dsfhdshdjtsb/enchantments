@@ -56,9 +56,6 @@ public abstract class CenchantsPlayerEntityMixin {
             int steadfastLevel = Math.max(0, Math.max(EnchantmentHelper.getLevel(CombatEnchants.STEADFAST, user.getMainHandStack()), EnchantmentHelper.getLevel(CombatEnchants.STEADFAST, user.getOffHandStack())));
             if (steadfastLevel != 0) {
                 user.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 5, steadfastLevel - 1, true, false));
-                if (user.world instanceof ServerWorld) {
-                    ((ServerWorld) user.world).spawnParticles(ParticleTypes.ELECTRIC_SPARK, user.getX(), user.getBodyY(0.5D), user.getZ(), 1, 0.4, 0.1, 0.4, 0.0D);
-                }
             }
 
         }

@@ -38,7 +38,7 @@ public class HookEnchantment extends Enchantment {
         }
         if(target instanceof LivingEntity) {
             target.setVelocity(0, 0, 0);
-            ((LivingEntity)target).takeKnockback(level * 0.5, -MathHelper.sin(user.getYaw() * 0.017453292F),(MathHelper.cos(user.getYaw() * 0.017453292F)));
+            ((LivingEntity)target).takeKnockback((float) (level * 0.5), -MathHelper.sin(user.getYaw(1.0f) * 0.017453292F),(MathHelper.cos(user.getYaw(1.0f) * 0.017453292F)));
         }
     }
 

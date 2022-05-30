@@ -2,21 +2,22 @@ package com.dsfhdshdjtsb.CombatEnchants.effects;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
-import net.minecraft.entity.effect.StatusEffectCategory;
+import net.minecraft.entity.effect.StatusEffectType;
+import net.minecraft.entity.effect.StatusEffects;
 
 public class LifelineCooldownEffect extends StatusEffect {
     public LifelineCooldownEffect() {
-        super(StatusEffectCategory.HARMFUL, 0);
+        super(StatusEffectType.HARMFUL, 0);
     }
 
 
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
-
+        entity.removeStatusEffect(StatusEffects.ABSORPTION);
     }
 
     @Override
     public boolean canApplyUpdateEffect(int duration, int amplifier) {
-        return true;
+        return duration <= 1;
     }
 }
