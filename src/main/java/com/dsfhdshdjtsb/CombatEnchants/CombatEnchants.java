@@ -17,6 +17,7 @@ public class CombatEnchants implements ModInitializer {
 	public static final EquipmentSlot[] ALL_ARMOR = new EquipmentSlot[] {EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET};
 	public static final String MOD_ID = "cenchants";
 
+	//I could make this alphabetical, or I could not
 	public static Enchantment DUELING;
 	public static Enchantment LETHALITY;
 	public static Enchantment TRIUMPH;
@@ -52,6 +53,7 @@ public class CombatEnchants implements ModInitializer {
 	public static Enchantment INKING;
 	public static Enchantment GRAB;
 	public static Enchantment TREMOR;
+	public static Enchantment SHOCKWAVE;
 
 	public static final StatusEffect RAMPAGE_EFFECT = new RampageEffect();
 	public static final StatusEffect LIFESTEAL_COOLDOWN_EFFECT = new LifestealCooldownEffect();
@@ -68,6 +70,7 @@ public class CombatEnchants implements ModInitializer {
 	public static final StatusEffect FROST_PARTICLE_EFFECT = new FrostParticleEffect();
 	public static final StatusEffect SLEEPY_PARTICLE_EFFECT = new SleepyParticleEffect();
 	public static final StatusEffect GRAB_EFFECT = new GrabEffect();
+	public static final StatusEffect SHOCKWAVE_EFFECT = new ShockwaveEffect();
 
 	public static final DefaultParticleType SHIELD_PARTICLE = FabricParticleTypes.simple();
 	public static final DefaultParticleType SLEEPY_PARTICLE = FabricParticleTypes.simple();
@@ -101,6 +104,7 @@ public class CombatEnchants implements ModInitializer {
 		RAMPAGE = new RampageEnchantment();
 		REJUVENATE = new RejuvenateEnchantment();
 		SHIELDING = new ShieldingEnchantment();
+		SHOCKWAVE = new ShockwaveEnchantment();
 		SNAP = new SnapEnchantment();
 		SORCERY = new SorceryEnchantment();
 		STEADFAST = new SteadfastEnchantment();
@@ -128,6 +132,7 @@ public class CombatEnchants implements ModInitializer {
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "frost_particle"), FROST_PARTICLE_EFFECT);
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "sleepy_particle"), SLEEPY_PARTICLE_EFFECT);
 		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "grab"), GRAB_EFFECT);
+		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "shockwave"), SHOCKWAVE_EFFECT);
 
 		Registry.register(Registry.PARTICLE_TYPE, new Identifier("cenchants", "shield"), SHIELD_PARTICLE);
 		Registry.register(Registry.PARTICLE_TYPE, new Identifier("cenchants", "sleepy"), SLEEPY_PARTICLE);
