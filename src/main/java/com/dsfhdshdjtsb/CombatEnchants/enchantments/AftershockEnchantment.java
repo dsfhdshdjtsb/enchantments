@@ -9,11 +9,11 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 
-public class ShockwaveEnchantment extends Enchantment {
-    public ShockwaveEnchantment() {
+public class AftershockEnchantment extends Enchantment {
+    public AftershockEnchantment() {
         super(Rarity.VERY_RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
-        if(ModConfigs.SHOCKWAVE)
-            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "shockwave"), this);
+        if(ModConfigs.AFTERSHOCK)
+            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "aftershock"), this);
     }
 
     @Override

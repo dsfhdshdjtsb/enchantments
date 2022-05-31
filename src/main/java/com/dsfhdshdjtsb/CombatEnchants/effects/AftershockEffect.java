@@ -5,23 +5,27 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
-import net.minecraft.particle.ParticleEffect;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 
-public class ShockwaveEffect extends StatusEffect {
+import java.util.List;
 
-    public ShockwaveEffect() {
+public class AftershockEffect extends StatusEffect {
+
+    public AftershockEffect() {
         super(StatusEffectCategory.BENEFICIAL, 0);
     }
 
 
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
-        entity.damage(DamageSource.MAGIC, amplifier * 2);
-        if(entity.world instanceof ServerWorld)
-        {
-            ((ServerWorld) entity.world).spawnParticles(ParticleTypes.SONIC_BOOM, entity.getX(), entity.getBodyY(0.5D) , entity.getZ(), 1, 0, 0, 0, 0.0D);
+        entity.damage(DamageSource.MAGIC, ((amplifier+1) / 2.0f));
+        entity.addStatusEffect(new StatusEffectInstance(CombatEnchants.DELAYED_DEATH_EFFECT, 17, amplifier, true, false));
+        System.out.println(amplifier);
+        if (entity.world instanceof ServerWorld) {
+            ((ServerWorld) entity.world).spawnParticles(ParticleTypes.SONIC_BOOM, entity.getX(), entity.getBodyY(0.5D), entity.getZ(), 1, 0, 0, 0, 0.0D);
         }
     }
 

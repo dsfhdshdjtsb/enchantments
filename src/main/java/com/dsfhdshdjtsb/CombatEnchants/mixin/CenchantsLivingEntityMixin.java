@@ -206,17 +206,17 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
             this.addStatusEffect(new StatusEffectInstance(CombatEnchants.FERVOR_EFFECT,  20 + fervorLevel * 12, curFervor));
         }
 
-        int shockwaveLevel = EnchantmentHelper.getLevel(CombatEnchants.SHOCKWAVE, this.getMainHandStack());
-        if(shockwaveLevel != 0 && target instanceof LivingEntity)
+        int aftershockLevel = EnchantmentHelper.getLevel(CombatEnchants.AFTERSHOCK, this.getMainHandStack());
+        if(aftershockLevel != 0 && target instanceof LivingEntity)
         {
             int curShock = 0;
-            StatusEffectInstance shockwaveInstance = ((LivingEntity) target).getStatusEffect(CombatEnchants.SHOCKWAVE_EFFECT);
+            StatusEffectInstance shockwaveInstance = ((LivingEntity) target).getStatusEffect(CombatEnchants.AFTERSHOCK_EFFECT);
             if(shockwaveInstance != null) {
                 curShock = shockwaveInstance.getAmplifier();
-                if (curShock < shockwaveLevel * 2 - 1 && !this.handSwinging)
+                if (curShock < aftershockLevel * 2 - 1 && !this.handSwinging)
                     curShock++;
             }
-            ((LivingEntity) target).addStatusEffect(new StatusEffectInstance(CombatEnchants.SHOCKWAVE_EFFECT,  80, curShock));
+            ((LivingEntity) target).addStatusEffect(new StatusEffectInstance(CombatEnchants.AFTERSHOCK_EFFECT,  80, curShock));
         }
 
 
