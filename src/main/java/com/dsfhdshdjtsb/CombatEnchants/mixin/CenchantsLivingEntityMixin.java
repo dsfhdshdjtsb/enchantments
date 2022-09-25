@@ -73,8 +73,7 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
     private void tick(CallbackInfo info) { //move to player entity
         int shieldingLevel = 0;
         int darkness = 0;
-        for(ItemStack i : getArmorItems())
-        {
+        for(ItemStack i : getArmorItems()) {
             shieldingLevel += EnchantmentHelper.getLevel(CombatEnchants.SHIELDING, i);
             darkness += EnchantmentHelper.getLevel(CombatEnchants.DARKNESS, i);
         }
@@ -181,6 +180,7 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
         }
 
     }
+
 
     @Inject(at = @At("HEAD"), method = "onAttacking")
     public void onAttacking(Entity target, CallbackInfo ci) {

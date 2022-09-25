@@ -19,6 +19,7 @@ public class CombatEnchants implements ModInitializer {
 
 	//I could make this alphabetical, or I could not
 	public static Enchantment DUELING;
+	public static Enchantment BACKSTAB;
 	public static Enchantment LETHALITY;
 	public static Enchantment TRIUMPH;
 	public static Enchantment RAMPAGE;
@@ -44,6 +45,7 @@ public class CombatEnchants implements ModInitializer {
 	public static Enchantment COMBO;
 	public static Enchantment KNOCKUP;
 	public static Enchantment FERVOR;
+	public static Enchantment CHARGE;
 	public static Enchantment BARRAGE;
 	public static Enchantment DEFLECT;
 	public static Enchantment SNAP;
@@ -54,7 +56,7 @@ public class CombatEnchants implements ModInitializer {
 	public static Enchantment GRAB;
 	public static Enchantment TREMOR;
 	public static Enchantment AFTERSHOCK;
-
+	public static Enchantment DETONATE;
 	public static final StatusEffect RAMPAGE_EFFECT = new RampageEffect();
 	public static final StatusEffect LIFESTEAL_COOLDOWN_EFFECT = new LifestealCooldownEffect();
 	public static final StatusEffect MARK_EFFECT = new MarkEffect();
@@ -75,16 +77,20 @@ public class CombatEnchants implements ModInitializer {
 	public static final DefaultParticleType SHIELD_PARTICLE = FabricParticleTypes.simple();
 	public static final DefaultParticleType SLEEPY_PARTICLE = FabricParticleTypes.simple();
 
+
 	@Override
 	public void onInitialize() {
 		ModConfigs.registerConfigs();
 
 		ANTIHEAL = new AntihealEnchantment();
+		BACKSTAB = new BackstabEnchantment();
 		BARRAGE = new BarrageEnchantment();
 		BITE = new BiteEnchantment();
+		CHARGE = new ChargeEnchantment();
 		COMBO = new ComboEnchantment();
 		DARKNESS = new DarknessCurse();
 		DEFLECT = new DeflectEnchantment();
+		DETONATE = new DetonateEnchantment();
 		DUELING = new DuelingEnchantment();
 		FERVOR = new FervorEnchantment();
 		FLAME_WALKER = new FlameWalkerEnchantment();

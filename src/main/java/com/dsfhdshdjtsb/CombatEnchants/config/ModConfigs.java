@@ -9,11 +9,14 @@ public class ModConfigs {
 
     public static boolean AFTERSHOCK;
     public static boolean ANTIHEAL;
+    public static boolean BACKSTAB;
     public static boolean BARRAGE;
     public static boolean BITE;
+    public static boolean CHARGE;
     public static boolean COMBO;
     public static boolean DARKNESS;
     public static boolean DEFLECT;
+    public static boolean DETONATE;
     public static boolean DUELING;
     public static boolean FERVOR;
     public static boolean FLAMEWALKER;
@@ -56,11 +59,14 @@ public class ModConfigs {
     private static void createConfigs() {
         configs.addKeyValuePair(new Pair<>("aftershock.enabled", true));
         configs.addKeyValuePair(new Pair<>("antiheal.enabled", true));
+        configs.addKeyValuePair(new Pair<>("backstab.enabled", true));
         configs.addKeyValuePair(new Pair<>("barrage.enabled", true));
         configs.addKeyValuePair(new Pair<>("bite.enabled", true));
+        configs.addKeyValuePair(new Pair<>("charge.enabled", true));
         configs.addKeyValuePair(new Pair<>("combo.enabled", true));
         configs.addKeyValuePair(new Pair<>("darkness.enabled", true));
         configs.addKeyValuePair(new Pair<>("deflect.enabled", true));
+        configs.addKeyValuePair(new Pair<>("detonate.enabled", true));
         configs.addKeyValuePair(new Pair<>("dueling.enabled", true));
         configs.addKeyValuePair(new Pair<>("fervor.enabled", true));
         configs.addKeyValuePair(new Pair<>("flamewalker.enabled", true));
@@ -97,11 +103,14 @@ public class ModConfigs {
     private static void assignConfigs() {
         AFTERSHOCK = CONFIG.getOrDefault("aftershock.enabled", true);
         ANTIHEAL = CONFIG.getOrDefault("antiheal.enabled", true);
+        BACKSTAB = CONFIG.getOrDefault("backstab.enabled", true);
         BARRAGE = CONFIG.getOrDefault("barrage.enabled", true);
         BITE = CONFIG.getOrDefault("bite.enabled", true);
+        CHARGE = CONFIG.getOrDefault("charge.enabled", true);
         COMBO = CONFIG.getOrDefault("combo.enabled", true);
         DARKNESS = CONFIG.getOrDefault("darkness.enabled", true);
         DEFLECT = CONFIG.getOrDefault("deflect.enabled", true);
+        DETONATE = CONFIG.getOrDefault("detonate.enabled", true);
         DUELING = CONFIG.getOrDefault("dueling.enabled", true);
         FERVOR = CONFIG.getOrDefault("fervor.enabled", true);
         FLAMEWALKER = CONFIG.getOrDefault("flamewalker.enabled", true);
