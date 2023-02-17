@@ -114,8 +114,8 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
         for(ItemStack i : getArmorItems())
         {
             if(EnchantmentHelper.getLevel(CombatEnchants.SHIELDING, i) != 0) {
-                if(!this.hasStatusEffect(CombatEnchants.SHIELDING_COOLDOWN_EFFECT) && this.world instanceof ServerWorld)
-                    ((ServerWorld) this.world).spawnParticles(CombatEnchants.SHIELD_PARTICLE, this.getX(), this.getBodyY(0.5D), this.getZ(), 3, 0.3D, 0.3D, 0.3D, 0.0D);
+//                if(!this.hasStatusEffect(CombatEnchants.SHIELDING_COOLDOWN_EFFECT) && this.world instanceof ServerWorld)
+//                    ((ServerWorld) this.world).spawnParticles(CombatEnchants.SHIELD_PARTICLE, this.getX(), this.getBodyY(0.5D), this.getZ(), 3, 0.3D, 0.3D, 0.3D, 0.0D);
                 this.setStatusEffect(new StatusEffectInstance(CombatEnchants.SHIELDING_COOLDOWN_EFFECT, 200), null);
                 break;
             }
@@ -216,7 +216,7 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
                 if (curShock < aftershockLevel * 2 - 1 && !this.handSwinging)
                     curShock++;
             }
-            ((LivingEntity) target).addStatusEffect(new StatusEffectInstance(CombatEnchants.AFTERSHOCK_EFFECT,  80, curShock));
+            ((LivingEntity) target).addStatusEffect(new StatusEffectInstance(CombatEnchants.AFTERSHOCK_EFFECT,  60, curShock));
         }
 
 

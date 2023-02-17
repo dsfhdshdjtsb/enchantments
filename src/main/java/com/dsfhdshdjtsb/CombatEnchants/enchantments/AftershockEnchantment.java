@@ -7,13 +7,14 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.Registries;
 
 public class AftershockEnchantment extends Enchantment {
     public AftershockEnchantment() {
         super(Rarity.VERY_RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
         if(ModConfigs.AFTERSHOCK)
-            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "aftershock"), this);
+            Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "aftershock"), this);
     }
 
     @Override

@@ -8,13 +8,14 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.Registries;
 
 public class InkingEnchantment extends Enchantment {
     public InkingEnchantment() {
         super(Rarity.RARE, EnchantmentTarget.TRIDENT, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
         if(ModConfigs.INKING)
-            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "inking"), this);
+            Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "inking"), this);
     }
 
     @Override

@@ -12,14 +12,15 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.Registries;
 
 
 public class PerceptionEnchantment extends Enchantment {
     public PerceptionEnchantment() {
         super(Rarity.VERY_RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
         if(ModConfigs.PERCEPTION)
-            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "perception"), this);
+            Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "perception"), this);
     }
 
     @Override

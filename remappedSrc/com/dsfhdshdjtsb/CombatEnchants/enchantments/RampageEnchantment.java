@@ -14,14 +14,15 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.Registries;
 
 public class RampageEnchantment extends Enchantment {
 
     public RampageEnchantment() {
         super(Rarity.RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
         if(ModConfigs.RAMPAGE)
-            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "rampage"), this);
+            Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "rampage"), this);
     }
 
     @Override

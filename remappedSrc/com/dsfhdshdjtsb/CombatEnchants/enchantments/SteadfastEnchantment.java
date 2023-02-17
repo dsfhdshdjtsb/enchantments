@@ -7,13 +7,14 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ShieldItem;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.Registries;
 
 public class SteadfastEnchantment extends Enchantment {
     public SteadfastEnchantment() {
         super(Rarity.RARE, EnchantmentTarget.BREAKABLE, new EquipmentSlot[] {EquipmentSlot.MAINHAND, EquipmentSlot.OFFHAND});
         if(ModConfigs.STEADFAST)
-            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "steadfast"), this);
+            Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "steadfast"), this);
 
     }
 

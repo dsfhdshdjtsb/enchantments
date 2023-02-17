@@ -12,7 +12,8 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.CrossbowItem;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.Registries;
 
 import java.util.Objects;
 
@@ -20,7 +21,7 @@ public class HunterEnchantment extends Enchantment {
     public HunterEnchantment() {
         super(Rarity.UNCOMMON, EnchantmentTarget.BOW, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
         if(ModConfigs.HUNTER)
-            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "hunter"), this);
+            Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "hunter"), this);
     }
 
     @Override

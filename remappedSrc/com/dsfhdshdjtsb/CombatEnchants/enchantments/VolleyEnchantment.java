@@ -12,14 +12,15 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.item.CrossbowItem;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.Registries;
 import net.minecraft.world.World;
 
 public class VolleyEnchantment extends Enchantment {
     public VolleyEnchantment() {
         super(Rarity.UNCOMMON, EnchantmentTarget.BOW, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
         if(ModConfigs.VOLLEY)
-            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "volley"), this);
+            Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "volley"), this);
     }
 
     @Override

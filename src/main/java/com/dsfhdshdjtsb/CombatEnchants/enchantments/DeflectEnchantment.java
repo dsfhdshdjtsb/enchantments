@@ -7,13 +7,14 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.Registries;
 
 public class DeflectEnchantment extends Enchantment {
     public DeflectEnchantment() {
         super(Enchantment.Rarity.VERY_RARE, EnchantmentTarget.ARMOR_CHEST, new EquipmentSlot[] {EquipmentSlot.CHEST});
         if(ModConfigs.DEFLECT)
-            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "deflect"), this);
+            Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "deflect"), this);
     }
 
     @Override

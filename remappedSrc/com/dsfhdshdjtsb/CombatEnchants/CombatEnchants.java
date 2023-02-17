@@ -10,7 +10,8 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.Registries;
 
 
 public class CombatEnchants implements ModInitializer {

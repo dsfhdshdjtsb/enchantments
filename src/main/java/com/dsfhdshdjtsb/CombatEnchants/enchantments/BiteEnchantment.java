@@ -16,14 +16,15 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BowItem;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.Registries;
 import net.minecraft.world.World;
 
 public class BiteEnchantment extends Enchantment {
     public BiteEnchantment() {
         super(Rarity.UNCOMMON, EnchantmentTarget.CROSSBOW, new EquipmentSlot[] {EquipmentSlot.MAINHAND});
         if(ModConfigs.BITE)
-            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "bite"), this);
+            Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "bite"), this);
     }
 
     @Override
@@ -52,7 +53,7 @@ public class BiteEnchantment extends Enchantment {
             wolf.setPos(target.getX() + posX, target.getY() + 1, target.getZ() + posY);
             wolf.setTarget((LivingEntity) target);
             wolf.setHealth(4 * level);
-            wolf.addStatusEffect(new StatusEffectInstance(CombatEnchants.DELAYED_DEATH_EFFECT, 60 * level + 10, 0));
+            wolf.addStatusEffect(new StatusEffectInstance(CombatEnchants.DELAYED_DEATH_EFFECT, 60 * level + 10, 100));
             world.spawnEntity(wolf);
         }
     }

@@ -9,13 +9,14 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.Registries;
 
 public class VisionEnchantment extends Enchantment {
     public VisionEnchantment() {
         super(Rarity.RARE, EnchantmentTarget.ARMOR_HEAD, new EquipmentSlot[] {EquipmentSlot.HEAD});
         if(ModConfigs.VISION)
-            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "vision"), this);
+            Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "vision"), this);
     }
 
     @Override

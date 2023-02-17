@@ -13,7 +13,8 @@ import net.minecraft.item.CrossbowItem;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.Registries;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +23,7 @@ public class ZapEnchantment extends Enchantment {
     public ZapEnchantment() {
         super(Rarity.VERY_RARE, EnchantmentTarget.BOW, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
         if(ModConfigs.ZAP)
-            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "zap"), this);
+            Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "zap"), this);
     }
 
     @Override

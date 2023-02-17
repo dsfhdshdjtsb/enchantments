@@ -10,13 +10,14 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.Registries;
 
 public class FlameWalkerEnchantment extends Enchantment {
     public FlameWalkerEnchantment() {
         super(Rarity.VERY_RARE, EnchantmentTarget.ARMOR_FEET, new EquipmentSlot[] {EquipmentSlot.FEET});
         if(ModConfigs.FLAMEWALKER)
-            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "flame_walker"), this);
+            Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "flame_walker"), this);
     }
 
     @Override

@@ -11,7 +11,8 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.Registries;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.explosion.Explosion;
 
@@ -19,7 +20,7 @@ public class SuicideEnchantment extends Enchantment {
     public SuicideEnchantment() {
         super(Rarity.UNCOMMON, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
         if(ModConfigs.SUICIDE)
-            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "suicide"), this);
+            Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "suicide"), this);
     }
 
     @Override

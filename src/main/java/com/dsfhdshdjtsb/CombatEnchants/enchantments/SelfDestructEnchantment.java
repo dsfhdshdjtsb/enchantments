@@ -11,15 +11,17 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.Registries;
 import net.minecraft.world.GameRules;
+import net.minecraft.world.World;
 import net.minecraft.world.explosion.Explosion;
 
-public class ExplodeEnchantment extends Enchantment {
-    public ExplodeEnchantment() {
+public class SelfDestructEnchantment extends Enchantment {
+    public SelfDestructEnchantment() {
         super(Rarity.UNCOMMON, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
-        if(ModConfigs.EXPLODE)
-            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "explode"), this);
+        if(ModConfigs.SELFDESTRUCT)
+            Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "self_destruct"), this);
     }
 
     @Override
@@ -34,16 +36,16 @@ public class ExplodeEnchantment extends Enchantment {
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
-        if(EnchantmentHelper.getLevel(CombatEnchants.EXPLODE, user.getMainHandStack()) == 0||target.distanceTo(user) >= 6)
+        if(EnchantmentHelper.getLevel(CombatEnchants.SELFDESTRUCT, user.getMainHandStack()) == 0||target.distanceTo(user) >= 6)
             return;
         if(!(user instanceof PlayerEntity) && !user.world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING))
             return;
         if(target instanceof LivingEntity)
         {
-            Explosion explosion = user.world.createExplosion(user, user.getX(), user.getY(), user.getZ(), 2.0f, Explosion.DestructionType.BREAK);
+            Explosion explosion = user.world.createExplosion(user, user.getX(), user.getY(), user.getZ(), 2.0f, World.ExplosionSourceType.TNT);
             user.setVelocity(0, 0.5, 0);
-            user.damage(DamageSource.explosion(explosion), 100);
-            user.kill();
+            user.damage(DamageSource.explosion(explosion), 999);
+
         }
     }
 

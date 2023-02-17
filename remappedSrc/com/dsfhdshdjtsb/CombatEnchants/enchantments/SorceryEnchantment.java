@@ -10,7 +10,8 @@ import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.Registries;
 
 import java.util.Random;
 
@@ -18,7 +19,7 @@ public class SorceryEnchantment extends Enchantment {
     public SorceryEnchantment() {
         super(Rarity.UNCOMMON, EnchantmentTarget.WEARABLE, CombatEnchants.ALL_ARMOR);
         if(ModConfigs.SORCERY)
-            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "sorcery"), this);
+            Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "sorcery"), this);
     }
 
     @Override

@@ -11,7 +11,8 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.Registries;
 
 import java.util.List;
 import java.util.Objects;
@@ -20,7 +21,7 @@ public class TremorEnchantment extends Enchantment {
     public TremorEnchantment() {
         super(Rarity.RARE, EnchantmentTarget.ARMOR_FEET, new EquipmentSlot[] {EquipmentSlot.FEET});
         if(ModConfigs.TREMOR)
-            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "tremor"), this);
+            Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "tremor"), this);
     }
 
     @Override

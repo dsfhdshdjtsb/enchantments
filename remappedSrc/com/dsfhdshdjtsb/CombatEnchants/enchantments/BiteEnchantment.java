@@ -16,14 +16,15 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BowItem;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.Registries;
 import net.minecraft.world.World;
 
 public class BiteEnchantment extends Enchantment {
     public BiteEnchantment() {
         super(Rarity.UNCOMMON, EnchantmentTarget.CROSSBOW, new EquipmentSlot[] {EquipmentSlot.MAINHAND});
         if(ModConfigs.BITE)
-            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "bite"), this);
+            Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "bite"), this);
     }
 
     @Override

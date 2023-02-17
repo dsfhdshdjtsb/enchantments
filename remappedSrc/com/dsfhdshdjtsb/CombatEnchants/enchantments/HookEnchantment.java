@@ -10,13 +10,14 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.BowItem;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.Registries;
 
 public class HookEnchantment extends Enchantment {
     public HookEnchantment() {
         super(Rarity.RARE, EnchantmentTarget.CROSSBOW, new EquipmentSlot[] {EquipmentSlot.MAINHAND});
         if(ModConfigs.HOOK)
-            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "hook"), this);
+            Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "hook"), this);
     }
 
     @Override

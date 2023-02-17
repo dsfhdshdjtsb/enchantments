@@ -5,13 +5,14 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.*;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.Registries;
 
 public class FervorEnchantment extends Enchantment {
     public FervorEnchantment() {
         super(Rarity.UNCOMMON, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
         if(ModConfigs.FERVOR)
-            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "fervor"), this);
+            Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "fervor"), this);
     }
 
     @Override

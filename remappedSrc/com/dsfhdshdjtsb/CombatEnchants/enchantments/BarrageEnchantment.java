@@ -11,13 +11,14 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.item.CrossbowItem;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.Registries;
 
 public class BarrageEnchantment extends Enchantment {
     public BarrageEnchantment() {
         super(Rarity.VERY_RARE, EnchantmentTarget.BOW, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
         if(ModConfigs.BARRAGE)
-            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "barrage"), this);
+            Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "barrage"), this);
     }
 
     @Override

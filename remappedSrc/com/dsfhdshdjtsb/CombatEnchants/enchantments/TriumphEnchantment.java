@@ -14,13 +14,14 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.Registries;
 
 public class TriumphEnchantment extends Enchantment {
     public TriumphEnchantment() {
         super(Rarity.RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
         if(ModConfigs.TRIUMPH)
-            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "triumph"), this);
+            Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "triumph"), this);
     }
 
     @Override

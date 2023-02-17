@@ -11,13 +11,14 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.item.BowItem;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.Registries;
 
 public class TranquilizeEnchantment extends Enchantment {
     public TranquilizeEnchantment() {
         super(Rarity.VERY_RARE, EnchantmentTarget.CROSSBOW, new EquipmentSlot[] {EquipmentSlot.MAINHAND});
         if(ModConfigs.TRANQUILIZE)
-            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "tranquilize"), this);
+            Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "tranquilize"), this);
     }
 
     @Override

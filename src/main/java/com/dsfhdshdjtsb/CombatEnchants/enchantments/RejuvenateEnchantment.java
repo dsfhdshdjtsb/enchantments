@@ -16,7 +16,8 @@ import net.minecraft.item.CrossbowItem;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.Registries;
 
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class RejuvenateEnchantment extends Enchantment {
     public RejuvenateEnchantment() {
         super(Rarity.RARE, EnchantmentTarget.BOW, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
         if(ModConfigs.REJUVENATE)
-            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "rejuvenate"), this);
+            Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "rejuvenate"), this);
     }
 
     @Override
@@ -51,7 +52,7 @@ public class RejuvenateEnchantment extends Enchantment {
         boolean activated = false;
         for (LivingEntity e : list) {
             System.out.println(e.getHeight());
-            if(!e.equals(user) && (e instanceof PlayerEntity || (e instanceof TameableEntity && user.equals(((TameableEntity)(e)).getOwner())))) {
+            if(e instanceof PlayerEntity || (e instanceof TameableEntity && user.equals(((TameableEntity)(e)).getOwner()))) {
                 activated = true;
                 switch (level) {
                     case 1 -> {
@@ -67,7 +68,7 @@ public class RejuvenateEnchantment extends Enchantment {
                 if(e.world instanceof ServerWorld)
                 {
 
-                    ((ServerWorld) e.world).spawnParticles(CombatEnchants.SHIELD_PARTICLE, e.getX(), e.getBodyY(0.2D), e.getZ(), 1, 0.3D, 0.3D, 0.3D, 0.0D);
+                    //((ServerWorld) e.world).spawnParticles(CombatEnchants.SHIELD_PARTICLE, e.getX(), e.getBodyY(0.2D), e.getZ(), 1, 0.3D, 0.3D, 0.3D, 0.0D);
                     ((ServerWorld) e.world).spawnParticles(ParticleTypes.HEART, e.getX(), e.getBodyY(0.2D), e.getZ(), 1, 0.3D, 0.3D, 0.3D, 0.0D);
                 }
             }

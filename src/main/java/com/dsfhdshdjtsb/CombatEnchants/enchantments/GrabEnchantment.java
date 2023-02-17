@@ -18,7 +18,8 @@ import net.minecraft.particle.ParticleType;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.Registries;
 
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class GrabEnchantment extends Enchantment {
     public GrabEnchantment() {
         super(Rarity.RARE, EnchantmentTarget.BOW, new EquipmentSlot[] {EquipmentSlot.MAINHAND});
         if(ModConfigs.GRAB)
-            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "grab"), this);
+            Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "grab"), this);
     }
 
     @Override

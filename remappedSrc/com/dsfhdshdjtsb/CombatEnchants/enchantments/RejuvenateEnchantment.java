@@ -16,7 +16,8 @@ import net.minecraft.item.CrossbowItem;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.Registries;
 
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class RejuvenateEnchantment extends Enchantment {
     public RejuvenateEnchantment() {
         super(Rarity.RARE, EnchantmentTarget.BOW, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
         if(ModConfigs.REJUVENATE)
-            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "rejuvenate"), this);
+            Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "rejuvenate"), this);
     }
 
     @Override

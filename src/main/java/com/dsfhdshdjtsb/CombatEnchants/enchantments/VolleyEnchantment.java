@@ -12,14 +12,15 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.item.CrossbowItem;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.Registries;
 import net.minecraft.world.World;
 
 public class VolleyEnchantment extends Enchantment {
     public VolleyEnchantment() {
         super(Rarity.UNCOMMON, EnchantmentTarget.BOW, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
         if(ModConfigs.VOLLEY)
-            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "volley"), this);
+            Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "volley"), this);
     }
 
     @Override
@@ -53,14 +54,14 @@ public class VolleyEnchantment extends Enchantment {
 
             assert arrowArray[0] != null;
             arrowArray[0].setPos(target.getX(), target.getY() + height + (5 * Math.random()), target.getZ());
-            arrowArray[1].setPos(target.getX() + 1 + random * Math.random(), target.getY() + height + (5 * Math.random()), target.getZ() + random * Math.random() - 0.6f);
-            arrowArray[2].setPos(target.getX() - 1 - random * Math.random(), target.getY() + height + (5 * Math.random()), target.getZ() + random * Math.random() - 0.6f);
-            arrowArray[3].setPos(target.getX() + 1 + random * Math.random(), target.getY() + height + (5 * Math.random()), target.getZ() + 1 + random * Math.random());
-            arrowArray[4].setPos(target.getX() - 1 - random * Math.random(), target.getY() + height + (5 * Math.random()), target.getZ() + 1 + random * Math.random());
-            arrowArray[5].setPos(target.getX() + 1 + random * Math.random(), target.getY() + height + (5 * Math.random()), target.getZ() - 1 - random * Math.random());
-            arrowArray[6].setPos(target.getX() - 1 - random * Math.random(), target.getY() + height + (5 * Math.random()), target.getZ() - 1 - random * Math.random());
-            arrowArray[7].setPos(target.getX() + random * Math.random() - 0.6f, target.getY() + height + (5 * Math.random()), target.getZ() + 1 + random * Math.random());
-            arrowArray[8].setPos(target.getX() + random * Math.random() - 0.6f, target.getY() + height + (5 * Math.random()), target.getZ() - 1 - random * Math.random());
+            arrowArray[1].setPos(target.getX() + 0.5 + random * Math.random(), target.getY() + height + (5 * Math.random()), target.getZ() + random * Math.random() - 0.6f);
+            arrowArray[2].setPos(target.getX() - 0.5 - random * Math.random(), target.getY() + height + (5 * Math.random()), target.getZ() + random * Math.random() - 0.6f);
+            arrowArray[3].setPos(target.getX() + 0.5 + random * Math.random(), target.getY() + height + (5 * Math.random()), target.getZ() + 0.5 + random * Math.random());
+            arrowArray[4].setPos(target.getX() - 0.5 - random * Math.random(), target.getY() + height + (5 * Math.random()), target.getZ() + 0.5 + random * Math.random());
+            arrowArray[5].setPos(target.getX() + 0.5 + random * Math.random(), target.getY() + height + (5 * Math.random()), target.getZ() - 0.5 - random * Math.random());
+            arrowArray[6].setPos(target.getX() - 0.5 - random * Math.random(), target.getY() + height + (5 * Math.random()), target.getZ() - 0.5 - random * Math.random());
+            arrowArray[7].setPos(target.getX() + random * Math.random() - 0.6f, target.getY() + height + (5 * Math.random()), target.getZ() + 0.5 + random * Math.random());
+            arrowArray[8].setPos(target.getX() + random * Math.random() - 0.6f, target.getY() + height + (5 * Math.random()), target.getZ() - 0.5 - random * Math.random());
 
 
             for (ArrowEntity arrowEntity : arrowArray) {

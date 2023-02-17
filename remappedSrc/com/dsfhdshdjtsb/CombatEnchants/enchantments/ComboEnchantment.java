@@ -10,7 +10,8 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.Registries;
 import net.minecraft.world.World;
 
 
@@ -18,7 +19,7 @@ public class ComboEnchantment extends Enchantment {
     public ComboEnchantment() {
         super(Rarity.UNCOMMON, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
         if(ModConfigs.COMBO)
-            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "combo"), this);
+            Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "combo"), this);
     }
 
     @Override

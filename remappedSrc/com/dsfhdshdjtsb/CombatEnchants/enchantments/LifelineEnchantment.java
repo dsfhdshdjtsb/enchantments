@@ -11,7 +11,8 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.Registries;
 import org.apache.logging.log4j.core.jmx.Server;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public class LifelineEnchantment extends Enchantment {
     public LifelineEnchantment() {
         super(Enchantment.Rarity.VERY_RARE, EnchantmentTarget.ARMOR_CHEST, new EquipmentSlot[] {EquipmentSlot.CHEST});
         if(ModConfigs.LIFELINE)
-            Registry.register(Registry.ENCHANTMENT, new Identifier("cenchants", "lifeline"), this);
+            Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "lifeline"), this);
     }
 
     @Override

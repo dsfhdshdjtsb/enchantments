@@ -10,7 +10,8 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.registry.Registry;
+import net.minecraft.registry.Registries;
 
 
 public class CombatEnchants implements ModInitializer {
@@ -31,7 +32,7 @@ public class CombatEnchants implements ModInitializer {
 	public static Enchantment TRANQUILIZE;
 	public static Enchantment FROST;
 	public static Enchantment SHIELDING;
-	public static Enchantment EXPLODE;
+	public static Enchantment SELFDESTRUCT;
 	public static Enchantment FLAME_WALKER;
 	public static Enchantment VISION;
 	public static Enchantment DARKNESS;
@@ -72,8 +73,8 @@ public class CombatEnchants implements ModInitializer {
 	public static final StatusEffect GRAB_EFFECT = new GrabEffect();
 	public static final StatusEffect AFTERSHOCK_EFFECT = new AftershockEffect();
 
-	public static final DefaultParticleType SHIELD_PARTICLE = FabricParticleTypes.simple();
-	public static final DefaultParticleType SLEEPY_PARTICLE = FabricParticleTypes.simple();
+//	public static final DefaultParticleType SHIELD_PARTICLE = FabricParticleTypes.simple();
+//	public static final DefaultParticleType SLEEPY_PARTICLE = FabricParticleTypes.simple();
 
 	@Override
 	public void onInitialize() {
@@ -108,7 +109,7 @@ public class CombatEnchants implements ModInitializer {
 		SNAP = new SnapEnchantment();
 		SORCERY = new SorceryEnchantment();
 		STEADFAST = new SteadfastEnchantment();
-		EXPLODE = new ExplodeEnchantment();
+		SELFDESTRUCT = new SelfDestructEnchantment();
 		TRANQUILIZE = new TranquilizeEnchantment();
 		TREMOR = new TremorEnchantment();
 		TRIUMPH = new TriumphEnchantment();
@@ -117,25 +118,25 @@ public class CombatEnchants implements ModInitializer {
 		ZAP = new ZapEnchantment();
 
 
-		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "rampage"), RAMPAGE_EFFECT);
-		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "lifesteal_cooldown"), LIFESTEAL_COOLDOWN_EFFECT);
-		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "mark"), MARK_EFFECT);
-		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "sleepy"), SLEEPY_EFFECT);
-		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "shielding_cooldown"), SHIELDING_COOLDOWN_EFFECT);
-		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "fire_walk"), FIRE_WALK_EFFECT);
-		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "antiheal"), ANTIHEAL_EFFECT);
-		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "delayed_death"), DELAYED_DEATH_EFFECT);
-		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "fervor"), FERVOR_EFFECT);
-		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "barrage"), BARRAGE_EFFECT);
-		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "barrage_stack"), BARRAGE_STACK_EFFECT);
-		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "lifeline_cooldown"), LIFELINE_COOLDOWN_EFFECT);
-		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "frost_particle"), FROST_PARTICLE_EFFECT);
-		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "sleepy_particle"), SLEEPY_PARTICLE_EFFECT);
-		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "grab"), GRAB_EFFECT);
-		Registry.register(Registry.STATUS_EFFECT, new Identifier("cenchants", "aftershock"), AFTERSHOCK_EFFECT);
+		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "rampage"), RAMPAGE_EFFECT);
+		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "lifesteal_cooldown"), LIFESTEAL_COOLDOWN_EFFECT);
+		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "mark"), MARK_EFFECT);
+		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "sleepy"), SLEEPY_EFFECT);
+		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "shielding_cooldown"), SHIELDING_COOLDOWN_EFFECT);
+		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "fire_walk"), FIRE_WALK_EFFECT);
+		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "antiheal"), ANTIHEAL_EFFECT);
+		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "delayed_death"), DELAYED_DEATH_EFFECT);
+		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "fervor"), FERVOR_EFFECT);
+		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "barrage"), BARRAGE_EFFECT);
+		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "barrage_stack"), BARRAGE_STACK_EFFECT);
+		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "lifeline_cooldown"), LIFELINE_COOLDOWN_EFFECT);
+		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "frost_particle"), FROST_PARTICLE_EFFECT);
+		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "sleepy_particle"), SLEEPY_PARTICLE_EFFECT);
+		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "grab"), GRAB_EFFECT);
+		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "aftershock"), AFTERSHOCK_EFFECT);
 
-		Registry.register(Registry.PARTICLE_TYPE, new Identifier("cenchants", "shield"), SHIELD_PARTICLE);
-		Registry.register(Registry.PARTICLE_TYPE, new Identifier("cenchants", "sleepy"), SLEEPY_PARTICLE);
+//		Registry.register(Registries.PARTICLE_TYPE, new Identifier("cenchants", "shield"), SHIELD_PARTICLE);
+//		Registry.register(Registries.PARTICLE_TYPE, new Identifier("cenchants", "sleepy"), SLEEPY_PARTICLE);
 
 	}
 }
