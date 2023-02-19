@@ -65,15 +65,15 @@ public abstract class CenchantsTridentEntityMixin {
             int chance = inkingLevel * 10;
             if(trident.world.isRaining())
             {
-                chance += 10;
+                chance = 50;
             }
             if(trident.world.isThundering()) {
-                chance += 20;
+                chance = 100;
             }
             Random rand = new Random();
             if(rand.nextInt(100) < chance)
             {
-                ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, inkingLevel * 10 + 10, 0));
+                ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(StatusEffects.BLINDNESS, inkingLevel * 20 + 20, 0));
             }
         }
     }

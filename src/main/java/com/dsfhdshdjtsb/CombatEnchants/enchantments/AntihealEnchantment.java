@@ -23,12 +23,12 @@ public class AntihealEnchantment extends Enchantment {
 
     @Override
     public int getMinPower(int level) {
-        return 0;
+        return 15;
     }
 
     @Override
     public int getMaxPower(int level) {
-        return 15;
+        return 50;
     }
 
     @Override
@@ -39,7 +39,7 @@ public class AntihealEnchantment extends Enchantment {
                 return;
         }
         if(target instanceof LivingEntity)
-            ((LivingEntity) target).addStatusEffect(new StatusEffectInstance(CombatEnchants.ANTIHEAL_EFFECT, 80, level));
+            ((LivingEntity) target).addStatusEffect(new StatusEffectInstance(CombatEnchants.ANTIHEAL_EFFECT, 160, level));
     }
 
     @Override

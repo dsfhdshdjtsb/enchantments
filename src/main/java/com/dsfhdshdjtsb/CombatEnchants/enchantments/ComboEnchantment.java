@@ -39,20 +39,18 @@ public class ComboEnchantment extends Enchantment {
         if(target instanceof LivingEntity && user.world instanceof ServerWorld)
         {
             StatusEffectInstance mark = ((LivingEntity) target).getStatusEffect(CombatEnchants.MARK_EFFECT);
-            if(mark != null && mark.getAmplifier() > 10 - level)
+            if(mark != null && mark.getAmplifier() > 8 - level)
             {
+                user.addStatusEffect(new StatusEffectInstance(CombatEnchants.LIGHTNING_IMMUNE, 30, 1, true, false));
+                ((LivingEntity) target).removeStatusEffect(CombatEnchants.LIGHTNING_IMMUNE);
                 World world = target.world;
                 LightningEntity lightning = EntityType.LIGHTNING_BOLT.create(world);
                 assert lightning != null;
-                lightning.setPos(target.getX(), target.getY() + 5, target.getZ());
+                lightning.setPos(target.getX(), target.getY(), target.getZ());
                 world.spawnEntity(lightning);
                 ((LivingEntity) target).removeStatusEffect(CombatEnchants.MARK_EFFECT);
                 ((ServerWorld) user.world).spawnParticles(ParticleTypes.END_ROD, target.getX(), target.getBodyY(0.5D), target.getZ(), 20, 0.3, 0.5, 0.3, 0.5D);
 
-            }
-            else
-            {
-                ((ServerWorld) user.world).spawnParticles(ParticleTypes.ELECTRIC_SPARK, target.getX(), target.getBodyY(0.5D), target.getZ(), 5, 0.3, 0.5, 0.3, 0.0D);
             }
         }
 

@@ -61,9 +61,9 @@ public class RampageEnchantment extends Enchantment {
         if(target instanceof LivingEntity)
         {
             if(((LivingEntity)target).isDead()) {
-                user.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 20 + level * 20, 0));
-                user.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 20 + level * 20, 0));
-                user.addStatusEffect(new StatusEffectInstance(CombatEnchants.RAMPAGE_EFFECT, 20 + level * 20, 0));
+                user.addStatusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 80 + level * 40, 0));
+                user.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 80 + level * 40, 0));
+                user.addStatusEffect(new StatusEffectInstance(CombatEnchants.RAMPAGE_EFFECT, 80 + level * 40, 0));
                 if (user.world instanceof ServerWorld) {
                     ((ServerWorld) target.world).spawnParticles(ParticleTypes.SOUL, target.getX(), target.getBodyY(0.5D), target.getZ(), 0, 1, 0.0D, 1, 0.0D);
                     ((ServerWorld) user.world).spawnParticles(ParticleTypes.ANGRY_VILLAGER, user.getX(), user.getBodyY(0.5D) + 0.5, user.getZ(), 2, 0.4, 0.0D, 0.4, 0.0D);

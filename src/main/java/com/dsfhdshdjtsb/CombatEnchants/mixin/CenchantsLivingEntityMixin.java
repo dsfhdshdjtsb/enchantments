@@ -100,6 +100,14 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
 
     @Inject(at = @At("HEAD"), method = "damage", cancellable = true)
     private void damage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
+        if(source == DamageSource.LIGHTNING_BOLT)
+        {
+            StatusEffectInstance lightningImmune = this.getStatusEffect(CombatEnchants.LIGHTNING_IMMUNE);
+            if(lightningImmune != null)
+            {
+                cir.cancel();
+            }
+        }
         if(source.isProjectile()) {
             int deflectLevel = EnchantmentHelper.getLevel(CombatEnchants.DEFLECT, this.getEquippedStack(EquipmentSlot.CHEST));
             if (deflectLevel != 0 && this.random.nextInt(100) < deflectLevel * 10) {
@@ -128,7 +136,6 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
         if(sorcLevel != 0)
         {
             StatusEffect[] effects = {
-                    StatusEffects.ABSORPTION,
                     StatusEffects.RESISTANCE,
                     StatusEffects.FIRE_RESISTANCE,
                     StatusEffects.HEALTH_BOOST,
@@ -138,12 +145,16 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
 
             Random rand = new Random();
             if(rand.nextInt(16) < sorcLevel) {
-                StatusEffect randEffect = effects[rand.nextInt(6)];
-                int duration = sorcLevel/4 * 3;
+                StatusEffect randEffect = effects[rand.nextInt(5)];
+                int duration = sorcLevel/4;
                 if (this.getStatusEffect(randEffect) == null)
-                    this.addStatusEffect(new StatusEffectInstance(randEffect, duration * 20, 0));
-                else
-                    this.addStatusEffect(new StatusEffectInstance(randEffect, duration * 20, 1));
+                    this.addStatusEffect(new StatusEffectInstance(randEffect, duration * 60, 0));
+                else {
+                    if (randEffect == StatusEffects.RESISTANCE)
+                        this.addStatusEffect(new StatusEffectInstance(randEffect, duration * 60, 0));
+                    else
+                        this.addStatusEffect(new StatusEffectInstance(randEffect, duration * 60, 1));
+                }
             }
         }
         int tremor = EnchantmentHelper.getLevel(CombatEnchants.TREMOR, this.getEquippedStack(EquipmentSlot.FEET));
@@ -162,7 +173,6 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
             }
             if (user.world instanceof ServerWorld)
             {
-                System.out.println("test");
                 for(double i = user.getX() - damage / 2; i <= user.getX() + damage / 2; i++)
                 {
                     for(double j = user.getZ() - damage / 2; j <= user.getZ() + damage / 2; j++)

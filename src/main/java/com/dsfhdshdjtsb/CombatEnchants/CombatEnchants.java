@@ -55,6 +55,7 @@ public class CombatEnchants implements ModInitializer {
 	public static Enchantment GRAB;
 	public static Enchantment TREMOR;
 	public static Enchantment AFTERSHOCK;
+	public static Enchantment SHIELDBREAK;
 
 	public static final StatusEffect RAMPAGE_EFFECT = new RampageEffect();
 	public static final StatusEffect LIFESTEAL_COOLDOWN_EFFECT = new LifestealCooldownEffect();
@@ -72,6 +73,7 @@ public class CombatEnchants implements ModInitializer {
 	public static final StatusEffect SLEEPY_PARTICLE_EFFECT = new SleepyParticleEffect();
 	public static final StatusEffect GRAB_EFFECT = new GrabEffect();
 	public static final StatusEffect AFTERSHOCK_EFFECT = new AftershockEffect();
+	public static final StatusEffect LIGHTNING_IMMUNE = new LightningImmuneEffect();
 
 //	public static final DefaultParticleType SHIELD_PARTICLE = FabricParticleTypes.simple();
 //	public static final DefaultParticleType SLEEPY_PARTICLE = FabricParticleTypes.simple();
@@ -116,6 +118,7 @@ public class CombatEnchants implements ModInitializer {
 		VISION = new VisionEnchantment();
 		VOLLEY = new VolleyEnchantment();
 		ZAP = new ZapEnchantment();
+		SHIELDBREAK = new ShieldBreakEnchantment();
 
 
 		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "rampage"), RAMPAGE_EFFECT);
@@ -134,7 +137,7 @@ public class CombatEnchants implements ModInitializer {
 		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "sleepy_particle"), SLEEPY_PARTICLE_EFFECT);
 		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "grab"), GRAB_EFFECT);
 		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "aftershock"), AFTERSHOCK_EFFECT);
-
+		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "lightning_immune"), LIGHTNING_IMMUNE);
 //		Registry.register(Registries.PARTICLE_TYPE, new Identifier("cenchants", "shield"), SHIELD_PARTICLE);
 //		Registry.register(Registries.PARTICLE_TYPE, new Identifier("cenchants", "sleepy"), SLEEPY_PARTICLE);
 

@@ -16,7 +16,7 @@ import net.minecraft.registry.Registries;
 
 public class KnockupEnchantment extends Enchantment {
     public KnockupEnchantment() {
-        super(Rarity.VERY_RARE, EnchantmentTarget.BOW, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        super(Rarity.RARE, EnchantmentTarget.BOW, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
         if(ModConfigs.KNOCKUP)
             Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "knockup"), this);
     }
@@ -40,7 +40,6 @@ public class KnockupEnchantment extends Enchantment {
         }
         if(target instanceof LivingEntity)
         {
-            System.out.println(user.getAttributeValue(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE));
             target.addVelocity( 0, (level / 6.0f) * (1.0D - ((LivingEntity)(target)).getAttributeValue(EntityAttributes.GENERIC_KNOCKBACK_RESISTANCE) * 0.5), 0);
         }
     }
