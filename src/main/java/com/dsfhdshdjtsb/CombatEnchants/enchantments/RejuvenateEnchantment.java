@@ -42,7 +42,7 @@ public class RejuvenateEnchantment extends Enchantment {
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
         if(target instanceof LivingEntity) {
             DamageSource damageSource = ((LivingEntity) target).getRecentDamageSource();
-            if((damageSource != null && !damageSource.isProjectile()) || user.getMainHandStack().getItem() instanceof CrossbowItem)
+            if(damageSource != null && !damageSource.getType().msgId().equals("arrow") || (user.getMainHandStack().getItem() instanceof CrossbowItem))
                 return;
         }
 
@@ -51,7 +51,6 @@ public class RejuvenateEnchantment extends Enchantment {
 
         boolean activated = false;
         for (LivingEntity e : list) {
-            System.out.println(e.getHeight());
             if(e instanceof PlayerEntity || (e instanceof TameableEntity && user.equals(((TameableEntity)(e)).getOwner()))) {
                 activated = true;
                 switch (level) {

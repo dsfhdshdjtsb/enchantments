@@ -47,7 +47,7 @@ public class LifestealEnchantment extends Enchantment {
             for (LivingEntity e : list) {
                 if (!e.equals(user)) {
                     counter++;
-                    e.damage(DamageSource.MAGIC, 1.0f);
+                    e.damage(target.world.getDamageSources().magic(), 1.0f);
 
                     if (target.world instanceof ServerWorld) {
                         double xdif = e.getX() - user.getX();

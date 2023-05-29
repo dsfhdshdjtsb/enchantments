@@ -40,7 +40,7 @@ public class ZapEnchantment extends Enchantment {
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
         if(target instanceof LivingEntity) {
             DamageSource damageSource = ((LivingEntity) target).getRecentDamageSource();
-            if((damageSource != null && !damageSource.isProjectile()) || user.getMainHandStack().getItem() instanceof CrossbowItem)
+            if(damageSource != null && !damageSource.getType().msgId().equals("arrow") || (user.getMainHandStack().getItem() instanceof CrossbowItem))
                 return;
             if(user.hasStatusEffect(CombatEnchants.BARRAGE_EFFECT))
                 return;
@@ -55,7 +55,7 @@ public class ZapEnchantment extends Enchantment {
     private void helper(LivingEntity source, int level, List<LivingEntity> hit)
     {
         if(!hit.contains(source))
-            source.damage(DamageSource.MAGIC, level + 2.0f);
+            source.damage(source.world.getDamageSources().magic(), level + 2.0f);
         hit.add(source);
 
         List<LivingEntity> list = source.world.getNonSpectatingEntities(LivingEntity.class, source.getBoundingBox()

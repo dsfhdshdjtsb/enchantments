@@ -76,7 +76,6 @@ public class ModConfigs {
         configs.addKeyValuePair(new Pair<>("lethality.enabled", true));
         configs.addKeyValuePair(new Pair<>("lifeline.enabled", true));
         configs.addKeyValuePair(new Pair<>("lifesteal.enabled", true));
-        configs.addKeyValuePair(new Pair<>("lightweight.enabled", false));
         configs.addKeyValuePair(new Pair<>("perception.enabled", true));
         configs.addKeyValuePair(new Pair<>("rampage.enabled", true));
         configs.addKeyValuePair(new Pair<>("rejuvenate.enabled", true));
@@ -84,7 +83,7 @@ public class ModConfigs {
         configs.addKeyValuePair(new Pair<>("shieldbreak.enabled", true));
         configs.addKeyValuePair(new Pair<>("snap.enabled", true));
         configs.addKeyValuePair(new Pair<>("sorcery.enabled", true));
-        configs.addKeyValuePair(new Pair<>("steadfast.enabled", false));
+
         configs.addKeyValuePair(new Pair<>("selfdestruct.enabled", true));
         configs.addKeyValuePair(new Pair<>("tranquilize.enabled", true));
         configs.addKeyValuePair(new Pair<>("tremor.enabled", true));

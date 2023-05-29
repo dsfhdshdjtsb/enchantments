@@ -37,7 +37,6 @@ public class RampageEnchantment extends Enchantment {
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
-        System.out.println(level);
         if(EnchantmentHelper.getLevel(CombatEnchants.RAMPAGE, user.getMainHandStack()) == 0||target.distanceTo(user) >= 6)
             return;
         if(target instanceof PlayerEntity)

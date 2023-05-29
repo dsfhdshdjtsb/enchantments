@@ -69,6 +69,8 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
 
     @Shadow protected abstract void onStatusEffectRemoved(StatusEffectInstance effect);
 
+    @Shadow @Nullable public abstract DamageSource getRecentDamageSource();
+
     @Inject(at = @At("HEAD"), method = "tick")
     private void tick(CallbackInfo info) { //move to player entity
         int shieldingLevel = 0;
@@ -100,7 +102,8 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
 
     @Inject(at = @At("HEAD"), method = "damage", cancellable = true)
     private void damage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
-        if(source == DamageSource.LIGHTNING_BOLT)
+        LivingEntity user = ((LivingEntity)((Object)this));
+        if(source == user.getDamageSources().lightningBolt())
         {
             StatusEffectInstance lightningImmune = this.getStatusEffect(CombatEnchants.LIGHTNING_IMMUNE);
             if(lightningImmune != null)
@@ -108,22 +111,20 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
                 cir.cancel();
             }
         }
-        if(source.isProjectile()) {
-            int deflectLevel = EnchantmentHelper.getLevel(CombatEnchants.DEFLECT, this.getEquippedStack(EquipmentSlot.CHEST));
-            if (deflectLevel != 0 && this.random.nextInt(100) < deflectLevel * 10) {
-                if(this.world instanceof ServerWorld)
-                {
-                    ((ServerWorld) this.world).spawnParticles(ParticleTypes.POOF, this.getX(), this.getBodyY(0.5D), this.getZ(), 5, 0.3, 0.5, 0.3, 0.0D);
-                }
-                cir.cancel();
+        int deflectLevel = EnchantmentHelper.getLevel(CombatEnchants.DEFLECT, this.getEquippedStack(EquipmentSlot.CHEST));
+        if (deflectLevel != 0 && this.random.nextInt(100) < deflectLevel * 10 && ( this.getRecentDamageSource() != null && this.getRecentDamageSource().getType().msgId().equals("arrow"))) {
+            if(this.world instanceof ServerWorld)
+            {
+                ((ServerWorld) this.world).spawnParticles(ParticleTypes.POOF, this.getX(), this.getBodyY(0.5D), this.getZ(), 5, 0.3, 0.5, 0.3, 0.0D);
             }
+            cir.cancel();
         }
         int sorcLevel = 0;
         for(ItemStack i : getArmorItems())
         {
             if(EnchantmentHelper.getLevel(CombatEnchants.SHIELDING, i) != 0) {
-//                if(!this.hasStatusEffect(CombatEnchants.SHIELDING_COOLDOWN_EFFECT) && this.world instanceof ServerWorld)
-//                    ((ServerWorld) this.world).spawnParticles(CombatEnchants.SHIELD_PARTICLE, this.getX(), this.getBodyY(0.5D), this.getZ(), 3, 0.3D, 0.3D, 0.3D, 0.0D);
+                if(!this.hasStatusEffect(CombatEnchants.SHIELDING_COOLDOWN_EFFECT) && this.world instanceof ServerWorld)
+                    ((ServerWorld) this.world).spawnParticles(CombatEnchants.SHIELD_PARTICLE, this.getX(), this.getBodyY(0.5D), this.getZ(), 3, 0.3D, 0.3D, 0.3D, 0.0D);
                 this.setStatusEffect(new StatusEffectInstance(CombatEnchants.SHIELDING_COOLDOWN_EFFECT, 200), null);
                 break;
             }
@@ -158,17 +159,16 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
             }
         }
         int tremor = EnchantmentHelper.getLevel(CombatEnchants.TREMOR, this.getEquippedStack(EquipmentSlot.FEET));
-        if(tremor > 0 && source.isFromFalling())
+        if(tremor > 0 && source == user.getDamageSources().fall())
         {
             float damage = Math.min(10, amount);
-            LivingEntity user = ((LivingEntity)((Object)this));
             List<LivingEntity> list = this.world.getNonSpectatingEntities(LivingEntity.class, this.getBoundingBox()
                     .expand(damage, 1D, damage));
             list.remove(user);
 
             for (LivingEntity e : list)
             {
-                e.damage(DamageSource.mob(user), damage);
+                e.damage(user.getDamageSources().mobAttack(user), damage);
                 e.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, (int)damage * 10, 1));
             }
             if (user.world instanceof ServerWorld)
@@ -252,13 +252,6 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
             cir.setReturnValue(0);
     }
 
-    @ModifyConstant(method = "isBlocking", constant = @Constant(intValue = 5))
-    public int modifyArmTime(int constant)
-    {
-        LivingEntity user = ((LivingEntity)((Object)this));
-        int lightweightLevel = Math.max(0, Math.max(EnchantmentHelper.getLevel(CombatEnchants.LIGHTWEIGHT, user.getMainHandStack()),  EnchantmentHelper.getLevel(CombatEnchants.LIGHTWEIGHT, user.getOffHandStack())));
-        return constant - lightweightLevel;
-    }
 
     /**
      * @author Dsfhdshdjtsb

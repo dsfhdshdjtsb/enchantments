@@ -17,7 +17,6 @@ public class BarrageStackEffect extends StatusEffect {
         if(amplifier >= 9 && amplifier <= 15) {
             entity.removeStatusEffect(CombatEnchants.BARRAGE_STACK_EFFECT);
             entity.addStatusEffect(new StatusEffectInstance(CombatEnchants.BARRAGE_STACK_EFFECT, 200, amplifier - 10));
-            System.out.println("status effect: " + (amplifier - 10));
         }
         else if (amplifier >= 16)
         {

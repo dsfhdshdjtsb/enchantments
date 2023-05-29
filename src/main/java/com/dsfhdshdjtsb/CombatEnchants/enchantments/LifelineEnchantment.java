@@ -46,8 +46,8 @@ public class LifelineEnchantment extends Enchantment {
 
             user.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 40 + attackerCount * 20, attackerCount));
             user.addStatusEffect(new StatusEffectInstance(CombatEnchants.LIFELINE_COOLDOWN_EFFECT, 1200, 0));
-            //if(user.world instanceof ServerWorld)
-            //((ServerWorld) user.world).spawnParticles(CombatEnchants.SHIELD_PARTICLE, user.getX(), user.getBodyY(0.5D), user.getZ(), 3, 0.3D, 0.3D, 0.3D, 0.0D);
+            if(user.world instanceof ServerWorld)
+                ((ServerWorld) user.world).spawnParticles(CombatEnchants.SHIELD_PARTICLE, user.getX(), user.getBodyY(0.5D), user.getZ(), 3, 0.3D, 0.3D, 0.3D, 0.0D);
         }
     }
 

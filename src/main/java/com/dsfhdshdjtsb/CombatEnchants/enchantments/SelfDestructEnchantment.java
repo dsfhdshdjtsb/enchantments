@@ -44,7 +44,7 @@ public class SelfDestructEnchantment extends Enchantment {
         {
             Explosion explosion = user.world.createExplosion(user, user.getX(), user.getY(), user.getZ(), 2.0f, World.ExplosionSourceType.TNT);
             user.setVelocity(0, 0.5, 0);
-            user.damage(DamageSource.explosion(explosion), 999);
+            user.damage(target.world.getDamageSources().magic(), 999);
 
         }
     }

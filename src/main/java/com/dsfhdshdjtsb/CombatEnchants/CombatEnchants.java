@@ -75,8 +75,8 @@ public class CombatEnchants implements ModInitializer {
 	public static final StatusEffect AFTERSHOCK_EFFECT = new AftershockEffect();
 	public static final StatusEffect LIGHTNING_IMMUNE = new LightningImmuneEffect();
 
-//	public static final DefaultParticleType SHIELD_PARTICLE = FabricParticleTypes.simple();
-//	public static final DefaultParticleType SLEEPY_PARTICLE = FabricParticleTypes.simple();
+	public static final DefaultParticleType SHIELD_PARTICLE = FabricParticleTypes.simple();
+	public static final DefaultParticleType SLEEPY_PARTICLE = FabricParticleTypes.simple();
 
 	@Override
 	public void onInitialize() {
@@ -138,8 +138,8 @@ public class CombatEnchants implements ModInitializer {
 		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "grab"), GRAB_EFFECT);
 		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "aftershock"), AFTERSHOCK_EFFECT);
 		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "lightning_immune"), LIGHTNING_IMMUNE);
-//		Registry.register(Registries.PARTICLE_TYPE, new Identifier("cenchants", "shield"), SHIELD_PARTICLE);
-//		Registry.register(Registries.PARTICLE_TYPE, new Identifier("cenchants", "sleepy"), SLEEPY_PARTICLE);
+		Registry.register(Registries.PARTICLE_TYPE, new Identifier("cenchants", "shield_particle"), SHIELD_PARTICLE);
+		Registry.register(Registries.PARTICLE_TYPE, new Identifier("cenchants", "sleepy_particle"), SLEEPY_PARTICLE);
 
 	}
 }
