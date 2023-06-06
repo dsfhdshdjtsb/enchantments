@@ -32,18 +32,18 @@ public abstract class CenchantsTridentEntityMixin {
     {
         TridentEntity trident = ((TridentEntity)(Object)(this));
         Entity entity = entityHitResult.getEntity();
-        if (trident.world instanceof ServerWorld && EnchantmentHelper.getLevel(CombatEnchants.SNAP, tridentStack) != 0 && trident.getOwner() != null) {
-            if(!trident.world.isRaining()) {
-                entity.world.spawnEntity(new EvokerFangsEntity(entity.world,entity.getX(),  entity.getY(),entity.getZ(), 0, 3, (LivingEntity) trident.getOwner()));
+        if (trident.getWorld() instanceof ServerWorld && EnchantmentHelper.getLevel(CombatEnchants.SNAP, tridentStack) != 0 && trident.getOwner() != null) {
+            if(!trident.getWorld().isRaining()) {
+                entity.getWorld().spawnEntity(new EvokerFangsEntity(entity.getWorld(),entity.getX(),  entity.getY(),entity.getZ(), 0, 3, (LivingEntity) trident.getOwner()));
             }
-            else if (!entity.world.isThundering())
+            else if (!entity.getWorld().isThundering())
             {
                 for(int i = -3; i < 3; i++)
                 {
                     double xDif = entity.getX() - trident.getOwner().getX();
                     double zDif = entity.getZ() - trident.getOwner().getZ();
                     double angle = Math.atan(xDif/zDif);
-                    entity.world.spawnEntity(new EvokerFangsEntity(entity.world,entity.getX() + Math.sin(angle) * i,  entity.getY(),entity.getZ() + Math.cos(angle) * i, 0, (i + 3) * 2, (LivingEntity) trident.getOwner()));
+                    entity.getWorld().spawnEntity(new EvokerFangsEntity(entity.getWorld(),entity.getX() + Math.sin(angle) * i,  entity.getY(),entity.getZ() + Math.cos(angle) * i, 0, (i + 3) * 2, (LivingEntity) trident.getOwner()));
                 }
             }
             else
@@ -53,21 +53,21 @@ public abstract class CenchantsTridentEntityMixin {
                     double xDif = entity.getX() - trident.getOwner().getX();
                     double zDif = entity.getZ() - trident.getOwner().getZ();
                     double angle = Math.atan(xDif/zDif);
-                    EvokerFangsEntity fangsEntity = new EvokerFangsEntity(entity.world,entity.getX() + Math.sin(angle) * i,  entity.getY(),entity.getZ() + Math.cos(angle) * i, 0, (i + 5), (LivingEntity) trident.getOwner());
+                    EvokerFangsEntity fangsEntity = new EvokerFangsEntity(entity.getWorld(),entity.getX() + Math.sin(angle) * i,  entity.getY(),entity.getZ() + Math.cos(angle) * i, 0, (i + 5), (LivingEntity) trident.getOwner());
                     fangsEntity.setFireTicks(0);
-                    entity.world.spawnEntity(fangsEntity);
+                    entity.getWorld().spawnEntity(fangsEntity);
                 }
             }
         }
 
         int inkingLevel = EnchantmentHelper.getLevel(CombatEnchants.INKING, tridentStack);
-        if (trident.world instanceof ServerWorld && inkingLevel != 0 && trident.getOwner() != null && entity instanceof LivingEntity) {
+        if (trident.getWorld() instanceof ServerWorld && inkingLevel != 0 && trident.getOwner() != null && entity instanceof LivingEntity) {
             int chance = inkingLevel * 10;
-            if(trident.world.isRaining())
+            if(trident.getWorld().isRaining())
             {
                 chance = 50;
             }
-            if(trident.world.isThundering()) {
+            if(trident.getWorld().isThundering()) {
                 chance = 100;
             }
             Random rand = new Random();
@@ -81,9 +81,9 @@ public abstract class CenchantsTridentEntityMixin {
     @Inject(at =  @At("TAIL"), method="tick")
     public void tick(CallbackInfo ci) {
         TridentEntity trident = ((TridentEntity)(Object)(this));
-        if(!dealtDamage && EnchantmentHelper.getLevel(CombatEnchants.INKING, tridentStack) != 0 && trident.world instanceof ServerWorld)
+        if(!dealtDamage && EnchantmentHelper.getLevel(CombatEnchants.INKING, tridentStack) != 0 && trident.getWorld() instanceof ServerWorld)
         {
-            ((ServerWorld) trident.world).spawnParticles(ParticleTypes.SQUID_INK, trident.getX(), trident.getBodyY(0.5D), trident.getZ(), 0, 0.0D, 0.0D, 0.0D, 0.0D);
+            ((ServerWorld) trident.getWorld()).spawnParticles(ParticleTypes.SQUID_INK, trident.getX(), trident.getBodyY(0.5D), trident.getZ(), 0, 0.0D, 0.0D, 0.0D, 0.0D);
         }
     }
 

@@ -42,18 +42,18 @@ public class TriumphEnchantment extends Enchantment {
         {
             user.heal(level);
             user.addStatusEffect(new StatusEffectInstance(StatusEffects.SATURATION, 1, (level * 3) - 1 ));
-            if (target.world instanceof ServerWorld) {
-                ((ServerWorld) target.world).spawnParticles(ParticleTypes.SOUL, target.getX(), target.getBodyY(0.5D), target.getZ(), 0, 1, 0.0D, 1, 0.0D);
-                ((ServerWorld) target.world).spawnParticles(ParticleTypes.HEART, user.getX(), user.getBodyY(0.5D), user.getZ(), 0, 0.2, 0.5, 0.2, 0.0D);
+            if (target.getWorld() instanceof ServerWorld) {
+                ((ServerWorld) target.getWorld()).spawnParticles(ParticleTypes.SOUL, target.getX(), target.getBodyY(0.5D), target.getZ(), 0, 1, 0.0D, 1, 0.0D);
+                ((ServerWorld) target.getWorld()).spawnParticles(ParticleTypes.HEART, user.getX(), user.getBodyY(0.5D), user.getZ(), 0, 0.2, 0.5, 0.2, 0.0D);
             }
         }
         else if(target instanceof LivingEntity && ((LivingEntity)target).isDead())
         {
             user.heal(level / 2.0f);
             user.addStatusEffect(new StatusEffectInstance(StatusEffects.SATURATION, 1, 0));
-            if (target.world instanceof ServerWorld) {
-                ((ServerWorld) target.world).spawnParticles(ParticleTypes.SOUL, target.getX(), target.getBodyY(0.5D), target.getZ(), 0, 1, 0.0D, 1, 0.0D);
-                ((ServerWorld) target.world).spawnParticles(ParticleTypes.HEART, user.getX(), user.getBodyY(0.5D), user.getZ(), 0, 0.4, 0.5, 0.4, 0.0D);
+            if (target.getWorld() instanceof ServerWorld) {
+                ((ServerWorld) target.getWorld()).spawnParticles(ParticleTypes.SOUL, target.getX(), target.getBodyY(0.5D), target.getZ(), 0, 1, 0.0D, 1, 0.0D);
+                ((ServerWorld) target.getWorld()).spawnParticles(ParticleTypes.HEART, user.getX(), user.getBodyY(0.5D), user.getZ(), 0, 0.4, 0.5, 0.4, 0.0D);
             }
         }
     }

@@ -41,7 +41,7 @@ public class InspireEnchantment extends Enchantment {
         if (EnchantmentHelper.getLevel(CombatEnchants.INSPIRE, user.getMainHandStack()) == 0 || target.distanceTo(user) >= 6)
             return;
 
-        List<LivingEntity> list = user.world.getNonSpectatingEntities(LivingEntity.class, user.getBoundingBox()
+        List<LivingEntity> list = user.getWorld().getNonSpectatingEntities(LivingEntity.class, user.getBoundingBox()
                 .expand(8, 0.25D, 8));
 
         boolean activated = false;
@@ -77,11 +77,11 @@ public class InspireEnchantment extends Enchantment {
                 }
             }
         }
-        if (activated && user.world instanceof ServerWorld) {
+        if (activated && user.getWorld() instanceof ServerWorld) {
             for (double x = -(9); x <= (9); x = x + 1) {
                 double y = Math.sqrt((9) * (9) - x * x);
-                ((ServerWorld) user.world).spawnParticles(ParticleTypes.END_ROD, user.getX() + x, user.getBodyY(0.5D), user.getZ() + y, 0, 1, 0.0D, 1, 0.0D);
-                ((ServerWorld) user.world).spawnParticles(ParticleTypes.END_ROD, user.getX() + x, user.getBodyY(0.5D), user.getZ() - y, 0, 1, 0.0D, 1, 0.0D);
+                ((ServerWorld) user.getWorld()).spawnParticles(ParticleTypes.END_ROD, user.getX() + x, user.getBodyY(0.5D), user.getZ() + y, 0, 1, 0.0D, 1, 0.0D);
+                ((ServerWorld) user.getWorld()).spawnParticles(ParticleTypes.END_ROD, user.getX() + x, user.getBodyY(0.5D), user.getZ() - y, 0, 1, 0.0D, 1, 0.0D);
             }
         }
     }

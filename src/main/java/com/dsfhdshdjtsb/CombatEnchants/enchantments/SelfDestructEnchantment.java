@@ -38,13 +38,13 @@ public class SelfDestructEnchantment extends Enchantment {
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
         if(EnchantmentHelper.getLevel(CombatEnchants.SELFDESTRUCT, user.getMainHandStack()) == 0||target.distanceTo(user) >= 6)
             return;
-        if(!(user instanceof PlayerEntity) && !user.world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING))
+        if(!(user instanceof PlayerEntity) && !user.getWorld().getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING))
             return;
         if(target instanceof LivingEntity)
         {
-            Explosion explosion = user.world.createExplosion(user, user.getX(), user.getY(), user.getZ(), 2.0f, World.ExplosionSourceType.TNT);
+            Explosion explosion = user.getWorld().createExplosion(user, user.getX(), user.getY(), user.getZ(), 2.0f, World.ExplosionSourceType.TNT);
             user.setVelocity(0, 0.5, 0);
-            user.damage(target.world.getDamageSources().magic(), 999);
+            user.damage(target.getWorld().getDamageSources().magic(), 999);
 
         }
     }

@@ -44,7 +44,7 @@ public class PerceptionEnchantment extends Enchantment {
             int exp = ((PlayerEntity) user).experienceLevel;
             if(exp < 3)
                 exp = 3;
-            target.damage(target.world.getDamageSources().playerAttack((PlayerEntity) user), damage + (int)(Math.log(exp)) - 1);
+            target.damage(target.getWorld().getDamageSources().playerAttack((PlayerEntity) user), damage + (int)(Math.log(exp)) - 1);
         }
     }
 

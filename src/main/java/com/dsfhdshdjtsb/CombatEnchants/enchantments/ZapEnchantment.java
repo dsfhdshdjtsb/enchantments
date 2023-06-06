@@ -55,16 +55,16 @@ public class ZapEnchantment extends Enchantment {
     private void helper(LivingEntity source, int level, List<LivingEntity> hit)
     {
         if(!hit.contains(source))
-            source.damage(source.world.getDamageSources().magic(), level + 2.0f);
+            source.damage(source.getWorld().getDamageSources().magic(), level + 2.0f);
         hit.add(source);
 
-        List<LivingEntity> list = source.world.getNonSpectatingEntities(LivingEntity.class, source.getBoundingBox()
+        List<LivingEntity> list = source.getWorld().getNonSpectatingEntities(LivingEntity.class, source.getBoundingBox()
                 .expand(1.0D + 3, 0.25D, 1.0D + 3));
         for(LivingEntity e: list)
         {
             if(!e.equals(source) && !hit.contains(e)){
                 helper(e, level, hit);
-                if (source.world instanceof ServerWorld) {
+                if (source.getWorld() instanceof ServerWorld) {
                     double xdif = e.getX() - source.getX();
                     double ydif = e.getBodyY(0.5D) - source.getBodyY(0.5D);
                     double zdif = e.getZ() - source.getZ();
@@ -74,7 +74,7 @@ public class ZapEnchantment extends Enchantment {
                     double y = 0;
                     double z = 0;
                     while (Math.abs(x) < Math.abs(xdif)) {
-                        ((ServerWorld) source.world).spawnParticles(ParticleTypes.ELECTRIC_SPARK, source.getX() + x,
+                        ((ServerWorld) source.getWorld()).spawnParticles(ParticleTypes.ELECTRIC_SPARK, source.getX() + x,
                                 source.getBodyY(0.5D) + y, source.getZ() + z, 0, 1, 0.0D, 1, 0.0D);
                         x = x + xdif / particleNumConstant;
                         y = y + ydif / particleNumConstant;

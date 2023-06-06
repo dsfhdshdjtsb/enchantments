@@ -43,7 +43,7 @@ public class VolleyEnchantment extends Enchantment {
             if(user.hasStatusEffect(CombatEnchants.BARRAGE_EFFECT))
                 return;
         }
-        World world = user.world;
+        World world = user.getWorld();
         ArrowEntity[] arrowArray = new ArrowEntity[9];
         int random = 2;
         int height = 40 + (5 * level);

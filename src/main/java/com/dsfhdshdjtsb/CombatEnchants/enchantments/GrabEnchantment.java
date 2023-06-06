@@ -48,7 +48,7 @@ public class GrabEnchantment extends Enchantment {
                 return;
         }
         if(target instanceof LivingEntity) {
-            List<LivingEntity> list = target.world.getNonSpectatingEntities(LivingEntity.class, target.getBoundingBox()
+            List<LivingEntity> list = target.getWorld().getNonSpectatingEntities(LivingEntity.class, target.getBoundingBox()
                     .expand(15 + level * 5, 10, 15 + level * 5));
             if (list.size() > 1) {
                 LivingEntity closest = (LivingEntity) target;

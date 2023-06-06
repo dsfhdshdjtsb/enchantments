@@ -38,7 +38,7 @@ public class LifelineEnchantment extends Enchantment {
     public void onUserDamaged(LivingEntity user, Entity attacker, int level) {
         if(user.getHealth() <= 10.0f && !user.hasStatusEffect(CombatEnchants.LIFELINE_COOLDOWN_EFFECT))
         {
-            int attackerCount = user.world.getNonSpectatingEntities(LivingEntity.class, user.getBoundingBox()
+            int attackerCount = user.getWorld().getNonSpectatingEntities(LivingEntity.class, user.getBoundingBox()
                     .expand(8.0D, 0.25D, 8.0D)).size() - 1;
 
             if(attackerCount >= 4)
@@ -46,8 +46,8 @@ public class LifelineEnchantment extends Enchantment {
 
             user.addStatusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 40 + attackerCount * 20, attackerCount));
             user.addStatusEffect(new StatusEffectInstance(CombatEnchants.LIFELINE_COOLDOWN_EFFECT, 1200, 0));
-            if(user.world instanceof ServerWorld)
-                ((ServerWorld) user.world).spawnParticles(CombatEnchants.SHIELD_PARTICLE, user.getX(), user.getBodyY(0.5D), user.getZ(), 3, 0.3D, 0.3D, 0.3D, 0.0D);
+            if(user.getWorld() instanceof ServerWorld)
+                ((ServerWorld) user.getWorld()).spawnParticles(CombatEnchants.SHIELD_PARTICLE, user.getX(), user.getBodyY(0.5D), user.getZ(), 3, 0.3D, 0.3D, 0.3D, 0.0D);
         }
     }
 

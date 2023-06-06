@@ -46,7 +46,7 @@ public class RejuvenateEnchantment extends Enchantment {
                 return;
         }
 
-        List<LivingEntity> list = user.world.getNonSpectatingEntities(LivingEntity.class, user.getBoundingBox()
+        List<LivingEntity> list = user.getWorld().getNonSpectatingEntities(LivingEntity.class, user.getBoundingBox()
                 .expand(8, 0.25D, 8));
 
         boolean activated = false;
@@ -64,20 +64,20 @@ public class RejuvenateEnchantment extends Enchantment {
                         e.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 100, 0));
                     }
                 }
-                if(e.world instanceof ServerWorld)
+                if(e.getWorld() instanceof ServerWorld)
                 {
 
                     //((ServerWorld) e.world).spawnParticles(CombatEnchants.SHIELD_PARTICLE, e.getX(), e.getBodyY(0.2D), e.getZ(), 1, 0.3D, 0.3D, 0.3D, 0.0D);
-                    ((ServerWorld) e.world).spawnParticles(ParticleTypes.HEART, e.getX(), e.getBodyY(0.2D), e.getZ(), 1, 0.3D, 0.3D, 0.3D, 0.0D);
+                    ((ServerWorld) e.getWorld()).spawnParticles(ParticleTypes.HEART, e.getX(), e.getBodyY(0.2D), e.getZ(), 1, 0.3D, 0.3D, 0.3D, 0.0D);
                 }
             }
         }
 
-        if (activated && user.world instanceof ServerWorld) {
+        if (activated && user.getWorld() instanceof ServerWorld) {
             for (double x = -(9); x <= (9); x = x + 1) {
                 double y = Math.sqrt((9) * (9) - x * x);
-                ((ServerWorld) user.world).spawnParticles(ParticleTypes.END_ROD, user.getX() + x, user.getBodyY(0.5D), user.getZ() + y, 0, 1, 0.0D, 1, 0.0D);
-                ((ServerWorld) user.world).spawnParticles(ParticleTypes.END_ROD, user.getX() + x, user.getBodyY(0.5D), user.getZ() - y, 0, 1, 0.0D, 1, 0.0D);
+                ((ServerWorld) user.getWorld()).spawnParticles(ParticleTypes.END_ROD, user.getX() + x, user.getBodyY(0.5D), user.getZ() + y, 0, 1, 0.0D, 1, 0.0D);
+                ((ServerWorld) user.getWorld()).spawnParticles(ParticleTypes.END_ROD, user.getX() + x, user.getBodyY(0.5D), user.getZ() - y, 0, 1, 0.0D, 1, 0.0D);
             }
         }
     }

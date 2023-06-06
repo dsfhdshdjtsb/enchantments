@@ -89,7 +89,7 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
         }
         if(darkness != 0)
         {
-            if(this.world.getLightLevel(this.getBlockPos()) >= 10 ) {
+            if(this.getWorld().getLightLevel(this.getBlockPos()) >= 10 ) {
                 this.setFireTicks(20);
             }
             else {
@@ -113,9 +113,9 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
         }
         int deflectLevel = EnchantmentHelper.getLevel(CombatEnchants.DEFLECT, this.getEquippedStack(EquipmentSlot.CHEST));
         if (deflectLevel != 0 && this.random.nextInt(100) < deflectLevel * 10 && ( this.getRecentDamageSource() != null && this.getRecentDamageSource().getType().msgId().equals("arrow"))) {
-            if(this.world instanceof ServerWorld)
+            if(this.getWorld() instanceof ServerWorld)
             {
-                ((ServerWorld) this.world).spawnParticles(ParticleTypes.POOF, this.getX(), this.getBodyY(0.5D), this.getZ(), 5, 0.3, 0.5, 0.3, 0.0D);
+                ((ServerWorld) this.getWorld()).spawnParticles(ParticleTypes.POOF, this.getX(), this.getBodyY(0.5D), this.getZ(), 5, 0.3, 0.5, 0.3, 0.0D);
             }
             cir.cancel();
         }
@@ -123,8 +123,8 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
         for(ItemStack i : getArmorItems())
         {
             if(EnchantmentHelper.getLevel(CombatEnchants.SHIELDING, i) != 0) {
-                if(!this.hasStatusEffect(CombatEnchants.SHIELDING_COOLDOWN_EFFECT) && this.world instanceof ServerWorld)
-                    ((ServerWorld) this.world).spawnParticles(CombatEnchants.SHIELD_PARTICLE, this.getX(), this.getBodyY(0.5D), this.getZ(), 3, 0.3D, 0.3D, 0.3D, 0.0D);
+                if(!this.hasStatusEffect(CombatEnchants.SHIELDING_COOLDOWN_EFFECT) && this.getWorld() instanceof ServerWorld)
+                    ((ServerWorld) this.getWorld()).spawnParticles(CombatEnchants.SHIELD_PARTICLE, this.getX(), this.getBodyY(0.5D), this.getZ(), 3, 0.3D, 0.3D, 0.3D, 0.0D);
                 this.setStatusEffect(new StatusEffectInstance(CombatEnchants.SHIELDING_COOLDOWN_EFFECT, 200), null);
                 break;
             }
@@ -162,7 +162,7 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
         if(tremor > 0 && source == user.getDamageSources().fall())
         {
             float damage = Math.min(10, amount);
-            List<LivingEntity> list = this.world.getNonSpectatingEntities(LivingEntity.class, this.getBoundingBox()
+            List<LivingEntity> list = this.getWorld().getNonSpectatingEntities(LivingEntity.class, this.getBoundingBox()
                     .expand(damage, 1D, damage));
             list.remove(user);
 
@@ -171,7 +171,7 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
                 e.damage(user.getDamageSources().mobAttack(user), damage);
                 e.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, (int)damage * 10, 1));
             }
-            if (user.world instanceof ServerWorld)
+            if (user.getWorld() instanceof ServerWorld)
             {
                 for(double i = user.getX() - damage / 2; i <= user.getX() + damage / 2; i++)
                 {
@@ -181,8 +181,8 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
                         int y = MathHelper.floor(this.getY() - 0.20000000298023224D);
                         int z = MathHelper.floor(j);
                         BlockPos blockPos = new BlockPos(x, y, z);
-                        BlockState blockState = user.world.getBlockState(blockPos);
-                        ((ServerWorld) user.world).spawnParticles( new BlockStateParticleEffect(ParticleTypes.BLOCK, blockState), x,
+                        BlockState blockState = user.getWorld().getBlockState(blockPos);
+                        ((ServerWorld) user.getWorld()).spawnParticles( new BlockStateParticleEffect(ParticleTypes.BLOCK, blockState), x,
                                 y + 1, z, 4, 1, 0.0D, 1, 0.0D);
 
                     }
@@ -194,7 +194,7 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
 
     @Inject(at = @At("HEAD"), method = "onAttacking")
     public void onAttacking(Entity target, CallbackInfo ci) {
-        if(!(this.world.getLightLevel(this.getBlockPos()) >= 12)) {
+        if(!(this.getWorld().getLightLevel(this.getBlockPos()) >= 12)) {
             for (ItemStack i : this.getArmorItems()) {
                 if (EnchantmentHelper.getLevel(CombatEnchants.DARKNESS, i) != 0) { //FIX LIGHT LEVEL
                     this.addStatusEffect(new StatusEffectInstance(StatusEffects.REGENERATION, 100, 0));
@@ -258,7 +258,7 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
      */
     @Overwrite
     public boolean clearStatusEffects() {
-        if (this.world.isClient) {
+        if (this.getWorld().isClient) {
             return false;
         } else {
             StatusEffectInstance[] cooldowns = new StatusEffectInstance[]{this.getStatusEffect(CombatEnchants.LIFELINE_COOLDOWN_EFFECT),

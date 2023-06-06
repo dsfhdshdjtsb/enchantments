@@ -25,14 +25,14 @@ public abstract class CenchantsPlayerEntityMixin {
         int combo = EnchantmentHelper.getLevel(CombatEnchants.COMBO, ((PlayerEntity)(Object) this).getMainHandStack());
         if(combo != 0)
         {
-            if (target.isAttackable() && !target.world.isClient) {
+            if (target.isAttackable() && !target.getWorld().isClient) {
                 if (!target.handleAttack((PlayerEntity)(Object) this) && target instanceof LivingEntity && !((PlayerEntity)(Object) this).handSwinging) {
                     int mark = 0;
                     StatusEffectInstance markInstance = ((LivingEntity) target).getStatusEffect(CombatEnchants.MARK_EFFECT);
                     if( markInstance!= null)
                         mark = markInstance.getAmplifier() + 1;
                     ((LivingEntity) target).addStatusEffect(new StatusEffectInstance(CombatEnchants.MARK_EFFECT, 20 + combo * 4, mark));
-                    ((ServerWorld) ((PlayerEntity)(Object) this).world).spawnParticles(ParticleTypes.ELECTRIC_SPARK, target.getX(), target.getBodyY(0.5D), target.getZ(), 5, 0.3, 0.5, 0.3, 0.0D);
+                    ((ServerWorld) ((PlayerEntity)(Object) this).getWorld()).spawnParticles(ParticleTypes.ELECTRIC_SPARK, target.getX(), target.getBodyY(0.5D), target.getZ(), 5, 0.3, 0.5, 0.3, 0.0D);
                 }
                 }
         }
