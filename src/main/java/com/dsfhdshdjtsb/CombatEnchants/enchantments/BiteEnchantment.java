@@ -45,8 +45,8 @@ public class BiteEnchantment extends Enchantment {
             if(damageSource != null && !damageSource.getType().msgId().equals("arrow") || (user.getMainHandStack().getItem() instanceof BowItem))
                 return;
         }
-        if(target.world instanceof ServerWorld && target instanceof LivingEntity && user instanceof PlayerEntity) {
-            World world = target.world;
+        if(target.getWorld() instanceof ServerWorld && target instanceof LivingEntity && user instanceof PlayerEntity) {
+            World world = target.getWorld();
             WolfEntity wolf = EntityType.WOLF.create(world);
             double posX = Math.random() * 2 - 1;
             double posY = Math.random() * 2 - 1;

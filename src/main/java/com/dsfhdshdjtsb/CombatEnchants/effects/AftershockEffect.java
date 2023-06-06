@@ -22,10 +22,10 @@ public class AftershockEffect extends StatusEffect {
 
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
-        entity.damage(entity.world.getDamageSources().magic(), ((amplifier+1) / 2.0f));
+        entity.damage(entity.getWorld().getDamageSources().magic(), ((amplifier+1) / 2.0f));
         entity.addStatusEffect(new StatusEffectInstance(CombatEnchants.DELAYED_DEATH_EFFECT, 17, amplifier, true, false));
-        if (entity.world instanceof ServerWorld) {
-            ((ServerWorld) entity.world).spawnParticles(ParticleTypes.SONIC_BOOM, entity.getX(), entity.getBodyY(0.5D), entity.getZ(), 1, 0, 0, 0, 0.0D);
+        if (entity.getWorld() instanceof ServerWorld) {
+            ((ServerWorld) entity.getWorld()).spawnParticles(ParticleTypes.SONIC_BOOM, entity.getX(), entity.getBodyY(0.5D), entity.getZ(), 1, 0, 0, 0, 0.0D);
         }
     }
 

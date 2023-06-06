@@ -40,7 +40,7 @@ public class DuelingEnchantment  extends Enchantment {
         if(EnchantmentHelper.getLevel(CombatEnchants.DUELING, user.getMainHandStack()) == 0|| target.distanceTo(user) >= 6)
             return;
 
-        List<LivingEntity> list = target.world.getNonSpectatingEntities(LivingEntity.class, target.getBoundingBox().expand(5.0D, 0.25D, 5.0D));
+        List<LivingEntity> list = target.getWorld().getNonSpectatingEntities(LivingEntity.class, target.getBoundingBox().expand(5.0D, 0.25D, 5.0D));
         boolean bl = false;
         for (LivingEntity e : list) {
             if (!e.equals(user) && !e.equals(target)) {
@@ -49,11 +49,11 @@ public class DuelingEnchantment  extends Enchantment {
             }
         }
 
-        if (bl && target.world instanceof ServerWorld) {
+        if (bl && target.getWorld() instanceof ServerWorld) {
             for (double x = -6; x <= 6; x = x + 1) {
                 double y = Math.sqrt(36 - x * x);
-                ((ServerWorld) target.world).spawnParticles(ParticleTypes.CLOUD, target.getX() + x, target.getBodyY(0.5D), target.getZ() + y, 0, 1, 0.0D, 1, 0.0D);
-                ((ServerWorld) target.world).spawnParticles(ParticleTypes.CLOUD, target.getX() + x, target.getBodyY(0.5D), target.getZ() - y, 0, 1, 0.0D, 1, 0.0D);
+                ((ServerWorld) target.getWorld()).spawnParticles(ParticleTypes.CLOUD, target.getX() + x, target.getBodyY(0.5D), target.getZ() + y, 0, 1, 0.0D, 1, 0.0D);
+                ((ServerWorld) target.getWorld()).spawnParticles(ParticleTypes.CLOUD, target.getX() + x, target.getBodyY(0.5D), target.getZ() - y, 0, 1, 0.0D, 1, 0.0D);
             }
         }
     }

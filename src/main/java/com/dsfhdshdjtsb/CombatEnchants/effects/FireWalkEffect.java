@@ -19,7 +19,7 @@ public class FireWalkEffect extends StatusEffect {
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
         if(entity.isOnGround())
         {
-            World world = entity.world;
+            World world = entity.getWorld();
             BlockPos pos = entity.getBlockPos();
             if(world.getBlockState(pos) == Blocks.AIR.getDefaultState()) {
                 BlockState fire = Blocks.FIRE.getDefaultState();
