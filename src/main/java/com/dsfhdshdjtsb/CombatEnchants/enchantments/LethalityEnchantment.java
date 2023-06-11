@@ -37,7 +37,7 @@ public class LethalityEnchantment extends Enchantment {
         if(EnchantmentHelper.getLevel(CombatEnchants.LETHALITY, user.getMainHandStack()) == 0||target.distanceTo(user) >= 6)
             return;
         if (user instanceof PlayerEntity && target instanceof LivingEntity) {
-            float bDamage = ((((LivingEntity) target).getArmor() - user.getArmor()) / (6.0f - level));
+            float bDamage = (float)Math.cbrt(level * (((LivingEntity) target).getArmor() - user.getArmor()));
             float damage = (float)user.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE) + EnchantmentHelper.getAttackDamage(user.getMainHandStack(), user.getGroup());
 
             if(bDamage > 0)
