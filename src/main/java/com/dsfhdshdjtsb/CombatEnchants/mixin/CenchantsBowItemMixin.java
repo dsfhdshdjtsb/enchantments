@@ -3,7 +3,6 @@ package com.dsfhdshdjtsb.CombatEnchants.mixin;
 import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.item.BowItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
