@@ -15,6 +15,7 @@ public abstract class CenchantsBowItemMixin {
 
     //thank you to Rubydesic on the fabric mc discord for the help
     @ModifyVariable(at = @At("STORE"), method = "onStoppedUsing", ordinal = 0 )
+    @SuppressWarnings("InvalidInjectorMethodSignature")
     public float onStoppedUsing(float value, ItemStack stack, World world, LivingEntity user)
     {
         StatusEffectInstance barrageEffectInstance = user.getStatusEffect(CombatEnchants.BARRAGE_EFFECT);
