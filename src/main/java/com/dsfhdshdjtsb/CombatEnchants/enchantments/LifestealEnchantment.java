@@ -37,7 +37,7 @@ public class LifestealEnchantment extends Enchantment {
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
-        if (EnchantmentHelper.getLevel(CombatEnchants.LIFESTEAL, user.getMainHandStack()) == 0 || target.distanceTo(user) >= 6)
+        if (EnchantmentHelper.getLevel(CombatEnchants.LIFESTEAL, user.getMainHandStack()) == 0 || target.distanceTo(user) >= 6 || !(target instanceof LivingEntity))
             return;
         if (user.getStatusEffect(CombatEnchants.LIFESTEAL_COOLDOWN_EFFECT) == null) {
             List<LivingEntity> list = target.getWorld().getNonSpectatingEntities(LivingEntity.class, target.getBoundingBox()
