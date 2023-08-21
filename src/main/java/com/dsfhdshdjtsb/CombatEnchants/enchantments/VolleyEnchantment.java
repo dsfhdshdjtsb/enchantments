@@ -2,6 +2,7 @@ package com.dsfhdshdjtsb.CombatEnchants.enchantments;
 
 import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
 import com.dsfhdshdjtsb.CombatEnchants.config.ModConfigs;
+import com.dsfhdshdjtsb.CombatEnchants.mixin.PersistentProjectileEntityMixin;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.Entity;
@@ -10,6 +11,7 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.projectile.ArrowEntity;
+import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.BowItem;
 import net.minecraft.item.CrossbowItem;
 import net.minecraft.util.Identifier;
@@ -68,6 +70,7 @@ public class VolleyEnchantment extends Enchantment {
             for (ArrowEntity arrowEntity : arrowArray) {
                 //arrowArray[i].setVelocity(arrowArray[i].getX(), arrowArray[i].getY(), arrowArray[i].getZ(), 10.0f, 1);
                 arrowEntity.setVelocity(0, -2 + (-1 * level), 0);
+                arrowEntity.setNoClip(true);
                 world.spawnEntity(arrowEntity);
             }
 
