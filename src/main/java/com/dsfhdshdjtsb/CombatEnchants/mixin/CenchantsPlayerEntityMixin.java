@@ -47,12 +47,4 @@ public abstract class CenchantsPlayerEntityMixin {
             cir.setReturnValue((float)(1.0D / entity.getAttributeValue(EntityAttributes.GENERIC_ATTACK_SPEED) * (20.0D - (curFervor))));
         }
     }
-
-    @ModifyArg(method = "disableShield", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/ItemCooldownManager;set(Lnet/minecraft/item/Item;I)V"), index = 1)
-    public int modifyDisableTime(int duration)
-    {
-        LivingEntity user = ((LivingEntity)((Object)this));
-        int lightweightLevel = Math.max(0, Math.max(EnchantmentHelper.getLevel(CombatEnchants.LIGHTWEIGHT, user.getMainHandStack()),  EnchantmentHelper.getLevel(CombatEnchants.LIGHTWEIGHT, user.getOffHandStack())));
-        return duration - lightweightLevel * 10;
-    }
 }

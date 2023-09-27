@@ -49,7 +49,6 @@ public class CombatEnchants implements ModInitializer {
 	public static Enchantment DEFLECT;
 	public static Enchantment SNAP;
 	public static Enchantment STEADFAST;
-	public static Enchantment LIGHTWEIGHT;
 	public static Enchantment LIFELINE;
 	public static Enchantment INKING;
 	public static Enchantment GRAB;
@@ -102,7 +101,6 @@ public class CombatEnchants implements ModInitializer {
 		LETHALITY = new LethalityEnchantment();
 		LIFELINE = new LifelineEnchantment();
 		LIFESTEAL = new LifestealEnchantment();
-		LIGHTWEIGHT = new LightweightEnchantment();
 		PERCEPTION = new PerceptionEnchantment();
 		RAMPAGE = new RampageEnchantment();
 		REJUVENATE = new RejuvenateEnchantment();
@@ -110,7 +108,6 @@ public class CombatEnchants implements ModInitializer {
 		AFTERSHOCK = new AftershockEnchantment();
 		SNAP = new SnapEnchantment();
 		SORCERY = new SorceryEnchantment();
-		STEADFAST = new SteadfastEnchantment();
 		SELFDESTRUCT = new SelfDestructEnchantment();
 		TRANQUILIZE = new TranquilizeEnchantment();
 		TREMOR = new TremorEnchantment();
@@ -118,7 +115,6 @@ public class CombatEnchants implements ModInitializer {
 		VISION = new VisionEnchantment();
 		VOLLEY = new VolleyEnchantment();
 		ZAP = new ZapEnchantment();
-		SHIELDBREAK = new ShieldBreakEnchantment();
 
 
 		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "rampage"), RAMPAGE_EFFECT);

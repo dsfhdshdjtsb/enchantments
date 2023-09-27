@@ -28,15 +28,12 @@ public class ModConfigs {
     public static boolean LETHALITY;
     public static boolean LIFELINE;
     public static boolean LIFESTEAL;
-    public static boolean LIGHTWEIGHT;
     public static boolean PERCEPTION;
     public static boolean RAMPAGE;
     public static boolean REJUVENATE;
     public static boolean SHIELDING;
-    public static boolean SHIELDBREAK;
     public static boolean SNAP;
     public static boolean SORCERY;
-    public static boolean STEADFAST;
     public static boolean SELFDESTRUCT;
     public static boolean TRANQUILIZE;
     public static boolean TREMOR;
@@ -80,7 +77,6 @@ public class ModConfigs {
         configs.addKeyValuePair(new Pair<>("rampage.enabled", true));
         configs.addKeyValuePair(new Pair<>("rejuvenate.enabled", true));
         configs.addKeyValuePair(new Pair<>("shielding.enabled", true));
-        configs.addKeyValuePair(new Pair<>("shieldbreak.enabled", true));
         configs.addKeyValuePair(new Pair<>("snap.enabled", true));
         configs.addKeyValuePair(new Pair<>("sorcery.enabled", true));
 
@@ -117,16 +113,13 @@ public class ModConfigs {
         LETHALITY = CONFIG.getOrDefault("lethality.enabled", true);
         LIFELINE = CONFIG.getOrDefault("lifeline.enabled", true);
         LIFESTEAL = CONFIG.getOrDefault("lifesteal.enabled", true);
-        LIGHTWEIGHT = CONFIG.getOrDefault("lightweight.enabled", false);
         PERCEPTION = CONFIG.getOrDefault("perception.enabled", true);
         RAMPAGE = CONFIG.getOrDefault("rampage.enabled", true);
         REJUVENATE = CONFIG.getOrDefault("rejuvenate.enabled", true);
         SHIELDING = CONFIG.getOrDefault("shielding.enabled", true);
         SNAP = CONFIG.getOrDefault("snap.enabled", true);
         SORCERY = CONFIG.getOrDefault("sorcery.enabled", true);
-        STEADFAST = CONFIG.getOrDefault("steadfast.enabled", false);
         SELFDESTRUCT = CONFIG.getOrDefault("selfdestruct.enabled", true);
-        SHIELDBREAK = CONFIG.getOrDefault("shieldbreak.enabled", true);
         TRANQUILIZE = CONFIG.getOrDefault("tranquilize.enabled", true);
         TREMOR = CONFIG.getOrDefault("tremor.enabled", true);
         TRIUMPH = CONFIG.getOrDefault("triumph.enabled", true);
