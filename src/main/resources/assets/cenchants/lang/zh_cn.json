@@ -5,7 +5,7 @@
   "enchantment.cenchants.rampage.desc": "击杀目标获得增益效果",
   "enchantment.cenchants.triumph": "凯旋",
   "enchantment.cenchants.triumph.desc": "击杀目标回复生命与饥饿值",
-  "enchantment.cenchants.lethality": "封喉",
+  "enchantment.cenchants.lethality": "重甲杀手",
   "enchantment.cenchants.lethality.desc": "对高护甲敌人造成额外伤害",
   "enchantment.cenchants.inferno": "炼狱",
   "enchantment.cenchants.inferno.desc": "击中目标点燃周围其他敌人",
@@ -25,7 +25,7 @@
   "enchantment.cenchants.frost.desc": "冻结受击目标，降低其移速并逐渐造成伤害",
   "enchantment.cenchants.shielding": "护盾",
   "enchantment.cenchants.shielding.desc": "脱战时获得伤害吸收效果",
-  "enchantment.cenchants.lifeline": "生命线",
+  "enchantment.cenchants.lifeline": "救主",
   "enchantment.cenchants.lifeline.desc": "生命值低时获得伤害吸收效果",
   "enchantment.cenchants.flame_walker": "焰痕",
   "enchantment.cenchants.flame_walker.desc": "受击后在行进过的地面留下火焰",
@@ -84,7 +84,7 @@
   "effect.cenchants.shielding_cooldown": "护盾冷却",
   "effect.cenchants.fire_walk": "焰行",
   "effect.cenchants.fervor": "狂热",
-  "effect.cenchants.barrage": "阻击",
-  "effect.cenchants.barrage_stack": "阻击储备",
-  "effect.cenchants.lifeline_cooldown": "生命线冷却"
+  "effect.cenchants.barrage": "火力覆盖",
+  "effect.cenchants.barrage_stack": "火力覆盖储备",
+  "effect.cenchants.lifeline_cooldown": "救主冷却"
 }
