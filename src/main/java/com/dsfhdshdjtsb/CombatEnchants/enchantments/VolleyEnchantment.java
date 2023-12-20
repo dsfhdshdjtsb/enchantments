@@ -67,7 +67,6 @@ public class VolleyEnchantment extends Enchantment {
             for (ArrowEntity arrowEntity : arrowArray) {
                 //arrowArray[i].setVelocity(arrowArray[i].getX(), arrowArray[i].getY(), arrowArray[i].getZ(), 10.0f, 1);
                 arrowEntity.setVelocity(0, -2 + (-1 * level), 0);
-                arrowEntity.setNoClip(true);
                 world.spawnEntity(arrowEntity);
             }
 
