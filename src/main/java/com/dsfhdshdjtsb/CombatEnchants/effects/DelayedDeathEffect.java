@@ -12,8 +12,9 @@ public class DelayedDeathEffect extends StatusEffect {
 
 
     @Override
-    public void applyUpdateEffect(LivingEntity entity, int amplifier) {
+    public boolean applyUpdateEffect(LivingEntity entity, int amplifier) {
         entity.damage(entity.getDamageSources().magic(), ((amplifier+1) / 2.0f));
+        return super.applyUpdateEffect(entity, amplifier);
     }
 
     @Override

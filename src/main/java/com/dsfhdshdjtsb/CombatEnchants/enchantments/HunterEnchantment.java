@@ -3,15 +3,14 @@ package com.dsfhdshdjtsb.CombatEnchants.enchantments;
 import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
 import com.dsfhdshdjtsb.CombatEnchants.config.ModConfigs;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
-import net.minecraft.item.BowItem;
 import net.minecraft.item.CrossbowItem;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.Registries;
@@ -20,21 +19,12 @@ import java.util.Objects;
 
 public class HunterEnchantment extends Enchantment {
     public HunterEnchantment() {
-        super(Rarity.UNCOMMON, EnchantmentTarget.BOW, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        super(Enchantment.properties(ItemTags.BOW_ENCHANTABLE,
+                5, 2, Enchantment.leveledCost(5, 20),
+                Enchantment.leveledCost(50, 20), 8, EquipmentSlot.MAINHAND));
         if(ModConfigs.HUNTER)
             Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "hunter"), this);
     }
-
-    @Override
-    public int getMinPower(int level) {
-        return 12 + (level - 1) * 20;
-    }
-
-    @Override
-    public int getMaxPower(int level) {
-        return this.getMinPower(level) + 25;
-    }
-
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
         if(target instanceof LivingEntity) {
@@ -59,10 +49,6 @@ public class HunterEnchantment extends Enchantment {
         }
     }
 
-    @Override
-    public int getMaxLevel() {
-        return 2;
-    }
 
     @Override
     protected boolean canAccept(Enchantment other) {

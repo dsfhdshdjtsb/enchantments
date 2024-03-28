@@ -4,10 +4,10 @@ import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
 import com.dsfhdshdjtsb.CombatEnchants.config.ModConfigs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.*;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
 import net.minecraft.registry.Registry;
@@ -17,19 +17,11 @@ import net.minecraft.world.World;
 
 public class ComboEnchantment extends Enchantment {
     public ComboEnchantment() {
-        super(Rarity.UNCOMMON, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        super(Enchantment.properties(ItemTags.SWORD_ENCHANTABLE,
+                5, 5, Enchantment.leveledCost(1, 11),
+                Enchantment.leveledCost(21, 11), 1, EquipmentSlot.MAINHAND));
         if(ModConfigs.COMBO)
             Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "combo"), this);
-    }
-
-    @Override
-    public int getMinPower(int level) {
-        return 5 + (level - 1) * 8;
-    }
-
-    @Override
-    public int getMaxPower(int level) {
-        return super.getMinPower(level) + 50;
     }
 
     @Override
@@ -54,11 +46,6 @@ public class ComboEnchantment extends Enchantment {
             }
         }
 
-    }
-
-    @Override
-    public int getMaxLevel() {
-        return 5;
     }
 
     @Override

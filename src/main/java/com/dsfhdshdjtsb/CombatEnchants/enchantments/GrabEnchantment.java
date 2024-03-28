@@ -3,7 +3,6 @@ package com.dsfhdshdjtsb.CombatEnchants.enchantments;
 import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
 import com.dsfhdshdjtsb.CombatEnchants.config.ModConfigs;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
@@ -16,6 +15,7 @@ import net.minecraft.item.CrossbowItem;
 import net.minecraft.particle.BlockStateParticleEffect;
 import net.minecraft.particle.ParticleType;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.registry.Registry;
@@ -25,21 +25,12 @@ import java.util.List;
 
 public class GrabEnchantment extends Enchantment {
     public GrabEnchantment() {
-        super(Rarity.RARE, EnchantmentTarget.BOW, new EquipmentSlot[] {EquipmentSlot.MAINHAND});
+        super(Enchantment.properties(ItemTags.BOW_ENCHANTABLE,
+                2, 2, Enchantment.leveledCost(5, 20),
+                Enchantment.leveledCost(50, 20), 8, EquipmentSlot.MAINHAND));
         if(ModConfigs.GRAB)
             Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "grab"), this);
     }
-
-    @Override
-    public int getMinPower(int level) {
-        return 10 + 20 * (level - 1);
-    }
-
-    @Override
-    public int getMaxPower(int level) {
-        return this.getMinPower(level) + 50;
-    }
-
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
         if(target instanceof LivingEntity) {
@@ -81,11 +72,6 @@ public class GrabEnchantment extends Enchantment {
                     ((LivingEntity) target).addStatusEffect(new StatusEffectInstance(CombatEnchants.GRAB_EFFECT, 50 + level * 50, 0, false, false));
             }
         }
-    }
-
-    @Override
-    public int getMaxLevel() {
-        return 2;
     }
 
     @Override

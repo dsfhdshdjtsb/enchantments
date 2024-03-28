@@ -4,7 +4,6 @@ import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
 import com.dsfhdshdjtsb.CombatEnchants.config.ModConfigs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
@@ -12,6 +11,7 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
 import net.minecraft.registry.Registry;
@@ -20,19 +20,12 @@ import net.minecraft.registry.Registries;
 public class RampageEnchantment extends Enchantment {
 
     public RampageEnchantment() {
-        super(Rarity.RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        super(Enchantment.properties(ItemTags.SWORD_ENCHANTABLE,
+                3, 3, Enchantment.leveledCost(10, 10),
+                Enchantment.leveledCost(25, 10), 4, EquipmentSlot.MAINHAND));
+
         if(ModConfigs.RAMPAGE)
             Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "rampage"), this);
-    }
-
-    @Override
-    public int getMinPower(int level) {
-        return 5 + (level - 1) * 8;
-    }
-
-    @Override
-    public int getMaxPower(int level) {
-        return this.getMinPower(level) + 50;
     }
 
     @Override
@@ -84,8 +77,4 @@ public class RampageEnchantment extends Enchantment {
         return super.canAccept(other);
     }
 
-    @Override
-    public int getMaxLevel() {
-        return 3;
-    }
 }

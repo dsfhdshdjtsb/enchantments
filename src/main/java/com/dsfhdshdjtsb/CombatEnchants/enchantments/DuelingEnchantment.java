@@ -4,12 +4,12 @@ import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
 import com.dsfhdshdjtsb.CombatEnchants.config.ModConfigs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
 import net.minecraft.registry.Registry;
@@ -19,21 +19,12 @@ import java.util.List;
 
 public class DuelingEnchantment  extends Enchantment {
     public DuelingEnchantment() {
-        super(Rarity.RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        super(Enchantment.properties(ItemTags.SWORD_ENCHANTABLE,
+                3, 1, Enchantment.constantCost(20),
+                Enchantment.constantCost(50), 8, EquipmentSlot.MAINHAND));
         if(ModConfigs.DUELING)
             Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "dueling"), this);
     }
-
-    @Override
-    public int getMinPower(int level) {
-        return level * 25;
-    }
-
-    @Override
-    public int getMaxPower(int level) {
-        return this.getMinPower(level) + 50;
-    }
-
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
         //check that enchant is not in offhand, and that player isnt using a bow and then switching to sword

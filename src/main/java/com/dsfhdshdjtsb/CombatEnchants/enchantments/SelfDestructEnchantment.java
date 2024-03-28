@@ -4,12 +4,12 @@ import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
 import com.dsfhdshdjtsb.CombatEnchants.config.ModConfigs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.Registries;
@@ -19,20 +19,13 @@ import net.minecraft.world.explosion.Explosion;
 
 public class SelfDestructEnchantment extends Enchantment {
     public SelfDestructEnchantment() {
-        super(Rarity.UNCOMMON, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        super(Enchantment.properties(ItemTags.SWORD_ENCHANTABLE,
+                5, 1, Enchantment.constantCost(20),
+                Enchantment.constantCost(10), 1, EquipmentSlot.MAINHAND));
         if(ModConfigs.SELFDESTRUCT)
             Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "self_destruct"), this);
     }
 
-    @Override
-    public int getMinPower(int level) {
-        return 1;
-    }
-
-    @Override
-    public int getMaxPower(int level) {
-        return 10;
-    }
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
@@ -49,8 +42,4 @@ public class SelfDestructEnchantment extends Enchantment {
         }
     }
 
-    @Override
-    public int getMaxLevel() {
-        return 1;
-    }
 }

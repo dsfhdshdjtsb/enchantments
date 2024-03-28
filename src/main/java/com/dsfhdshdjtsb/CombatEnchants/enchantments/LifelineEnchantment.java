@@ -3,12 +3,12 @@ package com.dsfhdshdjtsb.CombatEnchants.enchantments;
 import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
 import com.dsfhdshdjtsb.CombatEnchants.config.ModConfigs;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
 import net.minecraft.registry.Registry;
@@ -19,20 +19,14 @@ import java.util.List;
 
 public class LifelineEnchantment extends Enchantment {
     public LifelineEnchantment() {
-        super(Enchantment.Rarity.VERY_RARE, EnchantmentTarget.ARMOR_CHEST, new EquipmentSlot[] {EquipmentSlot.CHEST});
+        super(Enchantment.properties(ItemTags.CHEST_ARMOR_ENCHANTABLE,
+                2, 1, Enchantment.constantCost(20),
+                Enchantment.constantCost(50), 8, EquipmentSlot.CHEST));
         if(ModConfigs.LIFELINE)
             Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "lifeline"), this);
     }
 
-    @Override
-    public int getMinPower(int level) {
-        return 1 + (level - 1) * 10;
-    }
 
-    @Override
-    public int getMaxPower(int level) {
-        return this.getMinPower(level) + 15;
-    }
 
     @Override
     public void onUserDamaged(LivingEntity user, Entity attacker, int level) {
@@ -51,10 +45,7 @@ public class LifelineEnchantment extends Enchantment {
         }
     }
 
-    @Override
-    public int getMaxLevel() {
-        return 1;
-    }
+
 
     @Override
     protected boolean canAccept(Enchantment other) {

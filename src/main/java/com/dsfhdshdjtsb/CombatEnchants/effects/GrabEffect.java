@@ -14,7 +14,7 @@ public class GrabEffect extends StatusEffect {
     }
 
     @Override
-    public void applyUpdateEffect(LivingEntity entity, int amplifier) {
+    public boolean applyUpdateEffect(LivingEntity entity, int amplifier) {
         if(entity.getWorld() instanceof ServerWorld)
         {
             ((ServerWorld) entity.getWorld()).spawnParticles(ParticleTypes.FIREWORK, entity.getX(), entity.getBodyY(0.5D) + 2.5, entity.getZ(), 1, 0.1, 0.1, 0.1, 0.0D);
@@ -23,6 +23,7 @@ public class GrabEffect extends StatusEffect {
         {
             entity.removeStatusEffect(CombatEnchants.GRAB_EFFECT);
         }
+        return super.applyUpdateEffect(entity, amplifier);
     }
 
     @Override

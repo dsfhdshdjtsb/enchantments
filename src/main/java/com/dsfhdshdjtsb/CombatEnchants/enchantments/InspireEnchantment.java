@@ -4,7 +4,6 @@ import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
 import com.dsfhdshdjtsb.CombatEnchants.config.ModConfigs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
@@ -12,6 +11,7 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.passive.TameableEntity;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
 import net.minecraft.registry.Registry;
@@ -21,19 +21,11 @@ import java.util.List;
 
 public class InspireEnchantment extends Enchantment {
     public InspireEnchantment() {
-        super(Rarity.RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        super(Enchantment.properties(ItemTags.SWORD_ENCHANTABLE,
+                3, 5, Enchantment.leveledCost(1, 11),
+                Enchantment.leveledCost(21, 11), 1, EquipmentSlot.MAINHAND));
         if(ModConfigs.INSPIRE)
             Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "inspire"), this);
-    }
-
-    @Override
-    public int getMinPower(int level) {
-        return 5 + (level - 1) * 8;
-    }
-
-    @Override
-    public int getMaxPower(int level) {
-        return super.getMinPower(level) + 50;
     }
 
     @Override
@@ -84,11 +76,6 @@ public class InspireEnchantment extends Enchantment {
                 ((ServerWorld) user.getWorld()).spawnParticles(ParticleTypes.END_ROD, user.getX() + x, user.getBodyY(0.5D), user.getZ() - y, 0, 1, 0.0D, 1, 0.0D);
             }
         }
-    }
-
-    @Override
-    public int getMaxLevel() {
-        return 5;
     }
 
     @Override

@@ -12,11 +12,11 @@ public class MarkEffect extends StatusEffect {
     }
 
     @Override
-    public void applyUpdateEffect(LivingEntity entity, int amplifier) {
+    public boolean applyUpdateEffect(LivingEntity entity, int amplifier) {
         //onTargetDamaged ran twice, so this whole file is a workaround sort of
         entity.removeStatusEffect(CombatEnchants.MARK_EFFECT);
         entity.addStatusEffect(new StatusEffectInstance(CombatEnchants.MARK_EFFECT, amplifier * 20, 0));
-        super.applyUpdateEffect(entity, amplifier);
+        return super.applyUpdateEffect(entity, amplifier);
     }
 
     @Override

@@ -3,32 +3,23 @@ package com.dsfhdshdjtsb.CombatEnchants.enchantments;
 import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
 import com.dsfhdshdjtsb.CombatEnchants.config.ModConfigs;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.*;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.item.BowItem;
 import net.minecraft.item.CrossbowItem;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.Registries;
 
 public class KnockupEnchantment extends Enchantment {
     public KnockupEnchantment() {
-        super(Rarity.RARE, EnchantmentTarget.BOW, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        super(Enchantment.properties(ItemTags.BOW_ENCHANTABLE,
+                3, 2, Enchantment.leveledCost(5, 20),
+                Enchantment.leveledCost(50, 20), 8, EquipmentSlot.MAINHAND));
         if(ModConfigs.KNOCKUP)
             Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "knockup"), this);
-    }
-
-    @Override
-    public int getMinPower(int level) {
-        return 12 + (level - 1) * 20;
-    }
-
-    @Override
-    public int getMaxPower(int level) {
-        return this.getMinPower(level) + 25;
     }
 
     @Override
@@ -44,10 +35,6 @@ public class KnockupEnchantment extends Enchantment {
         }
     }
 
-    @Override
-    public int getMaxLevel() {
-        return 2;
-    }
 
     @Override
     protected boolean canAccept(Enchantment other) {

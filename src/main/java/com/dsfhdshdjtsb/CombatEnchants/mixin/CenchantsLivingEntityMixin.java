@@ -15,6 +15,7 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particle.BlockStateParticleEffect;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -48,11 +49,10 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
 
     @Shadow public abstract boolean addStatusEffect(StatusEffectInstance effect);
 
-    @Shadow public abstract boolean removeStatusEffect(StatusEffect type);
+    @Shadow public abstract boolean removeStatusEffect(RegistryEntry<StatusEffect> effect);
+    @Shadow public abstract boolean hasStatusEffect(RegistryEntry<StatusEffect> effect);
 
-    @Shadow public abstract boolean hasStatusEffect(StatusEffect effect);
-
-    @Shadow @Nullable public abstract StatusEffectInstance getStatusEffect(StatusEffect effect);
+    @Shadow @Nullable public abstract StatusEffectInstance getStatusEffect(RegistryEntry<StatusEffect> effect);
 
 
     @Shadow public abstract ItemStack getMainHandStack();
@@ -136,17 +136,16 @@ public abstract class CenchantsLivingEntityMixin extends Entity {
         }
         if(sorcLevel != 0)
         {
-            StatusEffect[] effects = {
-                    StatusEffects.RESISTANCE,
-                    StatusEffects.FIRE_RESISTANCE,
-                    StatusEffects.HEALTH_BOOST,
-                    StatusEffects.SPEED,
-                    StatusEffects.REGENERATION,
-            };
+            ArrayList<RegistryEntry<StatusEffect>> effects = new ArrayList<>();
+            effects.add(StatusEffects.RESISTANCE);
+            effects.add(StatusEffects.FIRE_RESISTANCE);
+            effects.add(StatusEffects.HEALTH_BOOST);
+            effects.add(StatusEffects.SPEED);
+            effects.add(StatusEffects.REGENERATION);
 
             Random rand = new Random();
             if(rand.nextInt(16) < sorcLevel) {
-                StatusEffect randEffect = effects[rand.nextInt(5)];
+                RegistryEntry<StatusEffect> randEffect = effects.get(rand.nextInt(5));
                 int duration = sorcLevel/4;
                 if (this.getStatusEffect(randEffect) == null)
                     this.addStatusEffect(new StatusEffectInstance(randEffect, duration * 60, 0));

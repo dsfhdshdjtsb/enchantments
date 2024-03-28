@@ -16,6 +16,7 @@ import net.minecraft.util.hit.EntityHitResult;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -25,8 +26,8 @@ import java.util.Random;
 @Mixin(TridentEntity.class)
 public abstract class CenchantsTridentEntityMixin {
 
-    @Final
-    @Shadow private static final ItemStack DEFAULT_STACK = new ItemStack(Items.TRIDENT);
+    @Shadow
+    protected abstract ItemStack getDefaultItemStack();
 
     @Shadow private boolean dealtDamage;
 
@@ -35,7 +36,7 @@ public abstract class CenchantsTridentEntityMixin {
     {
         TridentEntity trident = ((TridentEntity)(Object)(this));
         Entity entity = entityHitResult.getEntity();
-        if (trident.getWorld() instanceof ServerWorld && EnchantmentHelper.getLevel(CombatEnchants.SNAP, DEFAULT_STACK) != 0 && trident.getOwner() != null) {
+        if (trident.getWorld() instanceof ServerWorld && EnchantmentHelper.getLevel(CombatEnchants.SNAP, getDefaultItemStack()) != 0 && trident.getOwner() != null) {
             if(!trident.getWorld().isRaining()) {
                 entity.getWorld().spawnEntity(new EvokerFangsEntity(entity.getWorld(),entity.getX(),  entity.getY(),entity.getZ(), 0, 3, (LivingEntity) trident.getOwner()));
             }
@@ -63,7 +64,7 @@ public abstract class CenchantsTridentEntityMixin {
             }
         }
 
-        int inkingLevel = EnchantmentHelper.getLevel(CombatEnchants.INKING, DEFAULT_STACK);
+        int inkingLevel = EnchantmentHelper.getLevel(CombatEnchants.INKING, getDefaultItemStack());
         if (trident.getWorld() instanceof ServerWorld && inkingLevel != 0 && trident.getOwner() != null && entity instanceof LivingEntity) {
             int chance = inkingLevel * 10;
             if(trident.getWorld().isRaining())
@@ -84,7 +85,7 @@ public abstract class CenchantsTridentEntityMixin {
     @Inject(at =  @At("TAIL"), method="tick")
     public void tick(CallbackInfo ci) {
         TridentEntity trident = ((TridentEntity)(Object)(this));
-        if(!dealtDamage && EnchantmentHelper.getLevel(CombatEnchants.INKING, DEFAULT_STACK) != 0 && trident.getWorld() instanceof ServerWorld)
+        if(!dealtDamage && EnchantmentHelper.getLevel(CombatEnchants.INKING, getDefaultItemStack()) != 0 && trident.getWorld() instanceof ServerWorld)
         {
             ((ServerWorld) trident.getWorld()).spawnParticles(ParticleTypes.SQUID_INK, trident.getX(), trident.getBodyY(0.5D), trident.getZ(), 0, 0.0D, 0.0D, 0.0D, 0.0D);
         }

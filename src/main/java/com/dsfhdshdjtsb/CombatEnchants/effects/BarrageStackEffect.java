@@ -13,7 +13,7 @@ public class BarrageStackEffect extends StatusEffect {
     }
 
     @Override
-    public void applyUpdateEffect(LivingEntity entity, int amplifier) {
+    public boolean applyUpdateEffect(LivingEntity entity, int amplifier) {
         if(amplifier >= 9 && amplifier <= 15) {
             entity.removeStatusEffect(CombatEnchants.BARRAGE_STACK_EFFECT);
             entity.addStatusEffect(new StatusEffectInstance(CombatEnchants.BARRAGE_STACK_EFFECT, 200, amplifier - 10));
@@ -23,7 +23,7 @@ public class BarrageStackEffect extends StatusEffect {
             entity.removeStatusEffect(CombatEnchants.BARRAGE_STACK_EFFECT);
             entity.addStatusEffect(new StatusEffectInstance(CombatEnchants.BARRAGE_EFFECT, 600, 0));
         }
-        super.applyUpdateEffect(entity, amplifier);
+        return super.applyUpdateEffect(entity, amplifier);
     }
 
     @Override

@@ -16,7 +16,7 @@ public class FireWalkEffect extends StatusEffect {
 
 
     @Override
-    public void applyUpdateEffect(LivingEntity entity, int amplifier) {
+    public boolean applyUpdateEffect(LivingEntity entity, int amplifier) {
         if(entity.isOnGround())
         {
             World world = entity.getWorld();
@@ -27,6 +27,7 @@ public class FireWalkEffect extends StatusEffect {
                 entity.setFireTicks(0);
             }
         }
+        return super.applyUpdateEffect(entity, amplifier);
     }
 
     @Override

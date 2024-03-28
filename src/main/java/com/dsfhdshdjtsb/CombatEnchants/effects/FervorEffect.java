@@ -13,10 +13,6 @@ public class FervorEffect extends StatusEffect {
     }
 
 
-    @Override
-    public void applyUpdateEffect(LivingEntity entity, int amplifier) {
-
-    }
 
     @Override
     public boolean canApplyUpdateEffect(int duration, int amplifier) {

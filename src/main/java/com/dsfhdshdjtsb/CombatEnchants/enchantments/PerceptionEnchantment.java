@@ -4,13 +4,13 @@ import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
 import com.dsfhdshdjtsb.CombatEnchants.config.ModConfigs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.Registries;
@@ -18,19 +18,10 @@ import net.minecraft.registry.Registries;
 
 public class PerceptionEnchantment extends Enchantment {
     public PerceptionEnchantment() {
-        super(Rarity.VERY_RARE, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
-        if(ModConfigs.PERCEPTION)
+        super(Enchantment.properties(ItemTags.SWORD_ENCHANTABLE,
+                2, 1, Enchantment.constantCost(20),
+                Enchantment.constantCost(50), 8, EquipmentSlot.MAINHAND));        if(ModConfigs.PERCEPTION)
             Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "perception"), this);
-    }
-
-    @Override
-    public int getMinPower(int level) {
-        return 50;
-    }
-
-    @Override
-    public int getMaxPower(int level) {
-        return super.getMinPower(level) + 50;
     }
 
     @Override
@@ -40,7 +31,7 @@ public class PerceptionEnchantment extends Enchantment {
         if(user instanceof PlayerEntity && target instanceof LivingEntity)
         {
 
-            float damage = (float)user.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE) + EnchantmentHelper.getAttackDamage(user.getMainHandStack(), user.getGroup());
+            float damage = (float)user.getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE) + EnchantmentHelper.getAttackDamage(user.getMainHandStack(), null);
             int exp = ((PlayerEntity) user).experienceLevel;
             if(exp < 3)
                 exp = 3;
@@ -53,10 +44,6 @@ public class PerceptionEnchantment extends Enchantment {
         return true;
     }
 
-    @Override
-    public int getMaxLevel() {
-        return 1;
-    }
 
     @Override
     protected boolean canAccept(Enchantment other) {

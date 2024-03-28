@@ -4,7 +4,6 @@ import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
 import com.dsfhdshdjtsb.CombatEnchants.config.ModConfigs;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
@@ -12,6 +11,7 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
 import net.minecraft.registry.Registry;
@@ -22,19 +22,11 @@ import java.util.List;
 
 public class LifestealEnchantment extends Enchantment {
     public LifestealEnchantment() {
-        super(Rarity.UNCOMMON, EnchantmentTarget.WEAPON, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        super(Enchantment.properties(ItemTags.SWORD_ENCHANTABLE,
+                10, 5, Enchantment.leveledCost(1, 11),
+                Enchantment.leveledCost(21, 11), 1, EquipmentSlot.MAINHAND));
         if(ModConfigs.LIFESTEAL)
             Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "lifesteal"), this);
-    }
-
-    @Override
-    public int getMinPower(int level) {
-        return 5 + (level - 1) * 8;
-    }
-
-    @Override
-    public int getMaxPower(int level) {
-        return super.getMinPower(level) + 50;
     }
 
     @Override
@@ -78,10 +70,6 @@ public class LifestealEnchantment extends Enchantment {
         }
     }
 
-    @Override
-    public int getMaxLevel() {
-        return 5;
-    }
 
     @Override
     protected boolean canAccept(Enchantment other) {

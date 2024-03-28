@@ -8,7 +8,10 @@ import net.fabricmc.fabric.api.particle.v1.FabricParticleTypes;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.entity.effect.StatusEffectCategory;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.particle.DefaultParticleType;
+import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.util.Identifier;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.Registries;
@@ -56,26 +59,29 @@ public class CombatEnchants implements ModInitializer {
 	public static Enchantment AFTERSHOCK;
 	public static Enchantment SHIELDBREAK;
 
-	public static final StatusEffect RAMPAGE_EFFECT = new RampageEffect();
-	public static final StatusEffect LIFESTEAL_COOLDOWN_EFFECT = new LifestealCooldownEffect();
-	public static final StatusEffect MARK_EFFECT = new MarkEffect();
-	public static final StatusEffect SLEEPY_EFFECT = new SleepyEffect();
-	public static final StatusEffect SHIELDING_COOLDOWN_EFFECT = new ShieldingCooldown();
-	public static final StatusEffect FIRE_WALK_EFFECT = new FireWalkEffect();
-	public static final StatusEffect ANTIHEAL_EFFECT = new AntihealEffect();
-	public static final StatusEffect DELAYED_DEATH_EFFECT = new DelayedDeathEffect();
-	public static final StatusEffect FERVOR_EFFECT = new FervorEffect();
-	public static final StatusEffect BARRAGE_EFFECT = new BarrageEffect();
-	public static final StatusEffect BARRAGE_STACK_EFFECT = new BarrageStackEffect();
-	public static final StatusEffect LIFELINE_COOLDOWN_EFFECT = new LifelineCooldownEffect();
-	public static final StatusEffect FROST_PARTICLE_EFFECT = new FrostParticleEffect();
-	public static final StatusEffect SLEEPY_PARTICLE_EFFECT = new SleepyParticleEffect();
-	public static final StatusEffect GRAB_EFFECT = new GrabEffect();
-	public static final StatusEffect AFTERSHOCK_EFFECT = new AftershockEffect();
-	public static final StatusEffect LIGHTNING_IMMUNE = new LightningImmuneEffect();
-
 	public static final DefaultParticleType SHIELD_PARTICLE = FabricParticleTypes.simple();
 	public static final DefaultParticleType SLEEPY_PARTICLE = FabricParticleTypes.simple();
+
+	public static final RegistryEntry<StatusEffect> RAMPAGE_EFFECT = register("rampage", new RampageEffect());
+	public static final RegistryEntry<StatusEffect> LIFESTEAL_COOLDOWN_EFFECT = register("lifesteal_cooldown", new LifestealCooldownEffect());
+	public static final RegistryEntry<StatusEffect> MARK_EFFECT = register("mark", new MarkEffect());
+	public static final RegistryEntry<StatusEffect> SLEEPY_EFFECT = register("sleepy", new SleepyEffect());
+	public static final RegistryEntry<StatusEffect> SHIELDING_COOLDOWN_EFFECT = register("shielding_cooldown", new ShieldingCooldown());
+	public static final RegistryEntry<StatusEffect> FIRE_WALK_EFFECT = register("fire_walk", new FireWalkEffect());
+	public static final RegistryEntry<StatusEffect> ANTIHEAL_EFFECT = register("antiheal", new AntihealEffect());
+	public static final RegistryEntry<StatusEffect> DELAYED_DEATH_EFFECT = register("delayed_death", new DelayedDeathEffect());
+	public static final RegistryEntry<StatusEffect> FERVOR_EFFECT = register("fervor", new FervorEffect());
+	public static final RegistryEntry<StatusEffect> BARRAGE_EFFECT = register("barrage", new BarrageEffect());
+	public static final RegistryEntry<StatusEffect> BARRAGE_STACK_EFFECT = register("barrage_stack", new BarrageStackEffect());
+	public static final RegistryEntry<StatusEffect> LIFELINE_COOLDOWN_EFFECT = register("lifeline_cooldown", new LifelineCooldownEffect());
+	public static final RegistryEntry<StatusEffect> FROST_PARTICLE_EFFECT = register("frost_particle", new FrostParticleEffect());
+	public static final RegistryEntry<StatusEffect> SLEEPY_PARTICLE_EFFECT = register("sleepy_particle", new SleepyParticleEffect());
+	public static final RegistryEntry<StatusEffect> GRAB_EFFECT = register("grab", new GrabEffect());
+	public static final RegistryEntry<StatusEffect> AFTERSHOCK_EFFECT = register("aftershock", new AftershockEffect());
+	public static final RegistryEntry<StatusEffect> LIGHTNING_IMMUNE = register("lightning_immune", new LightningImmuneEffect());
+
+
+
 
 	@Override
 	public void onInitialize() {
@@ -116,26 +122,9 @@ public class CombatEnchants implements ModInitializer {
 		VOLLEY = new VolleyEnchantment();
 		ZAP = new ZapEnchantment();
 
+	}
 
-		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "rampage"), RAMPAGE_EFFECT);
-		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "lifesteal_cooldown"), LIFESTEAL_COOLDOWN_EFFECT);
-		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "mark"), MARK_EFFECT);
-		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "sleepy"), SLEEPY_EFFECT);
-		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "shielding_cooldown"), SHIELDING_COOLDOWN_EFFECT);
-		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "fire_walk"), FIRE_WALK_EFFECT);
-		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "antiheal"), ANTIHEAL_EFFECT);
-		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "delayed_death"), DELAYED_DEATH_EFFECT);
-		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "fervor"), FERVOR_EFFECT);
-		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "barrage"), BARRAGE_EFFECT);
-		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "barrage_stack"), BARRAGE_STACK_EFFECT);
-		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "lifeline_cooldown"), LIFELINE_COOLDOWN_EFFECT);
-		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "frost_particle"), FROST_PARTICLE_EFFECT);
-		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "sleepy_particle"), SLEEPY_PARTICLE_EFFECT);
-		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "grab"), GRAB_EFFECT);
-		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "aftershock"), AFTERSHOCK_EFFECT);
-		Registry.register(Registries.STATUS_EFFECT, new Identifier("cenchants", "lightning_immune"), LIGHTNING_IMMUNE);
-		Registry.register(Registries.PARTICLE_TYPE, new Identifier("cenchants", "shield_particle"), SHIELD_PARTICLE);
-		Registry.register(Registries.PARTICLE_TYPE, new Identifier("cenchants", "sleepy_particle"), SLEEPY_PARTICLE);
-
+	private static RegistryEntry<StatusEffect> register(String id, StatusEffect statusEffect) {
+		return Registry.registerReference(Registries.STATUS_EFFECT, new Identifier(id), statusEffect);
 	}
 }

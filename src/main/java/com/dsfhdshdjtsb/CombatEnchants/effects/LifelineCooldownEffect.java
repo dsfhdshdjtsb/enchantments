@@ -11,11 +11,6 @@ public class LifelineCooldownEffect extends StatusEffect {
 
 
     @Override
-    public void applyUpdateEffect(LivingEntity entity, int amplifier) {
-
-    }
-
-    @Override
     public boolean canApplyUpdateEffect(int duration, int amplifier) {
         return true;
     }

@@ -3,7 +3,6 @@ package com.dsfhdshdjtsb.CombatEnchants.enchantments;
 import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
 import com.dsfhdshdjtsb.CombatEnchants.config.ModConfigs;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
@@ -11,6 +10,7 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.BowItem;
 import net.minecraft.item.CrossbowItem;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
 import net.minecraft.registry.Registry;
@@ -21,20 +21,13 @@ import java.util.List;
 
 public class ZapEnchantment extends Enchantment {
     public ZapEnchantment() {
-        super(Rarity.VERY_RARE, EnchantmentTarget.BOW, new EquipmentSlot[]{EquipmentSlot.MAINHAND});
+        super(Enchantment.properties(ItemTags.BOW_ENCHANTABLE,
+                2, 2, Enchantment.leveledCost(5, 20),
+                Enchantment.leveledCost(50, 20), 8, EquipmentSlot.MAINHAND));
         if(ModConfigs.ZAP)
             Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "zap"), this);
     }
 
-    @Override
-    public int getMinPower(int level) {
-        return 10 + 20 * (level - 1);
-    }
-
-    @Override
-    public int getMaxPower(int level) {
-        return this.getMinPower(level) + 50;
-    }
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
@@ -85,10 +78,6 @@ public class ZapEnchantment extends Enchantment {
         }
     }
 
-    @Override
-    public int getMaxLevel() {
-        return 2;
-    }
 
     @Override
     protected boolean canAccept(Enchantment other) {

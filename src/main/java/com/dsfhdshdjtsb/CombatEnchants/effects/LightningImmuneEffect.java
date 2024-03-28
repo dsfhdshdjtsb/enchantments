@@ -9,12 +9,6 @@ public class LightningImmuneEffect extends StatusEffect {
         super(StatusEffectCategory.BENEFICIAL, 0);
     }
 
-
-    @Override
-    public void applyUpdateEffect(LivingEntity entity, int amplifier) {
-
-    }
-
     @Override
     public boolean canApplyUpdateEffect(int duration, int amplifier) {
         return true;

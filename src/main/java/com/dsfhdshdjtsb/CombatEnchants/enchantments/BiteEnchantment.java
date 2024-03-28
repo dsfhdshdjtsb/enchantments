@@ -4,7 +4,6 @@ import com.dsfhdshdjtsb.CombatEnchants.CombatEnchants;
 import com.dsfhdshdjtsb.CombatEnchants.config.ModConfigProvider;
 import com.dsfhdshdjtsb.CombatEnchants.config.ModConfigs;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
@@ -15,6 +14,7 @@ import net.minecraft.entity.passive.WolfEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BowItem;
 import net.minecraft.item.CrossbowItem;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Identifier;
 import net.minecraft.registry.Registry;
@@ -23,20 +23,13 @@ import net.minecraft.world.World;
 
 public class BiteEnchantment extends Enchantment {
     public BiteEnchantment() {
-        super(Rarity.UNCOMMON, EnchantmentTarget.CROSSBOW, new EquipmentSlot[] {EquipmentSlot.MAINHAND});
+        super(Enchantment.properties(ItemTags.CROSSBOW_ENCHANTABLE,
+                5, 2, Enchantment.leveledCost(5, 20),
+                Enchantment.leveledCost(50, 20), 8, EquipmentSlot.MAINHAND));
         if(ModConfigs.BITE)
             Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "bite"), this);
     }
 
-    @Override
-    public int getMinPower(int level) {
-        return 0;
-    }
-
-    @Override
-    public int getMaxPower(int level) {
-        return 15;
-    }
 
     @Override
     public void onTargetDamaged(LivingEntity user, Entity target, int level) {
@@ -57,11 +50,6 @@ public class BiteEnchantment extends Enchantment {
             wolf.addStatusEffect(new StatusEffectInstance(CombatEnchants.DELAYED_DEATH_EFFECT, 60 * level + 10, 100));
             world.spawnEntity(wolf);
         }
-    }
-
-    @Override
-    public int getMaxLevel() {
-        return 2;
     }
 
     @Override

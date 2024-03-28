@@ -2,31 +2,23 @@ package com.dsfhdshdjtsb.CombatEnchants.enchantments;
 
 import com.dsfhdshdjtsb.CombatEnchants.config.ModConfigs;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentTarget;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.Registries;
 
 public class VisionEnchantment extends Enchantment {
     public VisionEnchantment() {
-        super(Rarity.RARE, EnchantmentTarget.ARMOR_HEAD, new EquipmentSlot[] {EquipmentSlot.HEAD});
+        super(Enchantment.properties(ItemTags.HEAD_ARMOR_ENCHANTABLE,
+                3, 2, Enchantment.leveledCost(5, 20),
+                Enchantment.leveledCost(50, 20), 8, EquipmentSlot.HEAD));
         if(ModConfigs.VISION)
             Registry.register(Registries.ENCHANTMENT, new Identifier("cenchants", "vision"), this);
-    }
-
-    @Override
-    public int getMinPower(int level) {
-        return 10 + 20 * (level - 1);
-    }
-
-    @Override
-    public int getMaxPower(int level) {
-        return this.getMinPower(level) + 50;
     }
 
     @Override
@@ -35,10 +27,6 @@ public class VisionEnchantment extends Enchantment {
             ((LivingEntity)(attacker)).addStatusEffect(new StatusEffectInstance(StatusEffects.GLOWING, level * 30 + 20, 0));
     }
 
-    @Override
-    public int getMaxLevel() {
-        return 2;
-    }
 
     @Override
     protected boolean canAccept(Enchantment other) {
